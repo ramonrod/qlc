@@ -1,3 +1,0 @@
-include quanthistling/config/deployment.ini_tmpl
-recursive-include quanthistling/public *
-recursive-include quanthistling/templates *
