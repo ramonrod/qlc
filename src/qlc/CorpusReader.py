@@ -2,9 +2,17 @@
 """
 Corpus Reader for data of the project Quantitative Language Comparison.
 """
+#-----------------------------------------------------------------------------
+# Imports
+#-----------------------------------------------------------------------------
 
 import os.path
 import codecs, re, collections
+
+
+#-----------------------------------------------------------------------------
+# Globals
+#-----------------------------------------------------------------------------
 
 _component_table_columns = {
     'name': 0,
@@ -100,6 +108,10 @@ _wordlistannotation_table_columns ={
     'string': 5
 }
 
+#-----------------------------------------------------------------------------
+# Classes
+#-----------------------------------------------------------------------------
+
 class CorpusReaderDict(object):
     """
     The corpus reader class for dictionary data. API was designed to allow
@@ -107,6 +119,10 @@ class CorpusReaderDict(object):
     in Python data structures. Think of it as DB-less queries that return
     Key-Value-Stores.
     """
+    
+    __slots__ = ("datapath", "components", "books", "languages", "dictdata",
+                 "entries", "annotations", "entry_annotations_cache",
+                 "__dictdata_string_ids" )
     
     def __init__(self, datapath):
         """
@@ -449,19 +465,24 @@ class CorpusReaderWordlist(object):
     Key-Value-Stores.
     """
     
+    __slots__ = ("datapath", "components", "books", "languages", "wordlistdata",
+                 "entries", "annotations", "concepts",
+                 "entry_annotations_cache", "wordlistdata_string_ids" )
+    
     def __init__(self, datapath):
         """
         Constructor of CorpusReaderWordlist class.
         
         Args:
-            - datapath (obligatory): the path to the dictionary data files (*.csv) in the
-                file system.
+            - datapath (obligatory): the path to the dictionary data files
+                (*.csv) in the file system.
         
         Returns:
             - nothing
         """
         
         self.datapath = datapath
+        self.components = {}
         self.books = {}
         self.languages = {}
         self.wordlistdata = {}
@@ -570,22 +591,6 @@ class CorpusReaderWordlist(object):
                 self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['startpage']],
                 self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['endpage']]
                 )
-    
-    def wordlistdata_string_ids(self):
-        """
-        Returns the dict of the mappings from numerical IDs to strings IDs for the
-        Wordlistdata entries. Wordlistdata are parts of books that contain wordlists
-        (vs. Dictdata and Nondictdata). The string IDs are equal to the ID within URLs of the
-        QuantHistLing website, i.e. something like "huber1992_10_244". The general
-        structure of the ID is "key_startpage_endpage".
-        
-        Args:
-            - nothing
-            
-        Returns:
-            - The dict of numerical IDs to string IDs
-        """
-        return self.wordlistdata_string_ids
         
     def wordlist_ids_for_bibtex_key(self, param_bibtex_key):
         """Return an array of wordlist parts IDs for a given book. The book
@@ -686,6 +691,12 @@ class CorpusReaderWordlist(object):
         return(a for a in self.entry_annotations_cache[entry_id][value])
     
     
+    def counterparts_for_wordlistdata_id(self, wordlistdata_id):
+        return(counterpart
+            for entry_id in self.entry_ids_for_wordlistdata_id(wordlistdata_id)
+                for counterpart in self.annotations_for_entry_id_and_value(entry_id, "counterpart"))
+        
+
     def concepts_with_counterparts_for_wordlistdata_id(self, wordlistdata_id):
         """Returns all pairs of concepts and counterparts for a given
         wordlistdata ID.
