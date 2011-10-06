@@ -23,99 +23,40 @@ import codecs, re, collections
 # Globals
 #-----------------------------------------------------------------------------
 
-_component_table_columns = {
-    'name': 0,
-    'description': 1
-}
+_component_table_columns = dict(name=0, description=1)
 
-_book_table_columns = {
-    'title': 0,
-    'author': 1,
-    'year': 2,
-    'isbn': 3,
-    'bibtex_key': 4,
-    'columns': 5,
-    'pages': 6,
-    'origfilepath': 7,
-    'type': 8,
-    'is_ready': 9,
-}
+_book_table_columns = dict(title=0, author=1, year=2, isbn=3, bibtex_key=4,
+                           columns=5, pages=6, origfilepath=7, type=8,
+                           is_ready=9)
 
-_dictdata_table_columns = {
-    'startpage': 0,
-    'startletters': 1,
-    'endpage': 2,
-    'src_language_bookname': 3,
-    'tgt_language_bookname': 4,
-    'src_language_id': 5,
-    'tgt_language_id': 6,
-    'book_id': 7,
-    'component_id': 8
-}
+_dictdata_table_columns = dict(startpage=0, startletters=1, endpage=2,
+                               src_language_bookname=3, tgt_language_bookname=4,
+                               src_language_id=5, tgt_language_id=6, book_id=7,
+                               component_id=8)
 
-_language_table_columns = {
-    'name': 0,
-    'langcode': 1,
-    'description': 2,
-    'url': 3
-}
+_language_table_columns = dict(name=0, langcode=1, description=2, url=3)
 
-_entry_table_columns = {
-    'head': 0,
-    'fullentry': 1,
-    'is_subentry': 2,
-    'is_subentry_of_entry_id': 3,
-    'dictdata_id': 4,
-    'startpage': 5,
-    'endpage': 6,
-    'startcolumn': 7,
-    'endcolumn': 8,
-    'pos_on_page': 9,
-    'has_manual_annotations': 10
-}
+_entry_table_columns = dict(head=0, fullentry=1, is_subentry=2,
+                            is_subentry_of_entry_id=3, dictdata_id=4,
+                            startpage=5, endpage=6, startcolumn=7,
+                            endcolumn=8, pos_on_page=9,
+                            has_manual_annotations=10)
 
-_annotation_table_columns = {
-    'entry_id': 0,
-    'annotationtype_id': 1,
-    'start': 2,
-    'end': 3,
-    'value': 4,
-    'string': 5
-}
+_annotation_table_columns = dict(entry_id=0, annotationtype_id=1, start=2,
+                                 end=3, value=4, string=5)
 
-_wordlistentry_table_columns = {
-    'fullentry': 0,
-    'startpage': 1,
-    'endpage': 2,
-    'startcolumn': 3,
-    'endcloumn': 4,
-    'pos_on_page': 5,
-    'concept_id': 6,
-    'wordlistdata_id': 7,
-    'has_manual_annotations': 8
-}
+_wordlistentry_table_columns = dict(fullentry=0, startpage=1, endpage=2,
+                                    startcolumn=3, endcloumn=4, pos_on_page=5,
+                                    concept_id=6, wordlistdata_id=7,
+                                    has_manual_annotations=8)
 
-_wordlistdata_table_columns = {
-    'startpage': 0,
-    'endpage': 1,
-    'language_bookname': 2,
-    'language_id': 3,
-    'book_id': 4,
-    'component_id': 5
-}
+_wordlistdata_table_columns = dict(startpage=0, endpage=1, language_bookname=2,
+                                   language_id=3, book_id=4, component_id=5)
 
-_wordlistconcept_table_columns = {
-    'concept': 0
-}
+_wordlistconcept_table_columns = dict(concept=0)
 
-_wordlistannotation_table_columns ={
-    'entry_id': 0,
-    'annotationtype_id': 1,
-    'start': 2,
-    'end': 3,
-    'value': 4,
-    'string': 5
-}
+_wordlistannotation_table_columns = dict(entry_id=0, annotationtype_id=1,
+                                         start=2, end=3, value=4, string=5)
 
 #-----------------------------------------------------------------------------
 # Classes
@@ -129,8 +70,8 @@ class CorpusReaderDict(object):
     Key-Value-Stores.
     """
     
-    __slots__ = ("datapath", "components", "books", "languages", "dictdata",
-                 "entries", "annotations", "entry_annotations_cache",
+    __slots__ = ("__datapath", "__components", "__books", "__languages", "__dictdata",
+                 "__entries", "__annotations", "__entry_annotations_cache",
                  "dictdata_string_ids" )
     
     def __init__(self, datapath):
@@ -147,14 +88,14 @@ class CorpusReaderDict(object):
         Nothing
         """
         
-        self.datapath = datapath
-        self.components = {}
-        self.books = {}
-        self.languages = {}
-        self.dictdata = {}
-        self.entries = {}
-        self.annotations = {}
-        self.entry_annotations_cache = {}
+        self.__datapath = datapath
+        self.__components = {}
+        self.__books = {}
+        self.__languages = {}
+        self.__dictdata = {}
+        self.__entries = {}
+        self.__annotations = {}
+        self.__entry_annotations_cache = {}
         self.dictdata_string_ids = {}
         
         re_quotes = re.compile('""')
@@ -166,9 +107,9 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.components[data.pop(0)] = data
+            self.__components[data.pop(0)] = data
 
         # read book table
         is_first_line = True
@@ -177,9 +118,9 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.books[data.pop(0)] = data
+            self.__books[data.pop(0)] = data
 
         # read dictdata table
         is_first_line = True
@@ -188,9 +129,9 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.dictdata[data.pop(0)] = data
+            self.__dictdata[data.pop(0)] = data
             
         # read entry table
         is_first_line = True
@@ -199,7 +140,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
             data_stripped = []
             for d in data:
@@ -207,15 +148,17 @@ class CorpusReaderDict(object):
                     if d[0] == '"' and d[-1] == '"':
                         d = re_quotes.sub('"', d[1:-1])
                 data_stripped.append(d)
-            self.entry_annotations_cache[data_stripped[0]] = collections.defaultdict(set)
+            self.__entry_annotations_cache[data_stripped[0]] =\
+                collections.defaultdict(set)
             if len(data_stripped) < 7:
                 print(data_stripped)
                 print(data_stripped[0])
-            self.entries[data_stripped.pop(0)] = data_stripped
+            self.__entries[data_stripped.pop(0)] = data_stripped
 
         # read annotation table
         is_first_line = True
-        file = codecs.open(os.path.join(datapath, "annotation.csv"), "r", "utf-8")
+        file = codecs.open(os.path.join(datapath, "annotation.csv"),
+                           "r", "utf-8")
         for line in file:
             if is_first_line:
                 is_first_line = False
@@ -230,12 +173,12 @@ class CorpusReaderDict(object):
                 data_stripped.append(d)
             id = data_stripped.pop(0)
             entry_id = data_stripped[_annotation_table_columns['entry_id']]
-            self.entry_annotations_cache[entry_id][
+            self.__entry_annotations_cache[entry_id][
                 # key is the annotation value: "head", "translation", ...
                 data_stripped[_annotation_table_columns['value']]
                 # value is a list of annotation strings
                 ].add(data_stripped[_annotation_table_columns['string']])
-            self.annotations[id] = data_stripped
+            self.__annotations[id] = data_stripped
             
         # read language table
         is_first_line = True
@@ -244,9 +187,9 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.languages[data.pop(0)] = data
+            self.__languages[data.pop(0)] = data
 
         self.__init_dictdata_string_ids()
 
@@ -270,12 +213,14 @@ class CorpusReaderDict(object):
         -------
         Nothing
         """
-        for dictdata_id in self.dictdata:
-            book_id = self.dictdata[dictdata_id][_dictdata_table_columns['book_id']]
-            bibtex_key = self.books[book_id][_book_table_columns['bibtex_key']]
+        for dictdata_id in self.__dictdata:
+            book_id = self.__dictdata[dictdata_id][
+                      _dictdata_table_columns['book_id']]
+            bibtex_key = self.__books[book_id][
+                         _book_table_columns['bibtex_key']]
             self.dictdata_string_ids[dictdata_id] = "%s_%s_%s" % \
-                (bibtex_key, self.dictdata[dictdata_id][0],
-                 self.dictdata[dictdata_id][2])
+                (bibtex_key, self.__dictdata[dictdata_id][0],
+                 self.__dictdata[dictdata_id][2])
 
     
     def dictdata_string_id_for_dictata_id(self, dictdata_id):
@@ -312,15 +257,17 @@ class CorpusReaderDict(object):
         An array containing all the dictdata IDs for the book.
         """
         ret = []
-        for dictdata_id in self.dictdata:
-            book_id = self.dictdata[dictdata_id][_dictdata_table_columns['book_id']]
-            if self.books[book_id][_book_table_columns['bibtex_key']] == param_bibtex_key:
+        for dictdata_id in self.__dictdata:
+            book_id = self.__dictdata[dictdata_id][
+                      _dictdata_table_columns['book_id']]
+            if self.__books[book_id][_book_table_columns['bibtex_key']] ==\
+               param_bibtex_key:
                 ret.append(dictdata_id)
         return ret
 
     def dictdata_ids_for_component(self, component):
-        """Return an array of dicionary parts IDs for a given component. The book
-        is identified by the so-called bibtex key, which is the string for
+        """Return an array of dicionary parts IDs for a given component. The
+        book is identified by the so-called bibtex key, which is the string for
         the book from the URL. For example: "thiesen1998".
         
         Parameters
@@ -333,9 +280,11 @@ class CorpusReaderDict(object):
         An array containing all the dictdata IDs for the component.
         """
         ret = []
-        for dictdata_id in self.dictdata:
-            component_id = self.dictdata[dictdata_id][_dictdata_table_columns['component_id']]
-            if self.components[component_id][_component_table_columns['name']] == component:
+        for dictdata_id in self.__dictdata:
+            component_id = self.__dictdata[dictdata_id][
+                           _dictdata_table_columns['component_id']]
+            if self.__components[component_id][
+               _component_table_columns['name']] == component:
                 ret.append(dictdata_id)
         return ret
     
@@ -353,8 +302,10 @@ class CorpusReaderDict(object):
         -------
         The ISO code of the source language for that bibtex_key.
         """
-        src_language_id = self.dictdata[dictdata_id][_dictdata_table_columns['src_language_id']]
-        return self.languages[src_language_id][_language_table_columns['langcode']]
+        src_language_id = self.__dictdata[dictdata_id][
+                          _dictdata_table_columns['src_language_id']]
+        return self.__languages[src_language_id][
+               _language_table_columns['langcode']]
         
 
     def tgt_language_iso_for_dictdata_id(self, dictdata_id):
@@ -370,8 +321,10 @@ class CorpusReaderDict(object):
         -------
         The ISO code of the target language for that bibtex_key
         """
-        tgt_language_id = self.dictdata[dictdata_id][_dictdata_table_columns['tgt_language_id']]
-        return self.languages[tgt_language_id][_language_table_columns['langcode']]
+        tgt_language_id = self.__dictdata[dictdata_id][
+                          _dictdata_table_columns['tgt_language_id']]
+        return self.__languages[tgt_language_id][
+               _language_table_columns['langcode']]
 
 
     def entry_ids_for_dictdata_id(self, dictdata_id):
@@ -390,7 +343,7 @@ class CorpusReaderDict(object):
         
         A generator for all entry IDs in that dictionary part.
         """
-        return(k for k, v in self.entries.items()
+        return(k for k, v in self.__entries.items()
             if v[_entry_table_columns['dictdata_id']] == dictdata_id)
 
 
@@ -415,7 +368,7 @@ class CorpusReaderDict(object):
         A generator to all the annotatotion of the entry that match the given
         annotation value.
         """
-        return(a for a in self.entry_annotations_cache[entry_id][value])
+        return(a for a in self.__entry_annotations_cache[entry_id][value])
 
 
     def heads_with_translations_for_dictdata_id(self, dictdata_id):
@@ -432,54 +385,13 @@ class CorpusReaderDict(object):
         
         A generator for (head, translation) tuples.
         """
-        return((head, translation) for entry_id in self.entry_ids_for_dictdata_id(dictdata_id)
-            for head in self.annotations_for_entry_id_and_value(entry_id, "head")
-                for translation in self.annotations_for_entry_id_and_value(entry_id, "translation"))
+        return((head, translation)\
+            for entry_id in self.entry_ids_for_dictdata_id(dictdata_id)
+            for head in self.annotations_for_entry_id_and_value(
+                        entry_id, "head")
+                for translation in self.annotations_for_entry_id_and_value(
+                                   entry_id, "translation"))
 
-
-    def phonology_for_dictdata_id(self, param_dictdata_id = None):
-        """Returns a python dict for all phonology annotations of the given
-        dictionary part of a book. The returned dict structure is equivalent to
-        the structure of the method headsWithTranslationsForDictdataId():
-        [ '12435': [
-            "phonology": [ "hund", "hunde" ],
-            "startpage": "120",
-            "pos_on_page": "12"
-            ]
-        ]
-        
-        Parameters
-        ----------
-        param_dictdata_id : int
-            The numerical ID of the dictionary part of a book. If not given:
-            returns phonology of all dictionary parts of all books.
-            
-        Returns
-        -------
-        A dicionary containing phonology for each entry, as described above.
-        """
-        phonology_annotations = {}
-        for annotation_id, annotation_data in self.annotations.items():
-            entry_id = annotation_data[0]
-            dictdata_id = self.entries[entry_id][4]
-
-            if (param_dictdata_id == None) or (dictdata_id == param_dictdata_id):
-                if annotation_data[4] == 'phonology':
-                    if annotation_data[0] in phonology_annotations:
-                        phonology_annotations[entry_id].append(annotation_data[5])
-                    else:
-                        phonology_annotations[entry_id] = [annotation_data[5]]
-        
-        ret = {}
-        for entry_id in phonology_annotations:
-            ret[entry_id] = {}
-            ret[entry_id]['phonology'] = phonology_annotations[entry_id]
-            #ret[entry_id]['dictdata_id'] = self.entries[entry_id][4]
-            ret[entry_id]['startpage'] = self.entries[entry_id][5]
-            ret[entry_id]['pos_on_page'] = self.entries[entry_id][9]
-            #ret[entry_id]['dictdata_string_id'] = self.dictdata_string_ids[ self.entries[entry_id][4] ]
-        
-        return ret
 
 class CorpusReaderWordlist(object):
     """
@@ -489,9 +401,9 @@ class CorpusReaderWordlist(object):
     Key-Value-Stores.
     """
     
-    __slots__ = ("datapath", "components", "books", "languages", "wordlistdata",
-                 "entries", "annotations", "concepts",
-                 "entry_annotations_cache", "wordlistdata_string_ids" )
+    __slots__ = ("__datapath", "__components", "__books", "__languages",
+                 "__wordlistdata", "__entries", "__annotations", "__concepts",
+                 "__entry_annotations_cache", "wordlistdata_string_ids" )
     
     def __init__(self, datapath):
         """
@@ -507,16 +419,27 @@ class CorpusReaderWordlist(object):
         Nothing
         """
         
-        self.datapath = datapath
-        self.components = {}
-        self.books = {}
-        self.languages = {}
-        self.wordlistdata = {}
-        self.entries = {}
-        self.annotations = {}
-        self.concepts = {}
-        self.entry_annotations_cache = {}
+        self.__datapath = datapath
+        self.__components = {}
+        self.__books = {}
+        self.__languages = {}
+        self.__wordlistdata = {}
+        self.__entries = {}
+        self.__annotations = {}
+        self.__concepts = {}
+        self.__entry_annotations_cache = {}
         self.wordlistdata_string_ids = {}
+
+        # read component table
+        is_first_line = True
+        file = codecs.open(os.path.join(datapath, "component.csv"), "r", "utf-8")
+        for line in file:
+            if is_first_line:
+                is_first_line = False
+                continue
+            line = line.rstrip("\n")
+            data = line.split("\t")
+            self.__components[data.pop(0)] = data
 
         # read book table
         is_first_line = True
@@ -525,50 +448,55 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.books[data.pop(0)] = data
+            self.__books[data.pop(0)] = data
 
         # read worlistdata table
         is_first_line = True
-        file = codecs.open(os.path.join(datapath, "wordlistdata.csv"), "r", "utf-8")
+        file = codecs.open(os.path.join(datapath, "wordlistdata.csv"),
+                           "r", "utf-8")
         for line in file:
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.wordlistdata[data.pop(0)] = data
+            if len(data) < 7:
+                print(data)
+            self.__wordlistdata[data.pop(0)] = data
 
         # read wordlist entry table
         is_first_line = True
-        file = codecs.open(os.path.join(datapath, "wordlistentry.csv"), "r", "utf-8")
+        file = codecs.open(os.path.join(datapath, "wordlistentry.csv"),
+                           "r", "utf-8")
         for line in file:
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.entry_annotations_cache[data[0]] = collections.defaultdict(set)
-            self.entries[data.pop(0)] = data
+            self.__entry_annotations_cache[data[0]] = collections.defaultdict(set)
+            self.__entries[data.pop(0)] = data
 
         # read wordlist annotation table
         is_first_line = True
-        file = codecs.open(os.path.join(datapath, "wordlistannotation.csv"), "r", "utf-8")
+        file = codecs.open(os.path.join(datapath, "wordlistannotation.csv"),
+                           "r", "utf-8")
         for line in file:
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
             id = data.pop(0)
             entry_id = data[_wordlistannotation_table_columns['entry_id']]
-            self.entry_annotations_cache[entry_id][
+            self.__entry_annotations_cache[entry_id][
                 # key is the annotation value: "head", "translation", ...
                 data[_wordlistannotation_table_columns['value']]
                 # value is a list of annotation strings
                 ].add(data[_wordlistannotation_table_columns['string']])
-            self.annotations[id] = data
+            self.__annotations[id] = data
             
         # read language table
         is_first_line = True
@@ -577,31 +505,33 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.languages[data.pop(0)] = data
+            self.__languages[data.pop(0)] = data
 
         # read concept table
         is_first_line = True
-        file = codecs.open(os.path.join(datapath, "wordlistconcept.csv"), "r", "utf-8")
+        file = codecs.open(os.path.join(datapath, "wordlistconcept.csv"),
+                           "r", "utf-8")
         for line in file:
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.strip()
+            line = line.rstrip("\n")
             data = line.split("\t")
-            self.concepts[data.pop(0)] = data
+            self.__concepts[data.pop(0)] = data
 
         self.__init_wordlistdata_string_ids()
 
     def __init_wordlistdata_string_ids(self):
         """
-        Initializer for Worlistdata identification strings. Wordlistdata are parts of books that
-        contain wordlist data (vs. Nondictdata and Dictdata). The string IDs are equal to the
-        ID within URLs of the QuantHistLing website, i.e. something like "huber1992_10_392".
-        The strings are saved into a private dict, mapping from the numerical ID to the
-        string ID, to allow an easy lookup. This method is called by the constructor of
-        the class and should not be called by the user.
+        Initializer for Worlistdata identification strings. Wordlistdata are
+        parts of books that contain wordlist data (vs. Nondictdata and
+        Dictdata). The string IDs are equal to the ID within URLs of the
+        QuantHistLing website, i.e. something like "huber1992_10_392". The
+        strings are saved into a private dict, mapping from the numerical ID to
+        the string ID, to allow an easy lookup. This method is called by the
+        constructor of the class and should not be called by the user.
         
         Parameters
         ----------
@@ -611,13 +541,17 @@ class CorpusReaderWordlist(object):
         -------
         Nothing
         """
-        for wordlistdata_id in self.wordlistdata:
-            book_id = self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['book_id']]
-            bibtex_key = self.books[book_id][_book_table_columns['bibtex_key']]
+        for wordlistdata_id in self.__wordlistdata:
+            book_id = self.__wordlistdata[wordlistdata_id][
+                      _wordlistdata_table_columns['book_id']]
+            bibtex_key = self.__books[book_id][
+                         _book_table_columns['bibtex_key']]
             self.wordlistdata_string_ids[wordlistdata_id] = "%s_%s_%s" % (
                 bibtex_key,
-                self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['startpage']],
-                self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['endpage']]
+                self.__wordlistdata[wordlistdata_id][
+                    _wordlistdata_table_columns['startpage']],
+                self.__wordlistdata[wordlistdata_id][
+                    _wordlistdata_table_columns['endpage']]
                 )
         
     def wordlist_ids_for_bibtex_key(self, bibtex_key):
@@ -635,10 +569,37 @@ class CorpusReaderWordlist(object):
         An iterator over all the wordlistdata IDs for the book.
         """
         ret = []
-        for wordlistdata_id in self.wordlistdata:
-            book_id = self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['book_id']]
-            if self.books[book_id][_book_table_columns['bibtex_key']] == bibtex_key:
-                yield wordlistdata_id
+        for wordlistdata_id in self.__wordlistdata:
+            book_id = self.__wordlistdata[wordlistdata_id][
+                      _wordlistdata_table_columns['book_id']]
+            if self.__books[book_id][_book_table_columns['bibtex_key']] ==\
+               bibtex_key:
+                ret.append(wordlistdata_id)
+        return ret
+
+    def wordlist_ids_for_component(self, component):
+        """Return an array of wordlist parts IDs for a given component. The
+        book is identified by the so-called bibtex key, which is the string for
+        the book from the URL. For example: "huber1992".
+        
+        Parameters
+        ----------
+        component : str
+            A string with the component's name.
+        
+        Returns
+        -------
+        An array containing all the wordlistdata IDs for the component.
+        """
+        ret = []
+        for wordlistdata_id in self.__wordlistdata:
+            component_id = self.__wordlistdata[wordlistdata_id][
+                           _wordlistdata_table_columns['component_id']]
+            
+            if component_id and self.__components[component_id][
+               _component_table_columns['name']] == component:
+                ret.append(wordlistdata_id)
+        return ret
 
     def get_language_bookname_for_wordlist_data_id(self, wordlistdata_id):
         """Returns the language string that is used in the book for a given
@@ -653,7 +614,8 @@ class CorpusReaderWordlist(object):
         -------
         A string of the language name in the book
         """
-        return self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['language_bookname']]
+        return self.__wordlistdata[wordlistdata_id][
+               _wordlistdata_table_columns['language_bookname']]
 
 
     def get_language_code_for_wordlist_data_id(self, wordlistdata_id):
@@ -669,9 +631,11 @@ class CorpusReaderWordlist(object):
         -------
         A string of the language code of the wordlist data
         """
-        language_id = self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['language_id']]
+        language_id = self.__wordlistdata[wordlistdata_id][
+                      _wordlistdata_table_columns['language_id']]
         if language_id:
-            return self.languages[language_id][_language_table_columns['langcode']]
+            return self.__languages[language_id][
+                   _language_table_columns['langcode']]
         else:
             return ''
 
@@ -692,13 +656,14 @@ class CorpusReaderWordlist(object):
         
         A generator for all entry IDs in that dictionary part.
         """
-        return(k for k, v in self.entries.items()
-            if v[_wordlistentry_table_columns['wordlistdata_id']] == wordlistdata_id)
+        return(k for k, v in self.__entries.items()
+            if v[_wordlistentry_table_columns['wordlistdata_id']] ==\
+               wordlistdata_id)
     
         
     def concept_for_entry_id(self, entry_id):
-        return self.concepts[
-            self.entries[entry_id][
+        return self.__concepts[
+            self.__entries[entry_id][
                 _wordlistentry_table_columns['concept_id']
                 ]][_wordlistconcept_table_columns['concept']]
         
@@ -724,13 +689,14 @@ class CorpusReaderWordlist(object):
         A generator to all the annotatotion of the entry that match the given
         annotation value.
         """
-        return(a for a in self.entry_annotations_cache[entry_id][value])
+        return(a for a in self.__entry_annotations_cache[entry_id][value])
     
     
     def counterparts_for_wordlistdata_id(self, wordlistdata_id):
         return(counterpart
             for entry_id in self.entry_ids_for_wordlistdata_id(wordlistdata_id)
-                for counterpart in self.annotations_for_entry_id_and_value(entry_id, "counterpart"))
+                for counterpart in self.annotations_for_entry_id_and_value(
+                                   entry_id, "counterpart"))
         
 
     def concepts_with_counterparts_for_wordlistdata_id(self, wordlistdata_id):
@@ -750,5 +716,6 @@ class CorpusReaderWordlist(object):
         """
         return((self.concept_for_entry_id(entry_id), counterpart)
             for entry_id in self.entry_ids_for_wordlistdata_id(wordlistdata_id)
-                for counterpart in self.annotations_for_entry_id_and_value(entry_id, "counterpart"))
+                for counterpart in self.annotations_for_entry_id_and_value(
+                                   entry_id, "counterpart"))
 

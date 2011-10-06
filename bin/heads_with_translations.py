@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python3
+#-----------------------------------------------------------------------------
+# Copyright (c) 2011, Quantitative Language Comparison Team
+#
+# Distributed under the terms of the Modified BSD License.
+#
+# The full license is in the file COPYING.txt, distributed with this software.
+#-----------------------------------------------------------------------------
 
 import sys, os, glob
 import codecs
@@ -10,7 +17,7 @@ from qlc.CorpusReader import CorpusReaderDict
 def main(argv):
 
     if len(argv) < 2:
-        print("call: exportheads_with_translations.py data_path [(bibtex_key|component)]")
+        print("call: heads_with_translations.py data_path [(bibtex_key|component)]")
         exit(1)
 
     cr = CorpusReaderDict(argv[1])
