@@ -61,7 +61,7 @@ their copyright in the commit message of the change, when they commit the
 change to one of the qlc repositories.
 
 With this in mind, the following banner should be used in any source code file
-to indicate the copyright and license terms:
+to indicate the copyright and license terms::
 
 #-----------------------------------------------------------------------------
 # Copyright (c) 2011, Quantitative Language Comparison Team
