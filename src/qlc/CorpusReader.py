@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
+#-----------------------------------------------------------------------------
+# Copyright (c) 2011, Quantitative Language Comparison Team
+#
+# Distributed under the terms of the Modified BSD License.
+#
+# The full license is in the file COPYING.txt, distributed with this software.
+#-----------------------------------------------------------------------------
+
 """
 Corpus Reader for data of the project Quantitative Language Comparison.
 """
+
 #-----------------------------------------------------------------------------
 # Imports
 #-----------------------------------------------------------------------------
@@ -122,18 +131,20 @@ class CorpusReaderDict(object):
     
     __slots__ = ("datapath", "components", "books", "languages", "dictdata",
                  "entries", "annotations", "entry_annotations_cache",
-                 "__dictdata_string_ids" )
+                 "dictdata_string_ids" )
     
     def __init__(self, datapath):
         """
         Constructor of CorpusReaderDict class.
         
-        Args:
-            - datapath (obligatory): the path to the dictionary data files (*.csv) in the
-                file system.
+        Parameters
+        ----------
+        datapath : str
+            The path to the dictionary data files (*.csv) in the file system.
         
-        Returns:
-            - nothing
+        Returns
+        -------
+        Nothing
         """
         
         self.datapath = datapath
@@ -144,7 +155,7 @@ class CorpusReaderDict(object):
         self.entries = {}
         self.annotations = {}
         self.entry_annotations_cache = {}
-        self.__dictdata_string_ids = {}
+        self.dictdata_string_ids = {}
         
         re_quotes = re.compile('""')
 
@@ -197,6 +208,9 @@ class CorpusReaderDict(object):
                         d = re_quotes.sub('"', d[1:-1])
                 data_stripped.append(d)
             self.entry_annotations_cache[data_stripped[0]] = collections.defaultdict(set)
+            if len(data_stripped) < 7:
+                print(data_stripped)
+                print(data_stripped[0])
             self.entries[data_stripped.pop(0)] = data_stripped
 
         # read annotation table
@@ -234,71 +248,68 @@ class CorpusReaderDict(object):
             data = line.split("\t")
             self.languages[data.pop(0)] = data
 
-        self.init_dictdata_string_ids()
+        self.__init_dictdata_string_ids()
 
 
-    def init_dictdata_string_ids(self):
+    def __init_dictdata_string_ids(self):
         """
-        Initializer for Dictdata identification strings. Dictdata are parts of books that
-        contain dictionary data (vs. Nondictdata). The string IDs are equal to the
-        ID within URLs of the QuantHistLing website, i.e. something like "thiesen1998_10_244".
-        The general structure of the ID is "key_startpage_endpage". The strings are saved into
-        a private dict, mapping from the numerical ID to the string ID, to allow an easy
-        lookup. This method is called by the constructor of the class and should not be
-        called by the user.
+        Initializer for Dictdata identification strings. Dictdata are parts of
+        books that contain dictionary data (vs. Nondictdata). The string IDs
+        are equal to the ID within URLs of the QuantHistLing website, i.e.
+        something like "thiesen1998_10_244". The general structure of the ID is
+        "key_startpage_endpage". The strings are saved into a private dict,
+        mapping from the numerical ID to the string ID, to allow an easy
+        lookup. This method is called by the constructor of the class and
+        should not be called by the user.
         
-        Args:
-            - nothing
+        Parameters
+        ----------
+        None
             
-        Returns:
-            - nothing
+        Returns
+        -------
+        Nothing
         """
         for dictdata_id in self.dictdata:
             book_id = self.dictdata[dictdata_id][_dictdata_table_columns['book_id']]
             bibtex_key = self.books[book_id][_book_table_columns['bibtex_key']]
-            self.__dictdata_string_ids[dictdata_id] = "%s_%s_%s" % (bibtex_key, self.dictdata[dictdata_id][0], self.dictdata[dictdata_id][2])
+            self.dictdata_string_ids[dictdata_id] = "%s_%s_%s" % \
+                (bibtex_key, self.dictdata[dictdata_id][0],
+                 self.dictdata[dictdata_id][2])
 
-    @property
-    def dictdata_string_ids(self):
-        """
-        Returns the dict of the mappings from numerical IDs to strings IDs for the
-        Dictdata entries. Dictdata are parts of books that contain dictionary data
-        (vs. Nondictdata). The string IDs are equal to the ID within URLs of the
-        QuantHistLing website, i.e. something like "thiesen1998_10_244". The general
-        structure of the ID is "key_startpage_endpage".
-        
-        Args:
-            - nothing
-            
-        Returns:
-            - The dict of numerical IDs to string IDs
-        """
-        return self.__dictdata_string_ids
     
     def dictdata_string_id_for_dictata_id(self, dictdata_id):
         """
         Return the string ID to a given numerical ID of a Dictdata entry.
         Dictdata are parts of books that contain dictionary data
         (vs. Nondictdata). The string IDs are equal to the ID within URLs of the
-        QuantHistLing website, i.e. something like "thiesen1998_10_244". The general
-        structure of the ID is "key_startpage_endpage".
+        QuantHistLing website, i.e. something like "thiesen1998_10_244". The
+        general structure of the ID is "key_startpage_endpage".
         
-        Args:
-            - dictdata_id (obligatory): numerical ID of the Dictdata entry
-        Returns:
-            - String containing the string ID of the given Dictdata entry
+        Parameters
+        ----------
+        dictdata_id : str
+            Numerical ID of the Dictdata entry.
+        
+        Returns
+        -------
+        String containing the string ID of the given Dictdata entry.
         """
-        return self.__dictdata_string_ids[dictdata_id]
+        return self.dictdata_string_ids[dictdata_id]
 
     def dictdata_ids_for_bibtex_key(self, param_bibtex_key):
         """Return an array of dicionary parts IDs for a given book. The book
         is identified by the so-called bibtex key, which is the string for
         the book from the URL. For example: "thiesen1998".
         
-        Args:
-            - param_bibtex_key (obligatory): a string with the bibtex key.
-        Returns:
-            - An array containing all the dictdata IDs for the book.
+        Parameters
+        ----------
+        bibtex_key : str
+            A string with the bibtex key.
+        
+        Returns
+        -------
+        An array containing all the dictdata IDs for the book.
         """
         ret = []
         for dictdata_id in self.dictdata:
@@ -307,47 +318,59 @@ class CorpusReaderDict(object):
                 ret.append(dictdata_id)
         return ret
 
-    def dictdata_ids_for_component(self, param_component):
+    def dictdata_ids_for_component(self, component):
         """Return an array of dicionary parts IDs for a given component. The book
         is identified by the so-called bibtex key, which is the string for
         the book from the URL. For example: "thiesen1998".
         
-        Args:
-            - param_component (obligatory): a string with the component's name.
-        Returns:
-            - An array containing all the dictdata IDs for the component.
+        Parameters
+        ----------
+        component : str
+            A string with the component's name.
+        
+        Returns
+        -------
+        An array containing all the dictdata IDs for the component.
         """
         ret = []
         for dictdata_id in self.dictdata:
             component_id = self.dictdata[dictdata_id][_dictdata_table_columns['component_id']]
-            if self.components[component_id][_component_table_columns['name']] == param_component:
+            if self.components[component_id][_component_table_columns['name']] == component:
                 ret.append(dictdata_id)
         return ret
     
-    def src_language_iso_for_dictdata_id(self, param_dictdata_id):
+
+    def src_language_iso_for_dictdata_id(self, dictdata_id):
         """
         Returns the source language for the given dictionary part as ISO code.
         
-        Args:
-            - param_dictdata_id (obligatory): the ID of the dictionary part to
-              look up
-        Returns:
-            - The ISO code of the source language for that bibtex_key
+        Parameters
+        ----------
+        dictdata_id : str
+            The ID of the dictionary part to look up
+        
+        Returns
+        -------
+        The ISO code of the source language for that bibtex_key.
         """
-        src_language_id = self.dictdata[param_dictdata_id][_dictdata_table_columns['src_language_id']]
+        src_language_id = self.dictdata[dictdata_id][_dictdata_table_columns['src_language_id']]
         return self.languages[src_language_id][_language_table_columns['langcode']]
         
-    def tgt_language_iso_for_dictdata_id(self, param_dictdata_id):
+
+    def tgt_language_iso_for_dictdata_id(self, dictdata_id):
         """
         Returns the target language for the given dictionary part as ISO code.
         
-        Args:
-            - param_dictdata_id (obligatory): the ID of the dictionary part to
-              look up
-        Returns:
-            - The ISO code of the target language for that bibtex_key
+        Parameters
+        ----------
+        dictdata_id : str
+            The ID of the dictionary part to look up.
+        
+        Returns
+        -------
+        The ISO code of the target language for that bibtex_key
         """
-        tgt_language_id = self.dictdata[param_dictdata_id][_dictdata_table_columns['tgt_language_id']]
+        tgt_language_id = self.dictdata[dictdata_id][_dictdata_table_columns['tgt_language_id']]
         return self.languages[tgt_language_id][_language_table_columns['langcode']]
 
 
@@ -403,7 +426,6 @@ class CorpusReaderDict(object):
         ----------
         dictdata_id : str
                 ID of the dictdata, as Unicode string.
-            
          
         Returns
         -------
@@ -426,13 +448,15 @@ class CorpusReaderDict(object):
             ]
         ]
         
-        Args:
-            - param_dictdata_id: the numerical ID of the dictionary part of a book.
-                If not given: returns phonology of all dictionary parts
-                of all books.
-        Returns:
-            - A dicionary containing phonology for each entry, as
-                described above.
+        Parameters
+        ----------
+        param_dictdata_id : int
+            The numerical ID of the dictionary part of a book. If not given:
+            returns phonology of all dictionary parts of all books.
+            
+        Returns
+        -------
+        A dicionary containing phonology for each entry, as described above.
         """
         phonology_annotations = {}
         for annotation_id, annotation_data in self.annotations.items():
@@ -473,12 +497,14 @@ class CorpusReaderWordlist(object):
         """
         Constructor of CorpusReaderWordlist class.
         
-        Args:
-            - datapath (obligatory): the path to the dictionary data files
-                (*.csv) in the file system.
+        Parameters
+        ----------
+        datapath : string
+            The path to the dictionary data files (*.csv) in the file system.
         
-        Returns:
-            - nothing
+        Returns
+        -------
+        Nothing
         """
         
         self.datapath = datapath
@@ -566,9 +592,9 @@ class CorpusReaderWordlist(object):
             data = line.split("\t")
             self.concepts[data.pop(0)] = data
 
-        self.init_wordlistdata_string_ids()
+        self.__init_wordlistdata_string_ids()
 
-    def init_wordlistdata_string_ids(self):
+    def __init_wordlistdata_string_ids(self):
         """
         Initializer for Worlistdata identification strings. Wordlistdata are parts of books that
         contain wordlist data (vs. Nondictdata and Dictdata). The string IDs are equal to the
@@ -577,11 +603,13 @@ class CorpusReaderWordlist(object):
         string ID, to allow an easy lookup. This method is called by the constructor of
         the class and should not be called by the user.
         
-        Args:
-            - nothing
+        Parameters
+        ----------
+        None
             
-        Returns:
-            - nothing
+        Returns
+        -------
+        Nothing
         """
         for wordlistdata_id in self.wordlistdata:
             book_id = self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['book_id']]
@@ -592,30 +620,38 @@ class CorpusReaderWordlist(object):
                 self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['endpage']]
                 )
         
-    def wordlist_ids_for_bibtex_key(self, param_bibtex_key):
+    def wordlist_ids_for_bibtex_key(self, bibtex_key):
         """Return an array of wordlist parts IDs for a given book. The book
         is identified by the so-called bibtex key, which is the string for
         the book from the URL. For example: "huber1992".
         
-        Args:
-            - param_bibtex_key (obligatory): a string with the bibtex key.
-        Returns:
-            - An iterator over all the wordlistdata IDs for the book.
+        Parameters
+        ----------
+        bibtex_key : string
+            A string with the bibtex key.
+
+        Returns
+        -------
+        An iterator over all the wordlistdata IDs for the book.
         """
         ret = []
         for wordlistdata_id in self.wordlistdata:
             book_id = self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['book_id']]
-            if self.books[book_id][_book_table_columns['bibtex_key']] == param_bibtex_key:
+            if self.books[book_id][_book_table_columns['bibtex_key']] == bibtex_key:
                 yield wordlistdata_id
 
     def get_language_bookname_for_wordlist_data_id(self, wordlistdata_id):
         """Returns the language string that is used in the book for a given
         Wordlistdata ID.
         
-        Args:
-            - wordlistdata_id (obligatory): ID of the wordlistdata part of a book
-        Returns:
-            - A string of the language string in the book
+        Parameters
+        ----------
+        wordlistdata_id : int
+            ID of the wordlistdata part of a book
+        
+        Returns
+        -------
+        A string of the language name in the book
         """
         return self.wordlistdata[wordlistdata_id][_wordlistdata_table_columns['language_bookname']]
 
@@ -626,7 +662,7 @@ class CorpusReaderWordlist(object):
         
         Parameters
         ----------
-        wordlistdata_id : str
+        wordlistdata_id : int
                 ID of the wordlistdata part of a book
         
         Returns

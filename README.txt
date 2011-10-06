@@ -1,15 +1,10 @@
 #-----------------------------------------------------------------------------
-#  Copyright (C) 2011
-#  The Quantitative Language Comparison (scikits.qlc) Team
+# Copyright (c) 2011, Quantitative Language Comparison Team
 #
-#  Distributed under the terms of the BSD License.
+# Distributed under the terms of the Modified BSD License.
 #
-#  The full license is in the file COPYING.txt, distributed with this software.
-#
-#  Source code can be found at: https://github.com/pbouda/qlc
-#
+# The full license is in the file COPYING.txt, distributed with this software.
 #-----------------------------------------------------------------------------
-
 
 1. Setup
 --------
