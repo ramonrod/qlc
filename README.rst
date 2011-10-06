@@ -6,8 +6,8 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 #-----------------------------------------------------------------------------
 
-1. Setup
---------
+Setup
+-----
 
 After downloading the qlc scripts and libraries you have to add the library
 to your Python path first. Otherwise Python won't find the module "qlc". To
@@ -36,8 +36,8 @@ This is one of the example scripts that create list of all heads with
 corresponding translations. You have to download all dictionary .csv files
 to the "data" folder first.
 
-2. Usage
---------
+Usage
+-----
 
 First, download the dictionary .csv files. The current link is alway available
 in the project's Trac wiki (right now the data is not publically available, due
