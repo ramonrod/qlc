@@ -1,5 +1,5 @@
 ==========================================
- The Quantitative Language Comparison team
+ The Quantitative Language Comparison Team
 ==========================================
 
 The Quantitative Language Comparison Library (qlc) is licensed under the terms
@@ -19,7 +19,7 @@ Redistributions in binary form must reproduce the above copyright notice, this
 list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-Neither the name of the IPython Development Team nor the names of its
+Neither the name of the qlc Development Team nor the names of its
 contributors may be used to endorse or promote products derived from this
 software without specific prior written permission.
 
@@ -34,7 +34,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-About the Quantitative Language Comparison Development team
+About the Quantitative Language Comparison Development Team
 -----------------------------------------------------------
 
 Development on the qlc library was started within the project "Quantitative
