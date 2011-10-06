@@ -34,7 +34,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-About the Quantitative Language Comparison Development Team
+About the Quantitative Language Comparison Development team
 -----------------------------------------------------------
 
 Development on the qlc library was started within the project "Quantitative
