@@ -554,7 +554,7 @@ class CorpusReaderWordlist(object):
                     _wordlistdata_table_columns['endpage']]
                 )
         
-    def wordlist_ids_for_bibtex_key(self, bibtex_key):
+    def wordlistdata_ids_for_bibtex_key(self, bibtex_key):
         """Return an array of wordlist parts IDs for a given book. The book
         is identified by the so-called bibtex key, which is the string for
         the book from the URL. For example: "huber1992".
@@ -577,7 +577,7 @@ class CorpusReaderWordlist(object):
                 ret.append(wordlistdata_id)
         return ret
 
-    def wordlist_ids_for_component(self, component):
+    def wordlistdata_ids_for_component(self, component):
         """Return an array of wordlist parts IDs for a given component. The
         book is identified by the so-called bibtex key, which is the string for
         the book from the URL. For example: "huber1992".
@@ -601,7 +601,7 @@ class CorpusReaderWordlist(object):
                 ret.append(wordlistdata_id)
         return ret
 
-    def get_language_bookname_for_wordlist_data_id(self, wordlistdata_id):
+    def get_language_bookname_for_wordlistdata_id(self, wordlistdata_id):
         """Returns the language string that is used in the book for a given
         Wordlistdata ID.
         
@@ -618,7 +618,7 @@ class CorpusReaderWordlist(object):
                _wordlistdata_table_columns['language_bookname']]
 
 
-    def get_language_code_for_wordlist_data_id(self, wordlistdata_id):
+    def get_language_code_for_wordlistdata_id(self, wordlistdata_id):
         """Returns the language code (ISO ) that was assigned to a source for
         a given wordlistdata ID.
         

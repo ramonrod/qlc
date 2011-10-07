@@ -26,9 +26,9 @@ def main(argv):
     
     dictdata_ids = []    
     if len(argv) == 3:
-        wordlistdata_ids = cr.wordlist_ids_for_bibtex_key(argv[2])
+        wordlistdata_ids = cr.wordlistdata_ids_for_bibtex_key(argv[2])
         if len(wordlistdata_ids) == 0:
-            wordlistdata_ids = cr.wordlist_ids_for_component(argv[2])
+            wordlistdata_ids = cr.wordlistdata_ids_for_component(argv[2])
             if len(wordlistdata_ids) == 0:
                 print("did not find any dictionary data for the bibtex_key or component {0}.".format(argv[2]))
                 sys.exit(1)
@@ -50,8 +50,8 @@ def main(argv):
 
         for wordlistdata_id in bibtex_keys[bibtex_key]:
             #heads_with_translations = cr.heads_with_translations_for_dictdata_id(dictdata_id)
-            language_bookname = cr.get_language_bookname_for_wordlist_data_id(wordlistdata_id)
-            language_code = cr.get_language_code_for_wordlist_data_id(wordlistdata_id)
+            language_bookname = cr.get_language_bookname_for_wordlistdata_id(wordlistdata_id)
+            language_code = cr.get_language_code_for_wordlistdata_id(wordlistdata_id)
             
             for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id):
                 output.write("{0}\t{1}\t{2}\t{3}\t{4}\n".format(counterpart, concept, language_bookname, language_code, bibtex_key))
