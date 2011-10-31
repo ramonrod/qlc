@@ -2,7 +2,7 @@
 #!/usr/bin/env python3
 
 import sys, codecs, os, collections
-from qlc.TranslationGraph import write, read
+from qlc.translationgraph import write, read
 
 def main(argv):
     

@@ -16,7 +16,7 @@ import regex as re
 
 from pygraph.classes.graph import graph
 from pygraph.algorithms.traversal import traversal
-from qlc.TranslationGraph import write, read
+from qlc.translationgraph import write, read
 
 # snowball stemmer: http://snowball.tartarus.org/download.php
 import Stemmer

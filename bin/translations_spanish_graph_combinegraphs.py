@@ -14,7 +14,7 @@ import sys, codecs, os, glob
 import regex as re
 
 #from pygraph.classes.graph import graph
-from qlc.TranslationGraph import write, read
+from qlc.translationgraph import write, read
 
 def main(argv):
     

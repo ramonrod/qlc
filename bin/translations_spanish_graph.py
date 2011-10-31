@@ -14,7 +14,7 @@ import sys, codecs, collections, unicodedata, re
 
 from qlc.CorpusReader import CorpusReaderDict
 from networkx import Graph
-from qlc.TranslationGraph import write
+from qlc.translationgraph import write
 
 re_quotes = re.compile('"')
 
