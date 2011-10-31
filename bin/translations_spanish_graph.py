@@ -53,33 +53,26 @@ def main(argv):
         else:
             language_iso = tgt_language_iso
                         
-        heads_with_translations = cr.heads_with_translations_for_dictdata_id(dictdata_id)
         dictdata_string = cr.dictdata_string_id_for_dictata_id(dictdata_id)
         bibtex_key = dictdata_string.split("_")[0]
 
-        for entry_id in heads_with_translations:
-            if tgt_language_iso == 'spa':
-                heads = heads_with_translations[entry_id]['heads']
-                translations = heads_with_translations[entry_id]['translations']
-            else:
-                heads = heads_with_translations[entry_id]['translations']
-                translations = heads_with_translations[entry_id]['heads']
+        for head, translation in cr.heads_with_translations_for_dictdata_id(dictdata_id):
+            if src_language_iso == 'spa':
+                (head, translation) = (translation, head)
                 
-            for translation in translations:
-                for head in heads:
-                    head_with_source = escape_string("{0}|{1}".format(head, bibtex_key))
-                    translation = escape_string(translation)
-                    
-                    #translation_with_language = "{0}|{1}".format(translation, language_iso)
-                    
-                    #if head_with_source not in gr:
-                    gr.add_node(head_with_source, attr_dict={ "lang": language_iso, "source": bibtex_key })
-                    
-                    #if translation not in gr:
-                    gr.add_node(translation, lang='spa')
-                        
-                    #if not gr.has_edge((head_with_source, translation)):
-                    gr.add_edge(head_with_source, translation)
+            head_with_source = escape_string("{0}|{1}".format(head, bibtex_key))
+            translation = escape_string(translation)
+            
+            #translation_with_language = "{0}|{1}".format(translation, language_iso)
+            
+            #if head_with_source not in gr:
+            gr.add_node(head_with_source, attr_dict={ "lang": language_iso, "source": bibtex_key })
+            
+            #if translation not in gr:
+            gr.add_node(translation, attr_dict={ "lang": "spa" })
+                
+            #if not gr.has_edge((head_with_source, translation)):
+            gr.add_edge(head_with_source, translation)
 
         output = codecs.open("{0}.dot".format(dictdata_string), "w", "utf-8")
         output.write(write(gr))
