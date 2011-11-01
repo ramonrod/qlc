@@ -63,3 +63,5 @@ You can always find help about any class with the "help()" function:
 Quit the Python prompt and be happy:
 
 >>> quit()
+
+Test
