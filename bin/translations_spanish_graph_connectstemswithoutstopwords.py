@@ -13,49 +13,15 @@ translation.
 
 import sys, codecs, collections, unicodedata
 import regex as re
+import qlc.utils
 
 from pygraph.classes.graph import graph
 from pygraph.algorithms.traversal import traversal
 from qlc.translationgraph import write, read
 
 # snowball stemmer: http://snowball.tartarus.org/download.php
+
 import Stemmer
-stemmer = Stemmer.Stemmer('spanish')
-
-def spanish_stopwords():
-    stopwords = codecs.open("data/stopwords/spa.txt", "r", "utf-8")
-    ret = set()
-    for line in stopwords:
-        word = line.rstrip("\n")
-        word = re.sub(" *\|.*$", "", word)
-        if re.search("[^\s]", word):
-            word = unicodedata.normalize("NFD", word)
-            ret.add(word)
-    return ret
-
-stopwords = spanish_stopwords()
-re_stopwords = re.compile(r"\b(?:{0})\b".format( "|".join(stopwords).encode("utf-8") ))
-re_spaces = re.compile(" +")
-
-def remove_stopwords_and_stem(w, split_multiwords):
-    #if w in stopwords:
-    #    return []
-
-    w = w.strip(" ")
-    w_stop = w
-    if " " in w_stop:
-        w_stop = re_stopwords.sub("", w_stop)
-        w_stop = w_stop.strip(" ")
-        w_stop = re_spaces.sub(" ", w_stop)
-    if " " in w_stop:
-        if split_multiwords:
-            return stemmer.stemWords(w_stop.split(" "))
-        else:
-            return([])
-    elif len(w_stop) > 0:
-        return [stemmer.stemWord(w_stop)]
-    else:
-        return([])
 
 def main(argv):
     
@@ -75,11 +41,15 @@ def main(argv):
     print("Parse finished.", file=sys.stderr)
     nodes = gr.nodes()
 
+    stemmer = Stemmer.Stemmer('spanish')
+    stopwords = qlc.utils.spanish_stopwords("data/stopwords/spa.txt")
+
     i = 0    
     for n in nodes:
         if "lang" in gr.node[n] and gr.node[n]["lang"] == "spa":
-            w1_stems = remove_stopwords_and_stem(n, split_multiwords)
-            for stem in w1_stems:
+            phrase_without_stopwords = qlc.utils.remove_stopwords(n, stopwords)
+            phrase_stems = qlc.utils.stem_phrase(phrase_without_stopwords, stemmer, split_multiwords)
+            for stem in phrase_stems:
                 stem = stem + "|stem"
                 gr.add_node(stem, is_stem=True)
                 gr.add_edge(stem, n)
