@@ -8,10 +8,13 @@ very simple so dot-files can easily be written and parsed without a real
 parser. RE must be enough.
 """
 
+import sys
 import codecs
 import re
 
 from networkx import Graph
+
+py3k = sys.version_info >= (3, 0)
 
 class WrongDotFormatException(Exception): pass
 
@@ -24,7 +27,7 @@ def read(string):
         - string: Input string in Dot format specifying a graph.
     
     Returns:
-        - pygraph.classes.graph.graph object
+        - networkx.Graph object
     """
     lines = string.split("\n")
     first_line = lines.pop(0)
@@ -85,7 +88,7 @@ def write(gr):
     ret += " {\n"
     
     for n in gr:
-        node_string = '"{0}"'.format(n)
+        node_string = '"' + n + '"'
         node_attributes = gr.node[n]
         if len(node_attributes) > 0:
             node_attributes_string_list = ["{0}={1}".format(k, v) for k, v in node_attributes.items()]
@@ -98,7 +101,7 @@ def write(gr):
     for n1, n2 in gr.edges_iter():
         if (n1, n2) in seen_edges:
             continue
-        edge_string = '"{0}" -- "{1}"'.format(n1, n2)
+        edge_string = '"' + n1 + '" -- "' + n2 + '"'
         edge_attributes = gr.edge[n1][n2]
         if len(edge_attributes) > 0:
             edge_attributes_string_list = ["{0}={1}".format(k, v) for k, v in edge_attributes.items()]
