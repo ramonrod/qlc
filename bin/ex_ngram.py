@@ -41,11 +41,11 @@ def main(argv):
     ngrams_by_language_count = list()
     ngrams_set = set()
     
-    for i, wordlistdata_id in enumerate(cr.wordlist_ids_for_bibtex_key('huber1992')):
+    for i, wordlistdata_id in enumerate(cr.wordlistdata_ids_for_bibtex_key('huber1992')):
         #counterparts = cr.counterpartsForWordlistdataId(wordlistdata_id)
         #print wordlistdata_id
-        language_bookname = cr.get_language_bookname_for_wordlist_data_id(wordlistdata_id)
-        language_code = cr.get_language_code_for_wordlist_data_id(wordlistdata_id)
+        language_bookname = cr.get_language_bookname_for_wordlistdata_id(wordlistdata_id)
+        language_code = cr.get_language_code_for_wordlistdata_id(wordlistdata_id)
                 
         counterpart_graphemes = (o.parse_string_to_graphemes(counterpart) \
             for counterpart in cr.counterparts_for_wordlistdata_id(wordlistdata_id))
