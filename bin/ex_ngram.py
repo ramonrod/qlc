@@ -26,7 +26,7 @@ import sys, os, itertools, collections
 from qlc.CorpusReader import CorpusReaderWordlist
 from qlc.OrthographyProfile import OrthographyProfile
 
-import qlc.Ngram
+import qlc.ngram
 import numpy
 
 def main(argv):
@@ -50,30 +50,33 @@ def main(argv):
         counterpart_graphemes = (o.parse_string_to_graphemes(counterpart) \
             for counterpart in cr.counterparts_for_wordlistdata_id(wordlistdata_id))
 
-        (rows, columns, matrix) = qlc.Ngram.words_ngrams_matrix_for_graphemes_list(counterpart_graphemes, 2)
+        matrix = qlc.ngram.words_ngrams_matrix_for_graphemes_list(counterpart_graphemes, 2)
         
-        sum = numpy.sum(matrix, 0)
+        sum = numpy.sum(matrix.matrix, 0)
         #print("Sum length: {0}".format(len(sum)))
         #print("Column length: {0}".format(len(columns)))
         
-        if len(sum.nonzero()[0]) != len(columns):
+        if len(sum.nonzero()[0]) != matrix.number_of_columns:
             print("Error: ")
             print("{0} != {1}".format(len(sum.nonzero()[0]), len(columns)))
             print(language_bookname)
         
         ngrams_by_language_count.append(collections.defaultdict(int))
-        for j, c in enumerate(columns):
+        for j, c in enumerate(matrix.column_names):
             ngrams_set.add(c)
             ngrams_by_language_count[i][c] = sum[j]
 
     ngrams_list = sorted(list(ngrams_set))
-    matrix = numpy.zeros( ( len(ngrams_by_language_count), len(ngrams_list) ) )
+    matrix = qlc.matrix.Matrix(ngrams_by_language_count, ngrams_list)
+    # matrix = numpy.zeros( ( len(ngrams_by_language_count), len(ngrams_list) ) )
     
-    for i in range(len(ngrams_by_language_count)):
+    for i in range(matrix.number_of_rows):
         for j, ngram in enumerate(ngrams_list):
-            matrix[i][j] = ngrams_by_language_count[i][ngram]
+            matrix.matrix[i][j] = ngrams_by_language_count[i][ngram]
             
-    print(matrix)
+    print(matrix.matrix)
+
+    
     
 if __name__ == "__main__":
     main(sys.argv)

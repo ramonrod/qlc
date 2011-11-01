@@ -10,7 +10,7 @@
 import os, types
 import numpy.testing
 
-from qlc.Ngram import ngrams_from_graphemes,\
+from qlc.ngram import ngrams_from_graphemes,\
     words_ngrams_matrix_for_graphemes_list
 
 class testNgram(numpy.testing.TestCase):
@@ -29,7 +29,7 @@ class testNgram(numpy.testing.TestCase):
         test_list_words = ["abab","cdab","abcdcd","cd"]
         resulting_matrix = \
             words_ngrams_matrix_for_graphemes_list(test_list_words)
-        assert_equal(len(resulting_matrix[0]),len(test_list_words))
+        assert equal(len(resulting_matrix[0]),len(test_list_words))
         
 if __name__ == '__main__':
       NumpyTest().run()

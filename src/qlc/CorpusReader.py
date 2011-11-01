@@ -699,6 +699,10 @@ class CorpusReaderWordlist(object):
                                    entry_id, "counterpart"))
         
 
+    def concepts_for_wordlistdata_id(self, wordlistdata_id):
+        return(self.concept_for_entry_id(entry_id)
+            for entry_id in self.entry_ids_for_wordlistdata_id(wordlistdata_id))
+
     def concepts_with_counterparts_for_wordlistdata_id(self, wordlistdata_id):
         """Returns all pairs of concepts and counterparts for a given
         wordlistdata ID.
