@@ -6,8 +6,8 @@
 import regex
 import codecs, unicodedata
 
-def spanish_stopwords(stopword_filepath = "data/stopwords/spa.txt"):
-    stopwords = codecs.open(stopword_filepath, "r", "utf-8")
+def stopwords_from_file(stopwords_filepath = "data/stopwords/spa.txt"):
+    stopwords = codecs.open(stopwords_filepath, "r", "utf-8")
     ret = set()
     for line in stopwords:
         word = line.rstrip("\n")

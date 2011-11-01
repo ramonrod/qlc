@@ -42,7 +42,7 @@ def main(argv):
     nodes = gr.nodes()
 
     stemmer = Stemmer.Stemmer('spanish')
-    stopwords = qlc.utils.spanish_stopwords("data/stopwords/spa.txt")
+    stopwords = qlc.utils.stopwords_from_file("data/stopwords/spa.txt")
 
     i = 0    
     for n in nodes:
