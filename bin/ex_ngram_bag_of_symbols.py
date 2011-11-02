@@ -38,7 +38,7 @@ def main(argv):
         exit(1)
 
     cr = CorpusReaderWordlist(argv[1])
-    o = orthography(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
+    o = OrthographyParser(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
     
     wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
         for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992')
