@@ -23,11 +23,13 @@ Authors:
 #-----------------------------------------------------------------------------
 import sys, os, itertools, collections
 
+import numpy
+import scipy.misc
+
 from qlc.CorpusReader import CorpusReaderWordlist
 from qlc.OrthographyProfile import OrthographyProfile
 
-import qlc.ngram
-import numpy
+from qlc.datatypes import WordlistStoreWithNgrams
 
 def main(argv):
 
@@ -38,75 +40,78 @@ def main(argv):
     cr = CorpusReaderWordlist(argv[1])
     o = OrthographyProfile(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
     
-    ngrams_by_language_count = list()
-    ngrams_set = set()
-
-    matrix_dict = {} # dict of langage names and nmgra matrices
-
-    master_ngrams = set()
-    concepts = set()
-    master_concepts_dict = collections.defaultdict(list)
-
-    for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992'):
-
-        concepts_dict = collections.defaultdict(list)
-        
-        for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id):
-            concepts_dict[concept].append(counterpart)
-
-            master_ngrams.update(
-                qlc.ngram.words_ngrams_list_for_graphemes_list(
-                    o.parse_string_to_graphemes(counterpart)
-                    )
-                )
-            
-        master_concepts_dict[wordlistdata_id] = concepts_dict
+    wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
+        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992')
+        for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
+    )
     
-    master_ngrams = list(master_ngrams)
-    concepts = list(concepts)
+    wordlist = WordlistStoreWithNgrams(wordlist_iterator, o)
     
-    for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992'):
-        #counterparts = cr.counterpartsForWordlistdataId(wordlistdata_id)
-        #print wordlistdata_id
+    matrix_dict = dict()
+
+    for wordlistdata_id in wordlist.languages:
+
         language_bookname = cr.get_language_bookname_for_wordlistdata_id(wordlistdata_id)
-        language_code = cr.get_language_code_for_wordlistdata_id(wordlistdata_id)
+        #language_code = cr.get_language_code_for_wordlistdata_id(wordlistdata_id)
+
+        if language_bookname != "bora" and language_bookname != "muinane":
+            continue
+
+        print("Creating matrix for language {0}...".format(language_bookname))
                 
-        matrix = qlc.matrix.Matrix(concepts, master_ngrams)
-            
-        for i, concept in enumerate(concepts):
-            ngrams = qlc.ngram.words_ngrams_list_for_graphemes_list(master_concepts_dict[wordlistdata_id][concept])
-            for j, n in enumerate(master_ngrams):
-                matrix.matrix[i][j] += 1
+        matrix = numpy.zeros( (len(wordlist.concepts), len(wordlist.unique_ngrams)) )
+        
+        for i, concept in enumerate(wordlist.concepts):
+            for j, n in enumerate(wordlist.unique_ngrams):
+                if n in wordlist.counterpart_for_language_and_concept(wordlistdata_id, concept):
+                    matrix[i][j] = 1
         
         matrix_dict[language_bookname] = matrix
     
     # sum up over all languages
-    languages = matrix_dict.keys()
-    matrix_languages = qlc.matrix.Matrix(languages, master_ngrams)
-    for i, l in enumerate(languages):
-        matrix_languages.matrix[i] = numpy.sum(matrix_dict[l].matrix, 0)[0]
+    #languages = matrix_dict.keys()
+    #matrix_languages = numpy.zeros( (len(languages), len(master_ngrams)) )
+    #for i, l in enumerate(languages):
+    #    matrix_languages[i] = numpy.sum(matrix_dict[l], 0)[0]
             
-    print(matrix_languages.matrix)
+    #numpy.savetxt("matrix_languages.txt", matrix_languages)
     
     print('Begin comparison of two languages... Bora and Muninane!')
-    print()
+    print
     
-    languages_tuples = [ (u"bora", u"muinane") ]
+    languages_tuples = [ ("bora", "muinane") ]
     
     # for each language to get a matrix of bigrams by meanings
     
     for language1, language2 in languages_tuples:
         matrix1 = matrix_dict[language1]
         matrix2 = matrix_dict[language2]
+        
+        n1 = wordlist.unique_ngrams.index(('e', '#'))
+        n2 = wordlist.unique_ngrams.index(('o', '#'))
+        
+        matrix_cooccurrences = numpy.dot(numpy.transpose(matrix1), matrix2)
+        
+        vector1 = numpy.sum(matrix1, 0)
+        vector2 = numpy.sum(matrix2, 0)
+        
+        print(vector1[n1])
+        print(vector2[n2])
+        
+        print(matrix_cooccurrences[n1][n2])
+        
+        matrix_expectations = numpy.outer(vector1, vector2) / len(wordlist.concepts)
 
-        master_column_names_set = set(matrix1.column_names+matrix2.column_names)
-        master_matrix = qlc.matrix.Matrix(master_column_names_set, master_column_names_set)
+        print(matrix_expectations[n1][n2])
 
-        for i in range(matrix1.number_of_rows):
-            for j, ngram in enumerate(master_column_names_set):
-                for k, ngram in enumerate(master_column_names_set):
-                    pass
-                    #master_matrix[i][j] += matrix1[.index_for_row_name    
+        matrix_significance = matrix_expectations + \
+                              numpy.log(scipy.misc.factorial(matrix_cooccurrences)) - \
+                              matrix_cooccurrences * numpy.log(matrix_expectations)
+        
+        numpy.savetxt("matrix_significance.txt", matrix_significance)
+        
+        print(matrix_significance[n1][n2])
+        
 
     
 if __name__ == "__main__":

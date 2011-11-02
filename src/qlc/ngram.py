@@ -17,7 +17,6 @@ Ngram reader for graphemes of the project Quantitative Language Comparison.
 
 import collections
 import numpy
-import qlc.matrix
 
 def ngrams_from_graphemes(graphemes, n=2):
     """
@@ -88,14 +87,14 @@ def words_ngrams_matrix_for_graphemes_list(graphemes_list, n=2):
     ngrams_list = sorted(list(ngrams_set))
     # generate a matrix with zeros
 
-    matrix = qlc.matrix.Matrix(row_names, ngrams_list)
+    matrix = numpy.zeros( (len(row_names), len(ngrams_list)) )
     # matrix = numpy.zeros( ( len(row_names), len(ngrams_list) ) )
 
     
     # fill the matrix with the ngram counts
     for i in range(len(row_names)):
         for j, ngram in enumerate(ngrams_list):
-            matrix.matrix[i][j] = ngrams_counts[i][ngram]
+            matrix[i][j] = ngrams_counts[i][ngram]
 
     return matrix
         
