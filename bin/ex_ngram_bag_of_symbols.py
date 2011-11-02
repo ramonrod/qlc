@@ -24,7 +24,7 @@ Authors:
 import sys, os, itertools, collections
 
 from qlc.CorpusReader import CorpusReaderWordlist
-from qlc.OrthographyProfile import OrthographyProfile
+from qlc.orthography import OrthographyParser
 
 import qlc.ngram
 import numpy
@@ -36,7 +36,7 @@ def main(argv):
         exit(1)
 
     cr = CorpusReaderWordlist(argv[1])
-    o = OrthographyProfile(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
+    o = orthography(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
     
     ngrams_by_language_count = list()
     ngrams_set = set()

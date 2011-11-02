@@ -3,8 +3,8 @@
 import sys
 import codecs
 import regex 
-sys.path.append("../src/qlc/") # path to OrthographyProfile
-import OrthographyProfile
+sys.path.append("../src/qlc/")
+import orthography
 
 
 # you need to install regex library for this script to work
@@ -111,7 +111,7 @@ def main(argv):
 
     # check headword graphemes against orthography profile contents
     orthography_profile_location = sys.argv[1]
-    o = OrthographyProfile.OrthographyProfile(orthography_profile_location)
+    o = orthography.OrthographyParser(orthography_profile_location)
     ortho_parsed_graphemes = {}
     comparison_hash = {}
     incorrect_forms = []
@@ -139,7 +139,7 @@ def main(argv):
                 print i[0], "\t", i[1].encode("utf-8"), "\t", i[2].encode("utf-8"), "\t", i[3].encode("utf-8"), "\t", i[4]
 
         print
-        print "unique graphemes and counts from OrthographyProfile"
+        print "unique graphemes and counts from orthography profile"
         for k, v in ortho_parsed_graphemes.iteritems():
             print k.encode("utf-8"), "\t", v
 

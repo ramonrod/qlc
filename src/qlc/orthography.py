@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Orthography Profile class for parsing strings into Quantitiative Language Comparison format
+Orthography Profile class for parsing strings into Quantitative Language Comparison format
 """
 
 import codecs
@@ -10,7 +10,7 @@ import unicodedata
 
 class DuplicateExceptation(Exception): pass
 
-class OrthographyProfile(object):
+class OrthographyParser(object):
     """
     The orthography profile class for reading in a dictionary's 
     orthography profile and parsing and formating strings into the 
@@ -22,7 +22,7 @@ class OrthographyProfile(object):
 
     def __init__(self, orthography_profile):
         """
-        Constructor of OrthographyProfile class. 
+        Constructor of OrthographyParser class.
 
         Args:
         - orthography_profile (obligatory): the path to the orthography profile file
@@ -205,7 +205,7 @@ def printTree(root, indent):
 # ---------- Main ------
 
 if __name__=="__main__":
-    o = OrthographyProfile("../../data/orthography_profiles/thiesen1998.txt")
+    o = OrthographyParser("../../data/orthography_profiles/thiesen1998.txt")
     test_words = ["aa", "aabuu", "uuabaa auubaa"]
     for word in test_words:
         print("parsed grapheme string: ", o.parse_string_to_graphemes_string(word))

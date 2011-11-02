@@ -4,9 +4,9 @@ import codecs
 import sys
 import operator # python-sort-a-dictionary-by-value
 
-sys.path.append("../src/qlc/") # path to OrthographyProfile
-import OrthographyProfile
-import Ngram
+sys.path.append("../src/qlc/")
+import orthography
+import ngram
 
 """
 script to parse the huber data and output ngram matrices
@@ -20,7 +20,7 @@ if len(sys.argv) != 4:
 # load the ngram class to parse and calculate freqs of ngmrams
 # load the huber database dump
 
-o = OrthographyProfile.OrthographyProfile(sys.argv[2])
+o = orthography.OrthographyParser(sys.argv[2])
 n = Ngram.Ngram()
 
 # start the script
