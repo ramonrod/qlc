@@ -1,14 +1,8 @@
 #!/usr/bin/python
 
-
 import sys
 import codecs
 import qlc.orthography
-
-"""
-Example script that uses the orthography parser to parse orthographic strings into graphemes.
-
-"""
 
 def main(argv):
     if len(argv) < 4:
