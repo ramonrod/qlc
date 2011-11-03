@@ -335,6 +335,6 @@ if __name__ == "__main__":
 
     nj = Nj(matrix, ['test1', 'test2', 'test3', 'test4', 'test5', 'test6'])
     nj.generate_tree()
-    print nj.node_dict
-    print nj
+    print(nj.node_dict)
+    print(nj)
     nj.as_jpg()

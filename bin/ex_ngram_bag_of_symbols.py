@@ -26,9 +26,9 @@ import sys, os, itertools, collections
 import numpy
 import scipy.misc
 
+import qlc
 from qlc.CorpusReader import CorpusReaderWordlist
 from qlc.orthography import OrthographyParser
-
 from qlc.datatypes import WordlistStoreWithNgrams
 
 def main(argv):
@@ -38,7 +38,7 @@ def main(argv):
         exit(1)
 
     cr = CorpusReaderWordlist(argv[1])
-    o = OrthographyParser(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
+    o = OrthographyParser(qlc.get_data("orthography_profiles/huber1992.txt"))
     
     wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
         for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992')

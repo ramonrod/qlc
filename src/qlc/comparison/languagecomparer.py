@@ -93,7 +93,7 @@ if __name__ == "__main__":
     else:
         string_type = aline.ALINE
     if not options.filename:
-        print "Filename required."
+        print("Filename required.")
         sys.exit(0)
     import csv
     words = csv.reader(open(options.filename), quoting=csv.QUOTE_NONE, delimiter="\t")
@@ -111,5 +111,5 @@ if __name__ == "__main__":
         x.compare_individual_languages(0, 1)
     else:
         x.generate_matrix()
-        print x.matrix
+        print(x.matrix)
         

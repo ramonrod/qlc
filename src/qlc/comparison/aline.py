@@ -162,7 +162,7 @@ class Aline(object):
 
     def output_func(self, output, string):
         if output:
-            print string
+            print(string)
 
     def compute_similarity(self):
         if self.S is not None:
@@ -218,12 +218,12 @@ class Aline(object):
 
     def print_similarity(self):
         self.retrieve_alignment()
-        print self.S
+        print(self.S)
         self._print_alignment(self.out)
-        print "Similarity score: %s" % (self.get_similarity(), )
-        print "Normalized similarity: %s" % (self.get_normalized_similarity(), )
-        print "Distance: %s"  % (self.get_distance(), )
-        print "Geographic Distance: %s"  % (self.get_geographic_distance(), )
+        print("Similarity score: %s" % (self.get_similarity(), ))
+        print("Normalized similarity: %s" % (self.get_normalized_similarity(), ))
+        print("Distance: %s"  % (self.get_distance(), ))
+        print("Geographic Distance: %s"  % (self.get_geographic_distance(), ))
         
     def retrieve_alignment(self):
         if self.S is None:
@@ -285,8 +285,8 @@ class Aline(object):
     
     def _print_alignment(self, alignment):
         (out_string_1, out_string_2) =  self._format_alignment(alignment)
-        print out_string_1
-        print out_string_2
+        print(out_string_1)
+        print(out_string_2)
 
 
 if __name__ == '__main__':
@@ -313,5 +313,5 @@ if __name__ == '__main__':
         x = AlineRepr(string_tuple[0], string_type)
         y = AlineRepr(string_tuple[1], string_type)
         a = Aline(x, y)
-        print "%s %s" % (string_tuple[0], string_tuple[1])
+        print("%s %s" % (string_tuple[0], string_tuple[1]))
         a.print_similarity()
