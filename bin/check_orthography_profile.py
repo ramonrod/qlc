@@ -1,24 +1,29 @@
-#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import sys
 import codecs
 import regex 
-sys.path.append("../src/qlc/")
-import orthography
+import qlc.orthography
 
+"""
+Script to check if the orthography profile has errors in it.
 
-# you need to install regex library for this script to work
-# usage: python unique_graphems.py /path/to/orthography_profile /path/to/heads_file
-# if orthography file has duplicates, error will trigger
+Note: you need to install regex library for this script to work.
+
+Usage: python unique_graphems.py /path/to/orthography_profile /path/to/heads_file
+
+If orthography file has duplicates, error will trigger.
+
+"""
 
 def main(argv):
     if len(argv) < 3:
-        print "call: python check_orthography_profile.py /path/to/orthography_profile /path/to/heads_file"
+        print("call: python check_orthography_profile.py /path/to/orthography_profile /path/to/heads_file")
+        print("e.g.: python check_orthography_profile.py /path/to/orthography_profile /path/to/heads_file \n")
         exit(1)
 
-    print
 
-    grapheme_pattern = regex.compile("\X", regex.UNICODE)
+    grapheme_pattern = regex.compile("\X", regex.UNICODE) # Unicode grapheme regular expression pattern
     orthography_hash = {} # hash of graphemes in orthography profile
     headword_unicode_graphemes_hash = {} # hash of Unicode graphemes from head words
     head_words = []
@@ -40,6 +45,7 @@ def main(argv):
             sys.exit()
     orthography_profile.close()
 
+
     # create a list containing the headwords from the heads file
     heads_file = codecs.open(sys.argv[2], "r", "utf-8")
     for line in heads_file:
@@ -48,6 +54,7 @@ def main(argv):
         head = tokens[0]
         head_words.append(head)
     heads_file.close()
+
 
     # load hash of unique graphemes from the dictionary heads file and get a list of headwords
     for head_word in head_words:
@@ -111,14 +118,14 @@ def main(argv):
 
     # check headword graphemes against orthography profile contents
     orthography_profile_location = sys.argv[1]
-    o = orthography.OrthographyParser(orthography_profile_location)
+    o = qlc.orthography.OrthographyParser(orthography_profile_location)
     ortho_parsed_graphemes = {}
     comparison_hash = {}
     incorrect_forms = []
     ln = 0
     for head in head_words:
         ln += 1
-        orthography_parse = o.parse(head)
+        orthography_parse = o.parse_string_to_graphemes_string(head)
         parsed_graphemes = orthography_parse.split()
         for g in parsed_graphemes:
             if not ortho_parsed_graphemes.has_key(g):
@@ -149,8 +156,3 @@ def main(argv):
 
 if __name__=="__main__":
     main(sys.argv)
-       
-       
-
-
-
