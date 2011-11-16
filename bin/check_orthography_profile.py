@@ -32,7 +32,7 @@ def main(argv):
     orthography_profile = codecs.open(sys.argv[1], "r", "utf-8")
     for line in orthography_profile:
         line = line.strip()
-        if line == "":
+        if line.startswith("#") or line == "":
             continue
         tokens = line.split(",")
         grapheme = tokens[0]
@@ -41,7 +41,7 @@ def main(argv):
             orthography_hash[grapheme] = 1
         else:
             orthography_hash[grapheme] += 1
-            print "you have duplicates in your orthography profile - fix it and rerun"
+            print "** You have duplicates in your orthography profile - please fix them and rerun **"
             sys.exit()
     orthography_profile.close()
 
@@ -69,17 +69,17 @@ def main(argv):
                 headword_unicode_graphemes_hash[grapheme] += 1
 
     # print the orthography profile hash
-    print "hash from orthography profile (grapheme, tab, count):"
+    print "# Hash set from orthography profile (grapheme, tab, count):"
     for k, v in orthography_hash.iteritems():
         print k.encode("utf-8"), "\t", v
-    print "number of graphemes in orthography profile:", len(orthography_hash)
+    print "# Total number of graphemes in your orthography profile:", len(orthography_hash)
     print
 
     # print the heads unique unicode graphemes hash
-    print "hash of unique unicode graphemes from headwords file - pre-orthography profile (grapheme, tab, count):"
+    print "# Hash set of unique Unicode graphemes from headwords file (pre-orthography profile parsing):"
     for k, v in headword_unicode_graphemes_hash.iteritems():
         print k.encode("utf-8"), "\t", v
-    print "number of unique unicode graphemes in headwords:", len(headword_unicode_graphemes_hash)
+    print "# Number of unique Unicode graphemes in headwords file:", len(headword_unicode_graphemes_hash)
     print
 
     """
@@ -96,7 +96,7 @@ def main(argv):
         """
 
     # check orthography profile contents against headwords
-    print "check if orthography profile contents are not in any headwords:"
+    print "# Checking if orthography profile contents are not in any headwords..."
     missing_orthography_contents = []
     for k, v in orthography_hash.iteritems():
         flag = False
@@ -108,10 +108,10 @@ def main(argv):
 
     if len(missing_orthography_contents) > 0:
         for item in missing_orthography_contents:
-            print "NOT IN HEADWORDS:", item.encode("utf-8")
-        print "total:", len(missing_orthography_contents)
+            print "# ** NOT IN HEADWORDS:", item.encode("utf-8")
+        print "# Total:", len(missing_orthography_contents)
     else:
-        print "all orthography profile graphemes are present in the data"
+        print "# Yay! All orthography profile graphemes are present in the data!"
 
     print
 
@@ -135,23 +135,24 @@ def main(argv):
             if not orthography_hash.has_key(g):
                 comparison_hash[g] = 1
                 incorrect_forms.append((ln, g, head, orthography_parse, parsed_graphemes))
-    print "check headword graphemes against orthography profile contents"
+    print "# Checking headword graphemes against orthography profile contents:"
     if len(comparison_hash) > 1:
         for k, v in comparison_hash.iteritems():
-            print "not in orthography profile: ", k.encode("utf-8")
+            print "# ** Not in orthography profile: ", k.encode("utf-8")
         print
-        print "line", "\t", "miss", "\t", "hw", "\t", "ortho parse", "\t", "orth parse split"
+        print "# Printing records that contain elements not in orthography profile...\n"
+        print "Line #", "\t", "Missing", "\t", "Headword", "\t", "Orthography parse", "\t", "Orthography parse split"
         for i in incorrect_forms:
             if i[1] != "#" and i[1] != "-":
                 print i[0], "\t", i[1].encode("utf-8"), "\t", i[2].encode("utf-8"), "\t", i[3].encode("utf-8"), "\t", i[4]
 
         print
-        print "unique graphemes and counts from orthography profile"
+        print "# Unique graphemes and counts from orthography profile:"
         for k, v in ortho_parsed_graphemes.iteritems():
             print k.encode("utf-8"), "\t", v
 
     else:
-        print "all headword graphemes are in the orthography profile"
+        print "# All headword graphemes are in the orthography profile"
 
 
 if __name__=="__main__":
