@@ -1,0 +1,8 @@
+README bin/
+-----------
+
+The bin directory contains sample scripts that use the qlc libary.
+
+There is a symbolic data/ directory that points to the qlc data directory: ../src/qlc/data
+
+Enjoy!
