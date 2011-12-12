@@ -1,25 +1,24 @@
-#!/usr/bin/python
-
+# -*- coding: utf-8 -*-
 
 import sys
 import qlc.orthography
 
 """
-Example script that uses the orthography parser to parse orthographic strings into graphemes.
+Example script that uses the orthography parser to parse orthographic strings into strings of graphemes given an orthography profile.
 
 """
 
 def main(argv):
     if len(argv) < 4:
         print("\ncall: python ex_orthography_parser.py orthography_profile.txt data.txt transform_flag")
-        print("e.g.: python ex_orthography_parser.py thiesen1998.txt csv/ 1")
-        print("note: if transform_flag == 1; return parse at orthography_profile column 1; if 2 then column 2, etc.")
-        print()
+        print("note: if transform_flag == 1; return parse at orthography_profile column 1; if 2 then column 2, etc.\n")
+        print("e.g.: python ex_orthography_parser.py thiesen1998.txt ../src/qlc/data/dictionaries/heads_with_translations_thiesen1998_25_339.txt 1")
+
+
         exit(1)
-    print
 
     # create a list containing the headwords from the heads file
-    heads_file = open(qlc.get_data(sys.argv[2]), "r")
+    heads_file = open(sys.argv[2], "r")
     head_words = []
 
     # indicate which column of the ortography profile
@@ -38,13 +37,14 @@ def main(argv):
 
 
     # parse head words with the orthography profile and print results
-    orthography_profile_location = qlc.get_orthography_profile(sys.argv[1])
+    orthography_profile = sys.argv[1]
 
+    o = qlc.orthography.OrthographyParser(orthography_profile)
     for head in head_words:
         if transform_flag == 1:
-            orthography_parse = o.parse(head)
+            orthography_parse = o.parse_string_to_graphemes_string(head)
         elif transform_flag == 2:
-            orthography_parse = o.parseToIpa(head)
+            orthography_parse = o.parse_string_to_ipa_string(head)
         else:
             raise Exception("Invalid column number!")
         print(orthography_parse)
