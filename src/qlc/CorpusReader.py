@@ -107,7 +107,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__components[data.pop(0)] = data
 
@@ -118,7 +118,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__books[data.pop(0)] = data
 
@@ -129,7 +129,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__dictdata[data.pop(0)] = data
             
@@ -140,7 +140,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             data_stripped = []
             for d in data:
@@ -163,7 +163,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             data_stripped = []
             for d in data:
@@ -187,7 +187,7 @@ class CorpusReaderDict(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__languages[data.pop(0)] = data
 
@@ -437,7 +437,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__components[data.pop(0)] = data
 
@@ -448,7 +448,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__books[data.pop(0)] = data
 
@@ -460,7 +460,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             if len(data) < 7:
                 print(data)
@@ -474,7 +474,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__entry_annotations_cache[data[0]] = collections.defaultdict(set)
             self.__entries[data.pop(0)] = data
@@ -487,7 +487,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             id = data.pop(0)
             entry_id = data[_wordlistannotation_table_columns['entry_id']]
@@ -505,7 +505,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__languages[data.pop(0)] = data
 
@@ -517,7 +517,7 @@ class CorpusReaderWordlist(object):
             if is_first_line:
                 is_first_line = False
                 continue
-            line = line.rstrip("\n")
+            line = line.rstrip("\r\n")
             data = line.split("\t")
             self.__concepts[data.pop(0)] = data
 

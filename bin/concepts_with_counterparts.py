@@ -30,7 +30,7 @@ def main(argv):
         if len(wordlistdata_ids) == 0:
             wordlistdata_ids = cr.wordlistdata_ids_for_component(argv[2])
             if len(wordlistdata_ids) == 0:
-                print("did not find any dictionary data for the bibtex_key or component {0}.".format(argv[2]))
+                print("did not find any dictionary data for the bibtex_key or component {0}.".format(argv[2]), file=sys.stderr)
                 sys.exit(1)
     else:
         wordlistdata_ids = cr.wordlistdata_string_ids

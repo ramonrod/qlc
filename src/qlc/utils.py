@@ -32,11 +32,14 @@ def remove_stopwords(phrase, stopwords):
 def stem_phrase(phrase, stemmer, split_multiwords=False):
     if " " in phrase:
         if split_multiwords:
-            return stemmer.stemWords(phrase.split(" "))
+            ret = []
+            for w in phrase.split(" "):
+                ret.append(stemmer.stem(w))
+            return ret
         else:
             return([])
     elif len(phrase) > 0:
-        return [stemmer.stemWord(phrase)]
+        return [stemmer.stem(phrase)]
     else:
         return([])
     
