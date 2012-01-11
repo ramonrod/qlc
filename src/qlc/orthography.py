@@ -4,7 +4,6 @@
 Orthography Profile class for parsing strings into Quantitative Language Comparison format
 """
 
-import codecs
 import sys
 import unicodedata
 
@@ -32,7 +31,6 @@ class OrthographyParser(object):
         - nothing
 
         """
-        
         # read in orthography profile and create a tree structure
         self.root = createTree(orthography_profile)
 
@@ -43,14 +41,16 @@ class OrthographyParser(object):
         # TODO: move this into a function when we start adding more than just 
         # 2 columns to the orthography profiles
 
-        file = codecs.open(orthography_profile, "r", "utf-8")
+        file = open(orthography_profile, "r")
         line_count = 0
         for line in file:
             line_count += 1
             line = line.strip()
+
             # skip any comments
             if line.startswith("#") or line == "":
                 continue
+
             line = unicodedata.normalize("NFD", line)
             tokens = line.split(",") # split the orthography profile into columns
             grapheme = tokens[0].strip()
@@ -60,11 +60,18 @@ class OrthographyParser(object):
                 self.graphemeToPhoneme[grapheme] = phoneme
             else:
                 raise DuplicateException("You have a duplicate in your orthography profile at: {0}".format(line_count))
-        
+        file.close()
 
-    def parse_string_to_graphemes(self, string):
-        return tuple(self.parse_string_to_graphemes_string(string).split(" "))
-        
+        # uncomment this line if you want to see the orthography profile tree structure
+        # printTree(self.root, "")
+
+
+    def parse_string_to_graphemes_string_DEPRECATED(self, string):
+        string = string.replace(" ", "#") # add boundaries between words
+        string = unicodedata.normalize("NFD", string)
+        result = ""
+        result += printMultigraphs(self.root, string, result+"# ")
+        return (True, result)
 
     def parse_string_to_graphemes_string(self, string):
         """
@@ -76,11 +83,38 @@ class OrthographyParser(object):
 
         Returns:    
         - the parsed and formatted string
+
+        For example:
+           dog shit => # d o g # sh i t #
         """
-        self.string = string.replace(" ", "#") # add boundaries between words
-        self.result = ""
-        self.result += printMultigraphs(self, self.root, self.string, self.result+"# ")
-        return self.result
+        success = True
+        parses = []
+        string = unicodedata.normalize("NFD", string)
+        for word in string.split():
+            parse = getParse(self.root, word)
+            if len(parse) == 0:
+                success = False
+                parse = "# <no valid parse> #"
+            parses.append(parse)
+
+        # Use "#" as a word boundary token (a special 'grapheme').
+        result = "".join(parses).replace("##", "#")  # Ugly. Oh well.
+        return (success, result)
+
+    def parse_string_to_graphemes(self, string):
+        """
+        Accepts a string and returns a orthographically parsed tuple of graphemes.
+
+        Args:
+        - string (obligatory): the string to be parsed
+
+        Returns:
+        - the parsed string as a tuple of graphemes
+
+        """
+        (success, graphemes) = self.parse_string_to_graphemes_string(string)
+
+        return (success, tuple(graphemes.split(" ")))
 
 
     def parse_string_to_ipa_string(self, string):
@@ -95,18 +129,17 @@ class OrthographyParser(object):
         Returns:    
         - the parsed and formatted string
         """
-        self.string = string.replace(" ", "#") # add boundaries between words
-        self.result = ""
-        self.result += printMultigraphs(self, self.root, self.string, self.result+"# ")
+        (success, graphemes) = self.parse_string_to_graphemes_string(string)
+        if not success:
+            return (False, graphemes)
+        ipa = graphemes
 
         # flip the graphemes into phonemes
         # TODO: probably don't need a loop for *every string* -- refactor
-        for k, v in self.graphemeToPhoneme.iteritems():
-            self.result = self.result.replace(k, v)
+        for k, v in self.graphemeToPhoneme.items():
+            ipa = ipa.replace(k, v)
 
-        return self.result
-
-
+        return (True, ipa)
     
 
 # ---------- Tree node --------
@@ -154,9 +187,12 @@ def createTree(file_name):
     # Add all multigraphs in each line of file_name. Skip "#" comments and blank lines.
     root = TreeNode('')
     root.makeSentinel()
-    file = codecs.open(file_name, "r", "utf-8")
+
+    # file = codecs.open(file_name, "r", "utf-8")
+    file = open(file_name, "r")
     for line in file:
         line = line.strip()
+
         # skip any comments
         if line.startswith("#") or line == "":
             continue
@@ -168,7 +204,7 @@ def createTree(file_name):
     file.close()
     return root
 
-def printMultigraphs(self, root, line, result):
+def printMultigraphs(root, line, result):
     # Base (or degenerate..) case.
     if len(line) == 0:
         result += "#"
@@ -190,24 +226,55 @@ def printMultigraphs(self, root, line, result):
     # the rest of the line, while there is any remaining.
     last = last + 1  # End of span (noninclusive).
     result += line[:last]+" "
-    return printMultigraphs(self, root, line[last:], result)
+    return printMultigraphs(root, line[last:], result)
 
-def printTree(root, indent):
-    children = ""
-    for char, child in root.getChildren().iteritems():
+def getParse(root, line):
+    parse = getParseInternal(root, line)
+    if len(parse) == 0:
+        return ""
+    return "# " + parse
+
+def getParseInternal(root, line):
+    # Base (or degenerate..) case.
+    if len(line) == 0:
+        return "#"
+
+    parse = ""
+    curr = 0
+    node = root
+    while curr < len(line):
+        node = node.getChild(line[curr])
+        curr += 1
+        if not node:
+            break
+        if node.isSentinel():
+            subparse = getParseInternal(root, line[curr:])
+            if len(subparse) > 0:
+                # Always keep the latest valid parse, which will be
+                # the longest-matched (greedy match) graphemes.
+                parse = line[:curr] + " " + subparse
+
+    # Note that if we've reached EOL, but not end of valid grapheme,
+    # this will be an empty string.
+    return parse
+
+def printTree(root, path):
+    for char, child in root.getChildren().items():
         if child.isSentinel():
             char += "*"
-        children += char + " "
-    print(indent + children)
-    for char, child in root.getChildren().iteritems():
-        printTree(child, indent + "  ")
+        branch = (" -- " if len(path) > 0 else "")
+        printTree(child, path + branch + char)
+    if len(root.getChildren()) == 0:
+        print(path)
 
 # ---------- Main ------
 
 if __name__=="__main__":
-    o = OrthographyParser("../../data/orthography_profiles/thiesen1998.txt")
+    o = OrthographyParser("data/orthography_profiles/thiesen1998.txt")
     test_words = ["aa", "aabuu", "uuabaa auubaa"]
     for word in test_words:
-        print("parsed grapheme string: ", o.parse_string_to_graphemes_string(word))
-        print("parsed phoneme string: ", o.parse_string_to_ipa_string(word))
-        
+        print("parse_string_to_graphemes_string: ", o.parse_string_to_graphemes_string(word))
+        print("parse_string_to_ipa_string: ", o.parse_string_to_ipa_string(word))
+        print("parse_string_to_graphemes: ", o.parse_string_to_graphemes(word))
+        print()
+
