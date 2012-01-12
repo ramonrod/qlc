@@ -26,7 +26,7 @@ def main(argv):
         exit(1)
 
     # create a list containing the headwords from the heads file
-    heads_file = open(sys.argv[2], "r")
+    heads_file = open(sys.argv[2], "r", encoding="utf-8")
     head_words = []
 
     # indicate which column of the ortography profile

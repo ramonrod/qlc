@@ -41,7 +41,7 @@ class OrthographyParser(object):
         # TODO: move this into a function when we start adding more than just 
         # 2 columns to the orthography profiles
 
-        file = open(orthography_profile, "r")
+        file = open(orthography_profile, "r", encoding="utf-8")
         line_count = 0
         for line in file:
             line_count += 1
@@ -188,9 +188,11 @@ def createTree(file_name):
     root = TreeNode('')
     root.makeSentinel()
 
-    # file = codecs.open(file_name, "r", "utf-8")
-    file = open(file_name, "r")
+    #file = codecs.open(file_name, "r", "utf-8")
+    file = open(file_name, "r", encoding="utf-8")
+
     for line in file:
+        #print(line.encode("utf-8"))
         line = line.strip()
 
         # skip any comments
@@ -201,7 +203,7 @@ def createTree(file_name):
         tokens = line.split(",") # split the orthography profile into columns
         grapheme = tokens[0]
         addMultigraph(root, grapheme)
-    file.close()
+
     return root
 
 def printMultigraphs(root, line, result):
