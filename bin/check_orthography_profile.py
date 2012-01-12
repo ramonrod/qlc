@@ -17,8 +17,12 @@ If orthography file has duplicates, error will trigger.
 
 def main(argv):
     if len(argv) < 3:
+        print()
         print("call: python check_orthography_profile.py /path/to/orthography_profile /path/to/heads_file")
-        print("e.g.: python check_orthography_profile.py /path/to/orthography_profile /path/to/heads_file \n")
+        print()
+        print("e.g.:")
+        print("python check_orthography_profile.py data/orthography_profiles/huber1992.txt data/concepts_with_counterparts/concepts_with_counterparts_huber1992.txt")
+        print()
         exit(1)
 
 
@@ -47,13 +51,19 @@ def main(argv):
 
     # create a list containing the headwords from the heads file
     heads_file = open(sys.argv[2], "r")
+    line_count = 1
     for line in heads_file:
+        if line.__contains__("COUNTERPART"): # skip possible header
+            continue
+        line_count += 1
         line = line.strip()
         tokens = line.split("\t")
         head = tokens[0]
+#        print(line_count, head)
         head_words.append(head)
     heads_file.close()
 
+#    sys.exit(1)
 
     # load hash of unique graphemes from the dictionary heads file and get a list of headwords
     for head_word in head_words:
@@ -95,7 +105,7 @@ def main(argv):
         """
 
     # check orthography profile contents against headwords
-    print("# Checking if orthography profile contents are not in any headwords...")
+    print("# Checking if orthography profile contents are not in any headwords (does not catch elements in headwords that are missing in the orthography profile)...")
     missing_orthography_contents = []
     for k, v in orthography_hash.items():
         flag = False
@@ -114,6 +124,8 @@ def main(argv):
     print()
 
 
+    invalid_parses = []
+
     # check headword graphemes against orthography profile contents
     orthography_profile_location = sys.argv[1]
     o = qlc.orthography.OrthographyParser(orthography_profile_location)
@@ -123,7 +135,10 @@ def main(argv):
     ln = 0
     for head in head_words:
         ln += 1
-        orthography_parse = o.parse_string_to_graphemes_string(head)
+        orthography_parse_tuple = o.parse_string_to_graphemes_string(head)
+        if orthography_parse_tuple[0] == False:
+            invalid_parses.append(orthography_parse_tuple[1])
+        orthography_parse = orthography_parse_tuple[1]
         parsed_graphemes = orthography_parse.split()
         for g in parsed_graphemes:
             if not g in ortho_parsed_graphemes:
@@ -133,6 +148,7 @@ def main(argv):
             if not g in orthography_hash:
                 comparison_hash[g] = 1
                 incorrect_forms.append((ln, g, head, orthography_parse, parsed_graphemes))
+
     print("# Checking headword graphemes against orthography profile contents:")
     if len(comparison_hash) > 1:
         for k, v in comparison_hash.items():
@@ -148,10 +164,15 @@ def main(argv):
         print("# Unique graphemes and counts from orthography profile:")
         for k, v in ortho_parsed_graphemes.items():
             print(k, "\t", v)
+        print()
 
     else:
         print("# All headword graphemes are in the orthography profile")
+        print()
 
+    print("Words that did not parse:")
+    for invalid_parse in invalid_parses:
+        print(invalid_parse)
 
 if __name__=="__main__":
     main(sys.argv)
