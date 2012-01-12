@@ -125,7 +125,7 @@ if __name__=="__main__":
     from qlc.CorpusReader import CorpusReaderWordlist
     from qlc.orthography import OrthographyParser
 
-    cr = CorpusReaderWordlist("data")
+    cr = CorpusReaderWordlist("data/csv")
 
     o = OrthographyParser(qlc.get_data("orthography_profiles/huber1992.txt"))
 
