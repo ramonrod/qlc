@@ -19,9 +19,12 @@ def printResults(input, output, write_to_stderr):
 
 def main(argv):
     if len(argv) < 4:
-        print("\ncall: python ex_orthography_parser.py orthography_profile.txt data.txt transform_flag")
-        print("note: if transform_flag == 1; return parse at orthography_profile column 1; if 2 then column 2, etc.\n")
-        print("e.g.: python ex_orthography_parser.py thiesen1998.txt ../src/qlc/data/dictionaries/heads_with_translations_thiesen1998_25_339.txt 1")
+        print("\ncall: python orthography_parser.py orthography_profile.txt data.txt transform_flag")
+        print()
+        print("transform_flag == the column of the orthography_profile that should be used, e.g.:")
+        print()
+        print("python orthography_parser.py ../data/orthography_profiles/thiesen1998.txt ../data/heads_with_translations/heads_with_translations_thiesen1998_25_339.txt 1")
+        print()
 
         exit(1)
 
