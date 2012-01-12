@@ -58,7 +58,7 @@ def ngrams_from_graphemes(graphemes, n=1):
     # we don't except ngrams less than length 3 (1 sound + 2 word boundaries)
     if len(graphemes) < 3:
         print (graphemes)
-        sys.exit("You have a word (with boundaries ('#''s)) that is less than length 3. That's bad!\n")
+        sys.exit("The qlc.ngram class says: you have a word (with boundaries ('#''s)) that is less than length 3. That's bad!\n")
 
     list_of_grams = []
 
