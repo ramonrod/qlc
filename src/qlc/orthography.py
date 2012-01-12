@@ -17,6 +17,11 @@ class OrthographyParser(object):
 
     input string example: uubo
     output string example: # uu b o #
+
+    Methods in this class return a tuple of (True or False, parsed-string).
+    The first element in the tuple relays whether the string parsed sucessfully.
+    The second element returns the parsed string.
+
     """
 
     def __init__(self, orthography_profile):
@@ -91,10 +96,12 @@ class OrthographyParser(object):
         parses = []
         string = unicodedata.normalize("NFD", string)
         for word in string.split():
+            # print("word: "+"\t"+word)
             parse = getParse(self.root, word)
             if len(parse) == 0:
                 success = False
-                parse = "# <no valid parse> #"
+                # parse = "# <no valid parse> #"
+                parse = word
             parses.append(parse)
 
         # Use "#" as a word boundary token (a special 'grapheme').
