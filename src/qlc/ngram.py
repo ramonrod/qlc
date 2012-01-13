@@ -57,8 +57,10 @@ def ngrams_from_graphemes(graphemes, n=1):
 
     # we don't except ngrams less than length 3 (1 sound + 2 word boundaries)
     if len(graphemes) < 3:
-        print (graphemes)
-        sys.exit("The qlc.ngram class says: you have a word (with boundaries ('#''s)) that is less than length 3. That's bad!\n")
+        print()
+        print("WARNING: the qlc.ngram class says that you have a word (inclusive of word boundaries '#') that is less than length 3. That's bad!")
+        print("word: "+graphemes+"\nExiting...\n")
+        sys.exit(1)
 
     list_of_grams = []
 
@@ -83,6 +85,12 @@ def ngrams_from_graphemes(graphemes, n=1):
     return list_of_grams
     """
 
+def formatted_string_from_ngrams(ngrams_tuple):
+    """ Convert a tuple of tuples to a list of strings, and return joined string. """
+    ngrams_list = []
+    for ngram in ngrams_tuple:
+        ngrams_list.append("".join(list(ngram)))
+    return " ".join(ngrams_list)
 
 def words_ngrams_list_for_graphemes_list(graphemes_list, n=1):
     ngrams_list = []
