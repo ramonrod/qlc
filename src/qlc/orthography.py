@@ -101,7 +101,9 @@ class OrthographyParser(object):
             if len(parse) == 0:
                 success = False
                 # parse = "# <no valid parse> #"
-                parse = word
+                # parse = word
+                parse = " <no valid parse> "
+
             parses.append(parse)
 
         # Use "#" as a word boundary token (a special 'grapheme').
