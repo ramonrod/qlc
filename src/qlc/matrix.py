@@ -17,9 +17,6 @@ def print_wordlist_in_ngrams(data_path, bibtex_key, orthography_parser, ngram_le
                           for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key(bibtex_key)
                           for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
                           )
-
-    print(type(wordlist_iterator))
-    sys.exit(1)
                           
     for wordlist_id, concept, counterpart in wordlist_iterator:
         ngram = ""
