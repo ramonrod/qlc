@@ -37,56 +37,78 @@ class WordlistStoreWithNgrams:
 
     Nothing
 
-
-    TODO:
-    -----
-    print matrices:
-    
-    0. wordlist in ngrams:
-    
-    lang1  concept1  word1  {#a ab bc c#}
-    lang1  concept1  word2  {#i ik ka a#}
-    lang2  concept1  word17 {#B Ba a#}
-    lang2  concept1  word18 {#Y Yw wk k#}
-    lang2  concept1  word19 ...
-
-    x. word by word (ordered) with input from 4.
-    
     """
 
-    def __init__(self, language_concept_counterpart_iterator, orthography_parser, ngram_length=0):
+    def __init__(self, language_concept_counterpart_iterator, orthography_parser, ngram_length):
         # data stored: { wordlist_id: {conept: {ngram_tuples} } }
-        self._data = collections.defaultdict(lambda : collections.defaultdict(set))
+        self._words = collections.defaultdict(lambda : collections.defaultdict(set))
+        self._ngrams = collections.defaultdict(lambda : collections.defaultdict(list))
 
+        languages = set()
         concepts = set()
         unique_ngrams = set() # using a Python set discards duplicate ngrams
-        languages = set()
 
         for language, concept, counterpart in language_concept_counterpart_iterator:
-            languages.add(language)
-
-            # TODO:
-            # updated orthography parser returns a tuple (0,1), where: 
-            # 0 = True/False (whether the string correctly parsed)
-            # 1 = the parsed string
-            # parsed_counterpart_tuple = orthography_parser.parse_string_to_grapheme(counterpart)
-            # if parsed_counterpart_tuple[0] == False:
-            #    sys.stderr.write(str(parsed_counterpart_tuple))
-            # parsed_counterpart = parsed_counterpart_tuple[1]
-
             parsed_counterpart_tuple = orthography_parser.parse_string_to_graphemes(counterpart)
             parsed_counterpart = parsed_counterpart_tuple[1]
-            # print(parsed_counterpart)
+            # Get ngrams as a tuple of tuples.
+            ngram_tuples = qlc.ngram.ngrams_from_graphemes(parsed_counterpart,ngram_length)
+            # Format that tuple of tuples into a space-delimed string.
+            ngrams_string = qlc.ngram.formatted_string_from_ngrams(ngram_tuples)
 
-            ngram_tuples = set(qlc.ngram.ngrams_from_graphemes(parsed_counterpart,2))
+            self._words[language][concept].add(counterpart)
+            self._ngrams[language][concept].append(ngrams_string)
 
-            unique_ngrams.update(ngram_tuples)
-            self._data[language][concept].update(ngram_tuples)
+            # Append language string to unique set of langauge.
+            languages.add(language)
+            # Append concept string to unique set of concepts.
             concepts.add(concept)
+            # Add all the elements of ngram_tuples to unique_ngrams.
+            unique_ngrams.update(set(ngram_tuples))
 
         self.concepts = list(concepts)
         self.unique_ngrams = list(unique_ngrams)
         self.languages = list(languages)
+        self.concepts.sort()
+        self.unique_ngrams.sort()
+        self.languages.sort()
+
+    def print_concept_words_by_languages(self):
+        # print header
+        print("language", end="")
+        for concept in self.concepts:
+            print("\t"+concept, end="")
+        print()
+        for language in self.languages:
+            print(language, end="")
+            for concept in self.concepts:
+                words = self._words[language][concept]
+                print("\t"+",".join(words), end="")
+            print()
+
+
+    def print_concept_ngrams_by_languages(self):
+        # print header
+        print("language", end="")
+        for concept in self.concepts:
+            print("\t"+concept, end="")
+        print()
+        for language in self.languages:
+            print(language, end="")
+            for concept in self.concepts:
+                # ngrams is a list of strings (formatted ngram strings)
+                ngrams = self._ngrams[language][concept]
+                print("\t"+" ".join(ngrams), end="")
+            print()
+
+    def print_wordlist_in_ngrams(self):
+        for language, concepts in self._data.items():
+            for concept, ngrams in concepts.items():
+                ngram = ""
+                for gram in ngrams:
+                    ngram += "".join(gram)+" "
+                    ngram = ngram.rstrip(" ")                
+                print (language, "\t", concept, "\t", ngram)
 
     def pprint(self, set):
         s = ""
@@ -95,11 +117,7 @@ class WordlistStoreWithNgrams:
                 s += tuple[i]+" "
         return s.rstrip(" ")
 
-    def print_wordlist_in_ngrams(self):
-        for language, concepts in self._data.items():
-            for concept, ngrams in concepts.items():
-                ngram = self.pprint(ngrams)
-                print (language, "\t", concept, "\t", ngram)
+
 
     def counterpart_for_language_and_concept(self, language, concept):
         return self._data[language][concept]
@@ -134,18 +152,10 @@ if __name__=="__main__":
         for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
     )
 
-    w = WordlistStoreWithNgrams(wordlist_iterator, o)
-    w.print_wordlist_in_ngrams()
+    w = WordlistStoreWithNgrams(wordlist_iterator, o, 2)
+#    w.print_concept_words_by_languages()
+    w.print_concept_ngrams_by_languages()
+
+    # w.print_wordlist_in_ngrams()
 
 
-    # to print the contents of the returned cr reader iterator:
-    """
-    cr = CorpusReaderWordlist("data")
-    wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
-        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992')
-        for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
-    )
-
-    for wordlist_id, concept, counterpart in wordlist_iterator:
-        print(wordlist_id+"\t"+concept+"\t"+counterpart)
-    """
