@@ -40,24 +40,42 @@ class WordlistStoreWithNgrams:
     """
 
     def __init__(self, language_concept_counterpart_iterator, orthography_parser, ngram_length):
-        # data stored: { wordlist_id: {conept: {ngram_tuples} } }
+        unparsables = open("unparsables.txt", "w")
+
+        # data stored: { wordlist_id: {concept: {ngram_tuples} } }
         self._words = collections.defaultdict(lambda : collections.defaultdict(set))
         self._ngrams = collections.defaultdict(lambda : collections.defaultdict(list))
-
+        # {language: {concept: {ngram: count} } }
+        self._language_counts = collections.defaultdict(lambda : collections.defaultdict(lambda : collections.defaultdict()))
+                                                        
         languages = set()
         concepts = set()
         unique_ngrams = set() # using a Python set discards duplicate ngrams
 
         for language, concept, counterpart in language_concept_counterpart_iterator:
+            # Do orthography parsing
             parsed_counterpart_tuple = orthography_parser.parse_string_to_graphemes(counterpart)
+            # If unparsable, write to file.
+            if parsed_counterpart_tuple[0] == False:
+                invalid_parse_string = qlc.ngram.formatted_string_from_ngrams(parsed_counterpart_tuple[1])
+                unparsables.write(language+"\t"+concept+"\t"+counterpart+"\t"+invalid_parse_string+"\n")
+                continue
             parsed_counterpart = parsed_counterpart_tuple[1]
+
             # Get ngrams as a tuple of tuples.
             ngram_tuples = qlc.ngram.ngrams_from_graphemes(parsed_counterpart,ngram_length)
+
             # Format that tuple of tuples into a space-delimed string.
             ngrams_string = qlc.ngram.formatted_string_from_ngrams(ngram_tuples)
 
             self._words[language][concept].add(counterpart)
             self._ngrams[language][concept].append(ngrams_string)
+
+            for ngram in ngrams_string.split():
+                if not ngram in self._language_counts[language][concept]:
+                    self._language_counts[language][concept][ngram] = 1
+                else:
+                    self._language_counts[language][concept][ngram] += 1
 
             # Append language string to unique set of langauge.
             languages.add(language)
@@ -73,7 +91,53 @@ class WordlistStoreWithNgrams:
         self.unique_ngrams.sort()
         self.languages.sort()
 
-    def print_concept_words_by_languages(self):
+        """
+        for language, concept in self._language_counts.items():
+            if language == "7509":
+                for concept, ngrams in self._language_counts[language].items():
+                    print (language, concept, ngrams)
+
+        sys.exit()
+        """
+
+    def print_languages_concepts_ngrams(self):
+        print ("CONCEPTS", end="")
+        for language in self.languages:
+            print ("\t"+language, end="")
+        print()
+        for concept in self.concepts:
+            print(concept, end="")
+            for language in self.languages:
+                ngrams = self._ngrams[language][concept]
+                print("\t"+" ".join(ngrams), end="")
+            print()
+
+    def print_ngrams_concepts_ngramcounts(self, language):
+        # print header
+        print(language, end="")
+        for ngram in self.unique_ngrams:
+            ngram_string = qlc.ngram.formatted_string_from_ngrams(ngram)
+            ngram_string = ngram_string.replace(" ", "")
+            print("\t"+ngram_string, end="")
+        print()
+
+        # print rows
+        counts = self._language_counts[language]
+        for concept in self.concepts:
+            print(concept, end="")
+            for ngram in self.unique_ngrams:
+                result = ""
+                ngram_string = qlc.ngram.formatted_string_from_ngrams(ngram)
+                ngram_string = ngram_string.replace(" ", "")                
+                if not ngram_string in counts[concept]:
+                    result = "NA"
+                else:
+                    result = str(counts[concept][ngram_string])
+                print("\t"+result, end="")
+            print()
+
+
+    def print_concepts_languages_words(self):
         # print header
         print("language", end="")
         for concept in self.concepts:
@@ -87,7 +151,7 @@ class WordlistStoreWithNgrams:
             print()
 
 
-    def print_concept_ngrams_by_languages(self):
+    def print_concepts_languages_ngrams(self):
         # print header
         print("language", end="")
         for concept in self.concepts:
@@ -101,6 +165,7 @@ class WordlistStoreWithNgrams:
                 print("\t"+" ".join(ngrams), end="")
             print()
 
+    # maybe move the wordlist in ngrams function here from matrix.py
     def print_wordlist_in_ngrams(self):
         for language, concepts in self._data.items():
             for concept, ngrams in concepts.items():
@@ -110,14 +175,8 @@ class WordlistStoreWithNgrams:
                     ngram = ngram.rstrip(" ")                
                 print (language, "\t", concept, "\t", ngram)
 
-    def pprint(self, set):
-        s = ""
-        for tuple in set:
-            for i in range(0, len(tuple)):
-                s += tuple[i]+" "
-        return s.rstrip(" ")
 
-
+    # probably don't need these
 
     def counterpart_for_language_and_concept(self, language, concept):
         return self._data[language][concept]
@@ -153,9 +212,18 @@ if __name__=="__main__":
     )
 
     w = WordlistStoreWithNgrams(wordlist_iterator, o, 2)
-#    w.print_concept_words_by_languages()
-    w.print_concept_ngrams_by_languages()
+    # w.print_concepts_languages_words()
+    # w.print_concepts_languages_ngrams()
+    # w.print_ngrams_concepts_ngramcounts("7509")
 
-    # w.print_wordlist_in_ngrams()
+    # print a ngram by concept by ngram count matrix for all language
+    # maybe put this in a method to call all
+    """
+    languages = cr.wordlistdata_ids_for_bibtex_key('huber1992')
+    for language in languages:
+        w.print_ngrams_concepts_ngramcounts(language)
+        print()
+        print()
+        """
 
-
+    # w.print_languages_concepts_ngrams()
