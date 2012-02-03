@@ -15,8 +15,8 @@ Corpus Reader for data of the project Quantitative Language Comparison.
 # Imports
 #-----------------------------------------------------------------------------
 
-import os.path
-import codecs, re, collections
+import sys, os.path
+import codecs, re, collections, fileinput, shutil
 
 
 #-----------------------------------------------------------------------------
@@ -723,3 +723,95 @@ class CorpusReaderWordlist(object):
                 for counterpart in self.annotations_for_entry_id_and_value(
                                    entry_id, "counterpart"))
 
+if __name__ == "__main__":
+    MAX_ENTRIES = 100
+    MAX_WORDLIST_ENTRIES = 100
+
+    if len(sys.argv) < 3:
+        print("call: corpusreader.py input_path output_path")
+        sys.exit(1)
+	
+    files = [ "book.csv", "component.csv", "corpusversion.csv", "dictdata.csv", "language.csv", \
+              "nondictdata.csv", "wordlistdata.csv", "wordlistconcept.csv" ]
+	
+    for f in files:
+        shutil.copyfile(os.path.join(sys.argv[1], f), os.path.join(sys.argv[2], f))
+	
+    cr = CorpusReaderDict(sys.argv[1])
+    print("Data loaded", file=sys.stderr)
+    
+    dictdata_ids = cr.dictdata_ids_for_bibtex_key("thiesen1998")
+    
+    input_entry_csv = os.path.join(sys.argv[1], "entry.csv")
+    output_entry_csv = os.path.join(sys.argv[2], "entry.csv")
+
+    input_annotation_csv = os.path.join(sys.argv[1], "annotation.csv")
+    output_annotation_csv = os.path.join(sys.argv[2], "annotation.csv")
+    output_annotation = open(output_annotation_csv, "w")
+    annotation_dict = collections.defaultdict(list)
+    for i, line in enumerate(fileinput.input(input_annotation_csv)):
+        if i == 0:
+            output_annotation.write(line)
+        data = line.strip().split("\t")
+        annotation_dict[data[_annotation_table_columns['entry_id'] + 1]].append(line)
+    
+    fileinput.nextfile()
+
+    output = open(output_entry_csv, "w")
+    count_entries = 0
+    for i, line in enumerate(fileinput.input(input_entry_csv)):
+        if i == 0:
+            output.write(line)
+        data = line.strip().split("\t")
+        if data[_entry_table_columns['dictdata_id'] + 1] == dictdata_ids[0]:
+            output.write(line)
+            for annotation_line in annotation_dict[data[0]]:
+            	output_annotation.write(annotation_line)
+            count_entries += 1
+    	
+        if count_entries > MAX_ENTRIES:
+            break
+
+    fileinput.nextfile()
+    output.close()
+    output_annotation.close()
+    
+    # Worldists
+    cr = CorpusReaderWordlist(sys.argv[1])
+    print("Data loaded", file=sys.stderr)
+    
+    wordlistdata_ids = cr.wordlistdata_ids_for_bibtex_key("huber1992")
+
+    input_entry_csv = os.path.join(sys.argv[1], "wordlistentry.csv")
+    output_entry_csv = os.path.join(sys.argv[2], "wordlistentry.csv")
+
+    input_annotation_csv = os.path.join(sys.argv[1], "wordlistannotation.csv")
+    output_annotation_csv = os.path.join(sys.argv[2], "wordlistannotation.csv")
+    output_annotation = open(output_annotation_csv, "w")
+    annotation_dict = collections.defaultdict(list)
+    for i, line in enumerate(fileinput.input(input_annotation_csv)):
+        if i == 0:
+            output_annotation.write(line)
+        data = line.strip().split("\t")
+        annotation_dict[data[_wordlistannotation_table_columns['entry_id'] + 1]].append(line)
+    
+    fileinput.nextfile()
+
+    output = open(output_entry_csv, "w")
+    count_entries = 0
+    for i, line in enumerate(fileinput.input(input_entry_csv)):
+        if i == 0:
+            output.write(line)
+        data = line.strip().split("\t")
+        if data[_wordlistentry_table_columns['wordlistdata_id'] + 1] in wordlistdata_ids:
+            output.write(line)
+            for annotation_line in annotation_dict[data[0]]:
+            	output_annotation.write(annotation_line)
+            count_entries += 1
+    	
+        if count_entries > MAX_WORDLIST_ENTRIES:
+            break
+
+    fileinput.nextfile()
+    output.close()
+    output_annotation.close()

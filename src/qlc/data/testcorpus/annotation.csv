@@ -1,0 +1,1312 @@
+id	entry_id	annotationtype_id	start	end	value	string
+1380673	143100	51	0	7	bold	ároobe
+1380674	143100	51	8	18	italic	conj.pron.
+1380675	143100	52	39	39	hyphen	""
+1380676	143100	52	39	39	newline	""
+1380677	143100	52	39	39	tab	""
+1380678	143100	52	72	72	hyphen	""
+1380679	143100	52	72	72	newline	""
+1380680	143100	52	72	72	tab	""
+1380681	143100	51	106	109	italic	Tá
+1380682	143100	52	109	109	hyphen	""
+1380683	143100	52	109	109	newline	""
+1380684	143100	52	109	109	tab	""
+1380685	143100	51	109	148	italic	ñáhbeke dsí̵jí̵vétsoróme. Ároobe
+1380686	143100	52	148	148	newline	""
+1380687	143100	52	149	149	tab	""
+1380688	143100	51	149	167	italic	tsiiñe bohí̵í̵.
+1380689	143100	52	189	189	hyphen	""
+1380690	143100	52	189	189	newline	""
+1380691	143100	52	189	189	tab	""
+3630160	143100	53	0	7	head	ároobe
+3630161	143100	53	8	18	pos	conj.pron.
+3630162	143100	53	18	28	translation	pero cuyo
+3630163	143100	53	30	104	translation	sin embargo ese (hombre o animal macho mencionado en la oración anterior)
+3630164	143100	53	106	167	example-src	Táñáhbeke dsí̵jí̵vétsoróme. Ároobe tsiiñe bohí̵í̵.
+3630165	143100	53	167	217	example-tgt	 Casi mataron a mi hermano; sin embargo, se sanó.
+3673195	143100	54	0	7	headorthographic	# á r oo b e #
+1380692	143101	51	0	7	bold	árolle
+1380693	143101	51	8	18	italic	conj.pron.
+3630166	143101	53	0	7	head	árolle
+3630167	143101	53	8	18	pos	conj.pron.
+3630168	143101	53	18	28	translation	pero cuya
+3673196	143101	54	0	7	headorthographic	# á r o ll e #
+1380694	143102	51	0	23	bold	árónáa/árónáaáca
+1380695	143102	51	24	33	italic	conj.adv.
+1380696	143102	52	43	43	newline	""
+1380697	143102	52	44	44	tab	""
+3630169	143102	53	0	9	head	árónáa
+3630170	143102	53	10	23	head	árónáaáca
+3630171	143102	53	24	33	pos	conj.adv.
+3630172	143102	53	33	38	translation	pero
+3630173	143102	53	40	51	translation	sin embargo
+3630174	143102	53	53	65	translation	al contrario
+3673197	143102	54	0	9	headorthographic	# á r ó n áa #
+3673198	143102	54	10	23	headorthographic	# á r ó n áa á c a #
+1380698	143103	51	0	6	bold	árone
+1380699	143103	51	7	17	italic	conj.pron.
+1380700	143103	52	40	40	newline	""
+1380701	143103	52	41	41	tab	""
+1380702	143103	52	79	79	hyphen	""
+1380703	143103	52	79	79	newline	""
+1380704	143103	52	79	79	tab	""
+1380705	143103	51	88	117	italic	Tsanéha dihñe nanímyé tah
+1380706	143103	52	117	117	hyphen	""
+1380707	143103	52	117	117	newline	""
+1380708	143103	52	117	117	tab	""
+1380709	143103	51	117	159	italic	jyá pañétu; árone uke ó óómíchoó.
+1380710	143103	52	159	159	newline	""
+1380711	143103	52	160	160	tab	""
+1380712	143103	52	194	194	newline	""
+1380713	143103	52	195	195	pagebreak	""
+1380714	143103	52	195	195	tab	""
+3630175	143103	53	0	6	head	árone
+3630176	143103	53	7	17	pos	conj.pron.
+3630177	143103	53	17	86	translation	sin embargo ése (cosa o acción mencionada en la oración anterior)
+3630178	143103	53	88	159	example-src	Tsanéha dihñe nanímyé tahjyá pañétu; árone uke ó óómíchoó.
+3630179	143103	53	159	224	example-tgt	 Robaron algunas de tus cosas en mi casa, pero te las devolveré.
+3673199	143103	54	0	6	headorthographic	# á r o n e #
+1380715	143104	51	0	9	bold	aróótsa
+1380716	143104	51	10	12	italic	s.
+3630180	143104	53	0	9	head	aróótsa
+3630181	143104	53	10	12	pos	s.
+3630182	143104	53	12	18	translation	arroz
+3673200	143104	54	0	9	headorthographic	# a r óó ts a #
+1380717	143105	51	0	8	bold	ááruba
+1380718	143105	51	9	11	italic	s.
+1380719	143105	52	38	38	newline	""
+1380720	143105	52	39	39	tab	""
+3630183	143105	53	0	8	head	ááruba
+3630184	143105	53	9	11	pos	s.
+3630185	143105	53	11	57	translation	trampa en forma de canasta para agarrar peces
+3673201	143105	54	0	8	headorthographic	# áá r u b a #
+1380721	143106	51	0	8	bold	ááruco
+1380722	143106	51	9	11	italic	s.
+1380723	143106	52	21	21	newline	""
+1380724	143106	52	22	22	tab	""
+1380725	143106	52	37	37	newline	""
+1380726	143106	52	38	38	tab	""
+1380727	143106	52	53	53	newline	""
+1380728	143106	52	54	54	tab	""
+1380729	143106	52	69	69	hyphen	""
+1380730	143106	52	69	69	newline	""
+1380731	143106	52	69	69	tab	""
+1380732	143106	52	85	85	hyphen	""
+1380733	143106	52	85	85	newline	""
+1380734	143106	52	85	85	tab	""
+1380735	143106	52	101	101	newline	""
+1380736	143106	52	102	102	tab	""
+1380737	143106	52	121	121	newline	""
+1380738	143106	52	122	122	tab	""
+1380739	143106	52	157	157	hyphen	""
+1380740	143106	52	157	157	newline	""
+1380741	143106	52	157	157	tab	""
+3630186	143106	53	0	8	head	ááruco
+3630187	143106	53	9	11	pos	s.
+3630188	143106	53	14	100	translation	trampa en forma de dos canastas juntas para agarrar peces u otras especies acuáticas
+3630189	143106	53	111	171	translation	persona o animal que está escondido para agarrar a alguien
+3673202	143106	54	0	8	headorthographic	# áá r u c o #
+1380742	143107	51	0	11	bold	árucóónu
+1380743	143107	51	12	16	italic	abs.
+3630190	143107	53	0	11	head	árucóónu
+3630191	143107	53	12	16	pos	abs.
+3630192	143107	53	16	23	translation	acecho
+3673203	143107	54	0	11	headorthographic	# á r u c óó n u #
+1380744	143108	52	0	0	tab	""
+1380745	143108	52	0	0	tab	""
+1380746	143108	51	0	12	bold	[árúcoonu]
+1380747	143108	51	13	16	italic	ve.
+1380748	143108	52	34	34	hyphen	""
+1380749	143108	52	34	34	newline	""
+1380750	143108	52	34	34	tab	""
+1380751	143108	51	66	72	italic	Iyáme
+1380752	143108	52	72	72	newline	""
+1380753	143108	52	73	73	tab	""
+1380754	143108	51	73	123	italic	júúvá bóóa árúcóónúúbeke ó ájtyumí̵.
+1380755	143108	52	123	123	newline	""
+1380756	143108	52	124	124	tab	""
+1380757	143108	52	160	160	newline	""
+1380758	143108	52	161	161	tab	""
+1380759	143108	52	195	195	newline	""
+1380760	143108	52	196	196	tab	""
+3630193	143108	53	1	11	head	árúcoonu
+3630194	143108	53	13	16	pos	ve.
+3630195	143108	53	16	24	translation	acechar
+3630196	143108	53	26	64	translation	estar emboscado para atrapar a alguien
+3630197	143108	53	66	123	example-src	Iyáme júúvá bóóa árúcóónúúbeke ó ájtyumí̵.
+3630198	143108	53	123	217	example-tgt	 Encontré una boa emboscada junto al camino para atrapar a los animales que por ahí pasaban.
+3673204	143108	54	1	11	headorthographic	# á r ú c oo n u #
+1380761	143109	51	0	10	bold	áárúcou
+1380762	143109	51	11	13	italic	s.
+1380763	143109	52	42	42	newline	""
+1380764	143109	52	43	43	tab	""
+3630199	143109	53	0	10	head	áárúcou
+3630200	143109	53	11	13	pos	s.
+3630201	143109	53	13	62	translation	especie de bejuco que se usa para tejer canastas
+3673205	143109	54	0	10	headorthographic	# áá r ú c o u #
+1380765	143110	51	0	11	bold	árúúmeba
+1380766	143110	51	12	14	italic	s.
+3630202	143110	53	0	11	head	árúúmeba
+3630203	143110	53	12	14	pos	s.
+3630204	143110	53	14	32	translation	especie de motelo
+3673206	143110	54	0	11	headorthographic	# á r úú m e b a #
+1380767	143111	51	0	5	bold	aáta
+1380768	143111	51	6	12	italic	s.col.
+3630205	143111	53	0	5	head	aáta
+3630206	143111	53	6	12	pos	s.col.
+3630207	143111	53	12	20	translation	ishanga
+3630208	143111	53	22	28	translation	ortiga
+3673207	143111	54	0	5	headorthographic	# aá t a #
+1380769	143112	52	0	0	tab	""
+1380770	143112	52	0	0	tab	""
+1380771	143112	51	0	8	bold	áátahe
+3630209	143112	53	0	8	head	áátahe
+3630210	143112	53	8	18	translation	la planta
+3673208	143112	54	0	8	headorthographic	# áá t a h e #
+1380772	143113	51	0	25	bold	átyáábaá/[átyáába]
+1380773	143113	51	26	28	italic	s.
+1380774	143113	52	44	44	newline	""
+1380775	143113	52	45	45	tab	""
+1380776	143113	51	45	51	bold	taába
+3630211	143113	53	0	12	head	átyáábaá
+3630212	143113	53	14	24	head	átyáába
+3630213	143113	53	26	28	pos	s.
+3630214	143113	53	28	38	translation	mi esposa
+3673209	143113	54	0	12	headorthographic	# á ty áá b aá #
+3673210	143113	54	14	24	headorthographic	# á ty áá b a #
+1380777	143114	51	0	26	bold	átyahjí̵ro, átyahjí̵nu
+1380778	143114	51	27	31	italic	abs.
+1380779	143114	52	43	43	hyphen	""
+1380780	143114	52	43	43	newline	""
+1380781	143114	52	43	43	tab	""
+3630215	143114	53	0	12	head	átyahjí̵ro
+3630216	143114	53	14	26	head	átyahjí̵nu
+3630217	143114	53	27	31	pos	abs.
+3630218	143114	53	31	45	translation	ablandamiento
+3673211	143114	54	0	12	headorthographic	# á ty a h j í̵ r o #
+3673212	143114	54	14	26	headorthographic	# á ty a h j í̵ n u #
+1380782	143115	52	0	0	tab	""
+1380783	143115	52	0	0	tab	""
+1380784	143115	51	0	28	bold	[átyahjí̵ro, átyáhji̵nu]
+1380785	143115	51	29	32	italic	vt.
+1380786	143115	52	41	41	hyphen	""
+1380787	143115	52	41	41	newline	""
+1380788	143115	52	41	41	tab	""
+1380789	143115	51	68	80	italic	Waháró oke
+1380790	143115	52	80	80	newline	""
+1380791	143115	52	81	81	tab	""
+1380792	143115	51	81	130	italic	átyáhji̵nú táwápujúúvé i̵i̵ví̵mújkeúho
+1380793	143115	52	130	130	hyphen	""
+1380794	143115	52	130	130	newline	""
+1380795	143115	52	130	130	tab	""
+1380796	143115	51	130	133	italic	ri.
+1380797	143115	52	165	165	newline	""
+1380798	143115	52	166	166	tab	""
+1380799	143115	52	204	204	hyphen	""
+1380800	143115	52	204	204	newline	""
+1380801	143115	52	204	204	tab	""
+1380802	143115	52	243	243	hyphen	""
+1380803	143115	52	243	243	newline	""
+1380804	143115	52	243	243	tab	""
+1380805	143115	51	269	285	italic	Ó átyáhji̵nú
+1380806	143115	52	285	285	newline	""
+1380807	143115	52	286	286	tab	""
+1380808	143115	51	286	330	italic	í̵naháámi̵ táhájcuta o bí̵í̵jí̵nuki.
+1380809	143115	52	330	330	newline	""
+1380810	143115	52	331	331	tab	""
+1380811	143115	52	366	366	newline	""
+1380812	143115	52	367	367	tab	""
+3630219	143115	53	1	13	head	átyahjí̵ro
+3630220	143115	53	15	27	head	átyáhji̵nu
+3630221	143115	53	29	32	pos	vt.
+3630222	143115	53	35	66	translation	calentar para aliviar un dolor
+3630223	143115	53	215	224	translation	ablandar
+3630224	143115	53	226	234	translation	suavizar
+3630225	143115	53	236	267	translation	flexibilizar algo calentándolo
+3630226	143115	53	68	133	example-src	Waháró oke átyáhji̵nú táwápujúúvé i̵i̵ví̵mújkeúhori.
+3630227	143115	53	133	213	example-tgt	 Mi mamá calienta la suelda con suelda para aliviar el dolor de la contusión. 
+3630228	143115	53	269	330	example-src	Ó átyáhji̵nú í̵naháámi̵ táhájcuta o bí̵í̵jí̵nuki.
+3630229	143115	53	330	385	example-tgt	 Ablando una hoja en la candela para envolver mi presa.
+3673213	143115	54	1	13	headorthographic	# á ty a h j í̵ r o #
+3673214	143115	54	15	27	headorthographic	# á ty á h j i ̵ n u #
+1380813	143116	51	0	24	bold	átyáji̵í̵/[átyáji̵]
+1380814	143116	51	25	27	italic	s.
+1380815	143116	52	49	49	newline	""
+1380816	143116	52	50	50	pagebreak	""
+1380817	143116	52	50	50	tab	""
+1380818	143116	51	55	60	bold	taji̵
+3630230	143116	53	0	12	head	átyáji̵í̵
+3630231	143116	53	14	23	head	átyáji̵
+3630232	143116	53	25	27	pos	s.
+3630233	143116	53	27	37	translation	mi esposo
+3630234	143116	53	39	48	translation	mi marido
+3673215	143116	54	0	12	headorthographic	# á ty á j i ̵ í̵ #
+3673216	143116	54	14	23	headorthographic	# á ty á j i ̵ #
+1380819	143117	51	0	14	bold	átyají̵í̵ve
+1380820	143117	51	15	19	italic	abs.
+3630235	143117	53	0	14	head	átyají̵í̵ve
+3630236	143117	53	15	19	pos	abs.
+3673217	143117	54	0	14	headorthographic	# á ty a j í̵í̵ v e #
+1380821	143118	52	0	0	tab	""
+1380822	143118	52	0	0	tab	""
+1380823	143118	51	0	15	bold	[átyáji̵i̵ve]
+1380824	143118	51	16	19	italic	vi.
+1380825	143118	52	40	40	hyphen	""
+1380826	143118	52	40	40	newline	""
+1380827	143118	52	40	40	tab	""
+1380828	143118	52	80	80	newline	""
+1380829	143118	52	81	81	tab	""
+1380830	143118	51	88	133	italic	Í̵naháámí̵ ímí átyáji̵i̵vé téhaami̵
+1380831	143118	52	133	133	newline	""
+1380832	143118	52	134	134	tab	""
+1380833	143118	51	134	151	italic	ivájáávétuki.
+1380834	143118	52	175	175	newline	""
+1380835	143118	52	176	176	tab	""
+3630237	143118	53	1	14	head	átyáji̵i̵ve
+3630238	143118	53	16	19	pos	vi.
+3630239	143118	53	19	30	translation	ablandarse
+3630240	143118	53	32	42	translation	suavizarse
+3630241	143118	53	44	57	translation	ponerse suave
+3630242	143118	53	59	86	translation	flexibilizarse por el calor
+3630243	143118	53	88	151	example-src	Í̵naháámí̵ ímí átyáji̵i̵vé téhaami̵ ivájáávétuki.
+3630244	143118	53	151	213	example-tgt	 La hoja se flexibilizó con el fuego para que no se rompiera.
+3673218	143118	54	1	14	headorthographic	# á ty á j i ̵ i ̵ v e #
+1380836	143119	51	0	7	bold	aatára
+1380837	143119	51	8	14	italic	s.col.
+1380838	143119	52	41	41	newline	""
+1380839	143119	52	42	42	tab	""
+3630245	143119	53	0	7	head	aatára
+3630246	143119	53	8	14	pos	s.col.
+3630247	143119	53	14	59	translation	especie de árbol parecido al árbol del pan
+3673219	143119	54	0	7	headorthographic	# aa t á r a #
+1380840	143120	52	0	0	tab	""
+1380841	143120	52	0	0	tab	""
+1380842	143120	51	0	9	bold	aatárahe
+3630248	143120	53	0	9	head	aatárahe
+3630249	143120	53	9	19	translation	el árbol
+3673220	143120	54	0	9	headorthographic	# aa t á r a h e #
+1380843	143121	52	0	0	tab	""
+1380844	143121	52	0	0	tab	""
+1380845	143121	51	0	8	bold	aatárau
+3630250	143121	53	0	8	head	aatárau
+3630251	143121	53	8	17	translation	el fruto
+3673221	143121	54	0	8	headorthographic	# aa t á r a u #
+1380846	143122	51	0	6	bold	aátye
+1380847	143122	51	7	16	italic	pron.dem.
+1380848	143122	52	40	40	newline	""
+1380849	143122	52	41	41	tab	""
+3630252	143122	53	0	6	head	aátye
+3630253	143122	53	7	16	pos	pron.dem.
+3630254	143122	53	16	50	translation	ésos/ésas (personas o animales)
+3673222	143122	54	0	6	headorthographic	# aá ty e #
+1380850	143123	51	0	19	bold	áátyeé/[áátye]
+1380851	143123	51	20	29	italic	pron.dem.
+1380852	143123	52	45	45	hyphen	""
+1380853	143123	52	45	45	newline	""
+1380854	143123	52	45	45	tab	""
+1380855	143123	52	82	82	hyphen	""
+1380856	143123	52	82	82	newline	""
+1380857	143123	52	82	82	tab	""
+3630255	143123	53	0	9	head	áátyeé
+3630256	143123	53	11	18	head	áátye
+3630257	143123	53	20	29	pos	pron.dem.
+3630258	143123	53	29	86	translation	aquéllos/aquéllas (personas o animales más distantes)
+3673223	143123	54	0	9	headorthographic	# áá ty eé #
+3673224	143123	54	11	18	headorthographic	# áá ty e #
+1380858	143124	51	0	9	bold	aatyépi̵
+1380859	143124	51	10	19	italic	pron.dem.
+1380860	143124	52	40	40	newline	""
+1380861	143124	52	41	41	tab	""
+3630259	143124	53	0	9	head	aatyépi̵
+3630260	143124	53	10	19	pos	pron.dem.
+3630261	143124	53	19	58	translation	ésos dos (mujeres o animales hembras)
+3673225	143124	54	0	9	headorthographic	# aa ty é p i ̵ #
+1380862	143125	51	0	12	bold	aatyépi̵í̵
+1380863	143125	51	13	22	italic	pron.dem.
+1380864	143125	52	42	42	hyphen	""
+1380865	143125	52	42	42	newline	""
+1380866	143125	52	42	42	tab	""
+1380867	143125	52	76	76	hyphen	""
+1380868	143125	52	76	76	newline	""
+1380869	143125	52	76	76	tab	""
+3630262	143125	53	0	12	head	aatyépi̵í̵
+3630263	143125	53	13	22	pos	pron.dem.
+3630264	143125	53	22	80	translation	aquéllas dos (mujeres o animales hembras más distantes)
+3673226	143125	54	0	12	headorthographic	# aa ty é p i ̵ í̵ #
+1380870	143126	51	0	12	bold	[átérée-]
+1380871	143126	51	13	17	italic	r.l.
+1380872	143126	52	42	42	newline	""
+1380873	143126	52	43	43	tab	""
+1380874	143126	52	90	90	hyphen	""
+1380875	143126	52	90	90	newline	""
+1380876	143126	52	90	90	tab	""
+3630265	143126	53	1	11	head	átérée-
+3630266	143126	53	13	17	pos	r.l.
+3630267	143126	53	17	30	translation	despreciable
+3630268	143126	53	32	134	translation	sin valor. —se añaden los sufijos clasificadores para formar calificativos (ver los apéndices c y d)
+3673227	143126	54	1	11	headorthographic	# á t é r ée - #
+1380877	143127	51	0	18	bold	átéreé/[átere]
+1380878	143127	51	19	23	italic	adj.
+1380879	143127	52	46	46	newline	""
+1380880	143127	52	47	47	tab	""
+1380881	143127	51	53	89	italic	Áánu tsáma áterére; óvíi coé
+1380882	143127	52	89	89	hyphen	""
+1380883	143127	52	89	89	newline	""
+1380884	143127	52	89	89	tab	""
+1380885	143127	51	89	96	italic	vaábe.
+1380886	143127	52	125	125	newline	""
+1380887	143127	52	126	126	tab	""
+1380888	143127	51	136	166	italic	¡Ej, áteréubá uke o úráá
+1380889	143127	52	166	166	hyphen	""
+1380890	143127	52	166	166	newline	""
+1380891	143127	52	166	166	tab	""
+1380892	143127	51	166	175	italic	vyeíñe!
+1380893	143127	52	205	205	newline	""
+1380894	143127	52	206	206	tab	""
+3630269	143127	53	0	9	head	átéreé
+3630270	143127	53	11	17	head	átere
+3630271	143127	53	19	23	pos	adj.
+3630272	143127	53	23	33	translation	sin valor
+3630273	143127	53	35	51	translation	que no vale nada
+3630274	143127	53	53	96	example-src	Áánu tsáma áterére; óvíi coévaábe.
+3630275	143127	53	96	136	example-tgt	 Este no vale nada, mejor que se quede. 
+3630276	143127	53	136	175	example-src	¡Ej, áteréubá uke o úráávyeíñe!
+3630277	143127	53	175	218	example-tgt	 ¡Vaya, crees que vale la pena que te siga!
+3673228	143127	54	0	9	headorthographic	# á t é r eé #
+3673229	143127	54	11	17	headorthographic	# á t e r e #
+1380895	143128	51	0	11	bold	átéréehe
+1380896	143128	51	12	16	italic	cal.
+1380897	143128	52	45	45	hyphen	""
+1380898	143128	52	45	45	newline	""
+1380899	143128	52	45	45	tab	""
+3630278	143128	53	0	11	head	átéréehe
+3630279	143128	53	12	16	pos	cal.
+3630280	143128	53	16	48	translation	un inservible (árbol o planta)
+3673230	143128	54	0	11	headorthographic	# á t é r ée h e #
+1380900	143129	51	0	12	bold	átéréejpi
+1380901	143129	51	13	17	italic	cal.
+1380902	143129	52	43	43	newline	""
+1380903	143129	52	44	44	tab	""
+3630281	143129	53	0	12	head	átéréejpi
+3630282	143129	53	13	17	pos	cal.
+3630283	143129	53	17	28	translation	un inútil
+3630284	143129	53	30	35	translation	bruto
+3630285	143129	53	37	67	translation	idiota (hombre o animal macho)
+3673231	143129	54	0	12	headorthographic	# á t é r ée j p i #
+1380904	143130	51	0	11	bold	átéréene
+1380905	143130	51	12	16	italic	cal.
+1380906	143130	52	47	47	newline	""
+1380907	143130	52	48	48	tab	""
+1380908	143130	51	68	90	italic	Llíyíícyáveebe mé
+1380909	143130	52	90	90	hyphen	""
+1380910	143130	52	90	90	newline	""
+1380911	143130	52	90	90	tab	""
+1380912	143130	51	90	123	italic	wake átéréenéhjí̵ nééhií.
+1380913	143130	52	135	135	newline	""
+1380914	143130	52	136	136	tab	""
+3630286	143130	53	0	11	head	átéréene
+3630287	143130	53	12	16	pos	cal.
+3630288	143130	53	16	27	translation	lo inútil
+3630289	143130	53	29	56	translation	lo grosero (cosa o acción)
+3630290	143130	53	58	68	translation	grosería
+3630291	143130	53	68	123	example-src	Llíyíícyáveebe méwake átéréenéhjí̵ nééhií.
+3630292	143130	53	123	170	example-tgt	 El borracho dijo muchas groserías a su mujer.
+3673232	143130	54	0	11	headorthographic	# á t é r ée n e #
+1380915	143131	51	0	9	bold	aatyétsi
+1380916	143131	51	10	19	italic	pron.dem.
+1380917	143131	52	40	40	newline	""
+1380918	143131	52	41	41	tab	""
+3630293	143131	53	0	9	head	aatyétsi
+3630294	143131	53	10	19	pos	pron.dem.
+3630295	143131	53	19	57	translation	ésos dos (hombres o animales machos)
+3673233	143131	54	0	9	headorthographic	# aa ty é ts i #
+1380919	143132	51	0	10	bold	aatyétsí
+1380920	143132	51	11	20	italic	pron.dem.
+1380921	143132	52	39	39	hyphen	""
+1380922	143132	52	39	39	newline	""
+1380923	143132	52	39	39	tab	""
+1380924	143132	52	73	73	hyphen	""
+1380925	143132	52	73	73	newline	""
+1380926	143132	52	73	73	tab	""
+3630296	143132	53	0	10	head	aatyétsí
+3630297	143132	53	11	20	pos	pron.dem.
+3630298	143132	53	20	77	translation	aquéllos dos (hombres o animales machos más distantes)
+3673234	143132	54	0	10	headorthographic	# aa ty é ts í #
+1380927	143133	51	0	6	bold	átyoj
+1380928	143133	51	7	11	italic	voc.
+1380929	143133	51	26	35	bold	tónuúbe
+3630299	143133	53	0	6	head	átyoj
+3630300	143133	53	7	11	pos	voc.
+3630301	143133	53	11	19	translation	cuñado
+3673235	143133	54	0	6	headorthographic	# á ty o j #
+1380933	143134	52	41	41	tab	""
+1380930	143134	51	0	25	bold	átyónuúbe, átyónujte
+1380931	143134	51	26	28	italic	s.
+1380932	143134	52	40	40	newline	""
+1380934	143134	51	46	55	bold	tónuúbe
+3630302	143134	53	0	12	head	átyónuúbe
+3630303	143134	53	14	25	head	átyónujte
+3630304	143134	53	26	28	pos	s.
+3630305	143134	53	28	39	translation	mi cuñado
+3673236	143134	54	0	12	headorthographic	# á ty ó n uú b e #
+3673237	143134	54	14	25	headorthographic	# á ty ó n u j t e #
+1380935	143135	51	0	11	bold	átyónulle
+1380936	143135	51	12	14	italic	s.
+1380937	143135	51	32	40	bold	tónulle
+1380938	143135	52	41	41	newline	""
+1380939	143135	52	42	42	tab	""
+1380940	143135	51	51	58	bold	búhji̵
+3630306	143135	53	0	11	head	átyónulle
+3630307	143135	53	12	14	pos	s.
+3630308	143135	53	14	25	translation	mi cuñada
+3673238	143135	54	0	11	headorthographic	# á ty ó n u ll e #
+1380941	143136	51	0	10	bold	áátyumi̵
+1380942	143136	51	11	17	italic	s.col.
+1380943	143136	52	41	41	newline	""
+1380944	143136	52	42	42	tab	""
+1380945	143136	52	80	80	newline	""
+1380946	143136	52	81	81	tab	""
+3630309	143136	53	0	10	head	áátyumi̵
+3630310	143136	53	11	17	pos	s.col.
+3630311	143136	53	17	106	translation	especie de pajarito muy lindo cuyas plumas de color celeste se usaban para hacer adornos
+3673239	143136	54	0	10	headorthographic	# áá ty u m i ̵ #
+1380947	143137	52	0	0	tab	""
+1380948	143137	52	0	0	tab	""
+1380949	143137	51	0	16	bold	áátyúmi̵í̵ho
+3630312	143137	53	0	16	head	áátyúmi̵í̵ho
+3630313	143137	53	16	28	translation	un pajarito
+3673240	143137	54	0	16	headorthographic	# áá ty ú m i ̵ í̵ h o #
+1380950	143138	51	0	13	bold	átyúvájkeu
+1380951	143138	51	14	16	italic	s.
+1380952	143138	52	41	41	newline	""
+1380953	143138	52	42	42	tab	""
+3630314	143138	53	0	13	head	átyúvájkeu
+3630315	143138	53	14	16	pos	s.
+3630316	143138	53	16	78	translation	especie de bejuco que se usa para amarrar manguarés y balsas
+3673241	143138	54	0	13	headorthographic	# á ty ú v á j k e u #
+1380954	143139	51	0	11	bold	átsaacúnu
+1380955	143139	51	12	16	italic	abs.
+3630317	143139	53	0	11	head	átsaacúnu
+3630318	143139	53	12	16	pos	abs.
+3673242	143139	54	0	11	headorthographic	# á ts aa c ú n u #
+1380956	143140	52	0	0	tab	""
+1380957	143140	52	0	0	tab	""
+1380958	143140	51	0	15	bold	[átsáácu̱nu]
+1380959	143140	51	16	19	italic	vi.
+1380960	143140	52	40	40	newline	""
+1380961	143140	52	41	41	tab	""
+1380962	143140	51	50	61	bold	mévaacúnu
+3630319	143140	53	1	14	head	átsáácu̱nu
+3630320	143140	53	16	19	pos	vi.
+3630321	143140	53	19	39	translation	malograrse la carne
+3673243	143140	54	1	14	headorthographic	# á ts áá c u̱ n u #
+1380963	143141	51	0	8	bold	aatsári
+1380964	143141	51	9	15	italic	s.col.
+1380965	143141	52	40	40	hyphen	""
+1380966	143141	52	40	40	newline	""
+1380967	143141	52	40	40	tab	""
+3630322	143141	53	0	8	head	aatsári
+3630323	143141	53	9	15	pos	s.col.
+3630324	143141	53	15	61	translation	especie de roedor nocturno parecido al ratón
+3673244	143141	54	0	8	headorthographic	# aa ts á r i #
+1380968	143142	52	0	0	tab	""
+1380969	143142	52	0	0	tab	""
+1380970	143142	51	0	9	bold	aatsáriu
+3630325	143142	53	0	9	head	aatsáriu
+3630326	143142	53	9	19	translation	un roedor
+3673245	143142	54	0	9	headorthographic	# aa ts á r i u #
+1380971	143143	51	0	6	bold	átsii
+1380972	143143	51	7	17	italic	conj.pron.
+1380973	143143	52	39	39	newline	""
+1380974	143143	52	40	40	tab	""
+3630327	143143	53	0	6	head	átsii
+3630328	143143	53	7	17	pos	conj.pron.
+3630329	143143	53	17	64	translation	ese lugar (mencionado en la oración anterior)
+3673246	143143	54	0	6	headorthographic	# á ts ii #
+1380975	143144	52	0	0	tab	""
+1380976	143144	52	0	0	tab	""
+1380977	143144	51	0	9	bold	átsihdyu
+3630330	143144	53	0	9	head	átsihdyu
+3630331	143144	53	9	22	translation	de ese lugar
+3673247	143144	54	0	9	headorthographic	# á ts i h dy u #
+1380978	143145	52	0	0	tab	""
+1380979	143145	52	0	0	tab	""
+1380980	143145	51	0	8	bold	átsihvu
+3630332	143145	53	0	8	head	átsihvu
+3630333	143145	53	8	20	translation	a ese lugar
+3673248	143145	54	0	8	headorthographic	# á ts i h v u #
+1380981	143146	51	0	14	bold	átsímujtéba
+1380982	143146	51	15	17	italic	s.
+1380983	143146	52	41	41	hyphen	""
+1380984	143146	52	41	41	newline	""
+1380985	143146	52	41	41	tab	""
+3630334	143146	53	0	14	head	átsímujtéba
+3630335	143146	53	15	17	pos	s.
+3630336	143146	53	17	36	translation	inundación grande
+3630337	143146	53	38	54	translation	creciente grande
+3673249	143146	54	0	14	headorthographic	# á ts í m u j t é b a #
+1380986	143147	51	0	14	bold	átsímujtóhi
+1380987	143147	51	15	17	italic	s.
+3630338	143147	53	0	14	head	átsímujtóhi
+3630339	143147	53	15	17	pos	s.
+3630340	143147	53	17	26	translation	restinga
+3673250	143147	54	0	14	headorthographic	# á ts í m u j t ó h i #
+1380988	143148	51	0	13	bold	áátsi̵í̵me
+1380989	143148	51	14	16	italic	s.
+1380990	143148	51	33	42	bold	tsi̵í̵me
+3630341	143148	53	0	13	head	áátsi̵í̵me
+3630342	143148	53	14	16	pos	s.
+3630343	143148	53	16	26	translation	mis hijos
+3673251	143148	54	0	13	headorthographic	# áá ts i ̵ í̵ m e #
+1380991	143149	51	0	3	bold	aau
+1380992	143149	51	4	14	italic	conj.pron.
+1380993	143149	52	39	39	newline	""
+1380994	143149	52	40	40	tab	""
+3630344	143149	53	0	3	head	aau
+3630345	143149	53	4	14	pos	conj.pron.
+3630346	143149	53	14	75	translation	ése (bola, pelota, etc. mencionado en la oración anterior)
+3673252	143149	54	0	3	headorthographic	# aa u #
+1380995	143150	51	0	3	bold	ava
+1380996	143150	51	9	12	bold	áa
+3630347	143150	53	0	3	head	ava
+3673253	143150	54	0	3	headorthographic	# a v a #
+1380997	143151	51	0	7	bold	avyába
+1380998	143151	51	8	14	italic	s.pos.
+3630348	143151	53	0	7	head	avyába
+3630349	143151	53	8	14	pos	s.pos.
+3630350	143151	53	14	22	translation	cogollo
+3673254	143151	54	0	7	headorthographic	# a vy á b a #
+1380999	143152	52	0	0	tab	""
+1381000	143152	52	0	0	tab	""
+1381001	143152	51	0	19	bold	coomí̵jí̵ avyába
+1381002	143152	52	37	37	hyphen	""
+1381003	143152	52	37	37	newline	""
+1381004	143152	52	37	37	tab	""
+3630351	143152	53	0	19	head	coomí̵jí̵ avyába
+3630352	143152	53	19	40	translation	cogollo de ungurahui
+3673255	143152	54	0	19	headorthographic	# c oo m í̵ j í̵ # a vy á b a #
+1381005	143153	51	0	16	bold	avye, ávyécunu
+1381006	143153	51	17	21	italic	abs.
+1381007	143153	52	38	38	newline	""
+1381008	143153	52	39	39	tab	""
+1381009	143153	51	39	71	italic	¡Áyúú, íñéhaca ihdyu avye!
+1381010	143153	52	81	81	newline	""
+1381011	143153	52	82	82	tab	""
+3630353	143153	53	0	4	head	avye
+3630354	143153	53	6	16	head	ávyécunu
+3630355	143153	53	17	21	pos	abs.
+3630356	143153	53	21	30	translation	dolencia
+3630357	143153	53	32	37	translation	dolor
+3630358	143153	53	39	71	example-src	¡Áyúú, íñéhaca ihdyu avye!
+3630359	143153	53	71	103	example-tgt	 ¡Ay, qué dolor! ║ estado de...
+3673256	143153	54	0	4	headorthographic	# a vy e #
+3673257	143153	54	6	16	headorthographic	# á vy é c u n u #
+1381012	143154	52	0	0	tab	""
+1381013	143154	52	0	0	tab	""
+1381014	143154	51	0	18	bold	[avye, avyécu̱nu]
+1381015	143154	51	19	22	italic	ve.
+1381016	143154	52	38	38	newline	""
+1381017	143154	52	39	39	tab	""
+1381018	143154	51	58	77	italic	Mítyane táhbááu
+1381019	143154	52	77	77	newline	""
+1381020	143154	52	78	78	tab	""
+1381021	143154	51	78	95	italic	oke avyécunúhi.
+1381022	143154	52	113	113	newline	""
+1381023	143154	52	114	114	pagebreak	""
+1381024	143154	52	114	114	tab	""
+3630360	143154	53	1	5	head	avye
+3630361	143154	53	7	17	head	avyécu̱nu
+3630362	143154	53	19	22	pos	ve.
+3630363	143154	53	25	31	translation	doler
+3630364	143154	53	33	43	translation	tener pena
+3630365	143154	53	45	56	translation	sentir pena
+3630366	143154	53	127	139	translation	ser picante
+3630367	143154	53	58	95	example-src	Mítyane táhbááu oke avyécunúhi.
+3630368	143154	53	95	125	example-tgt	 Me duele mucho el estómago. 
+3673258	143154	54	1	5	headorthographic	# a vy e #
+3673259	143154	54	7	17	headorthographic	# a vy é c u̱ n u #
+1381025	143155	52	0	0	tab	""
+1381026	143155	52	0	0	tab	""
+1381027	143155	51	0	19	bold	[ávyé(h)/avyéwu]
+1381028	143155	51	20	24	italic	adj.
+1381029	143155	52	37	37	newline	""
+1381030	143155	52	38	38	tab	""
+1381031	143155	51	38	71	italic	Oke naníyó wátsihcyú avyéwu.
+1381032	143155	52	75	75	newline	""
+1381033	143155	52	76	76	tab	""
+1381034	143155	52	112	112	newline	""
+1381035	143155	52	113	113	tab	""
+3630369	143155	53	1	7	head	ávyé
+3630370	143155	53	1	10	head	ávyéh
+3630371	143155	53	11	18	head	avyéwu
+3630372	143155	53	20	24	pos	adj.
+3630373	143155	53	27	36	translation	doloroso
+3630374	143155	53	126	134	translation	picante
+3630375	143155	53	38	71	example-src	Oke naníyó wátsihcyú avyéwu.
+3630376	143155	53	71	124	example-tgt	 Los azotes que me dio mi tío fueron muy dolorosos. 
+3673260	143155	54	1	7	headorthographic	# á vy é #
+3673261	143155	54	1	10	headorthographic	# á vy é h #
+3673262	143155	54	11	18	headorthographic	# a vy é w u #
+1381036	143156	51	0	12	bold	ávyejpácyo
+1381037	143156	51	13	15	italic	s.
+1381038	143156	52	40	40	hyphen	""
+1381039	143156	52	40	40	newline	""
+1381040	143156	52	40	40	tab	""
+3630377	143156	53	0	12	head	ávyejpácyo
+3630378	143156	53	13	15	pos	s.
+3630379	143156	53	15	21	translation	licor
+3630380	143156	53	23	34	translation	aguardiente
+3630381	143156	53	36	64	translation	cualquier bebida alcohólica
+3673263	143156	54	0	12	headorthographic	# á vy e j p á cy o #
+1381041	143157	51	0	14	bold	ávyejpíítye
+1381042	143157	51	15	19	italic	abs.
+3630382	143157	53	0	14	head	ávyejpíítye
+3630383	143157	53	15	19	pos	abs.
+3673264	143157	54	0	14	headorthographic	# á vy e j p íí ty e #
+1381043	143158	52	0	0	tab	""
+1381044	143158	52	0	0	tab	""
+1381045	143158	51	0	15	bold	[ávyéjpiitye]
+1381046	143158	51	16	19	italic	ve.
+1381047	143158	52	38	38	hyphen	""
+1381048	143158	52	38	38	newline	""
+1381049	143158	52	38	38	tab	""
+1381050	143158	51	49	84	italic	Mítyane ó ávyéjpiityé o í̵í̵
+1381051	143158	52	84	84	hyphen	""
+1381052	143158	52	84	84	newline	""
+1381053	143158	52	84	84	tab	""
+1381054	143158	51	84	98	italic	cúné boóne.
+1381055	143158	52	121	121	hyphen	""
+1381056	143158	52	121	121	newline	""
+1381057	143158	52	121	121	tab	""
+3630384	143158	53	1	14	head	ávyéjpiitye
+3630385	143158	53	16	19	pos	ve.
+3630386	143158	53	19	34	translation	estar dolorido
+3630387	143158	53	36	47	translation	tener dolor
+3630388	143158	53	49	98	example-src	Mítyane ó ávyéjpiityé o í̵í̵cúné boóne.
+3630389	143158	53	98	136	example-tgt	 Estoy muy dolorido después de jugar.
+3673265	143158	54	1	14	headorthographic	# á vy é j p ii ty e #
+1381058	143159	51	0	9	bold	avyéjtso
+1381059	143159	51	10	14	italic	abs.
+1381060	143159	52	38	38	newline	""
+1381061	143159	52	39	39	tab	""
+3630390	143159	53	0	9	head	avyéjtso
+3630391	143159	53	10	14	pos	abs.
+3630392	143159	53	14	27	translation	agravamiento
+3673266	143159	54	0	9	headorthographic	# a vy é j ts o #
+1381062	143160	52	0	0	tab	""
+1381063	143160	52	0	0	tab	""
+1381064	143160	51	0	11	bold	[ávyejtso]
+1381065	143160	51	12	15	italic	vt.
+1381066	143160	52	38	38	newline	""
+1381067	143160	52	39	39	tab	""
+1381068	143160	51	58	79	italic	Cuuve ó ávyéjtsoó
+1381069	143160	52	79	79	newline	""
+1381070	143160	52	80	80	tab	""
+1381071	143160	51	80	114	italic	wácyujpa amómé ibóhí̵í̵tuki.
+1381072	143160	52	121	121	newline	""
+1381073	143160	52	122	122	tab	""
+1381074	143160	52	160	160	newline	""
+1381075	143160	52	161	161	tab	""
+3630393	143160	53	1	10	head	ávyejtso
+3630394	143160	53	12	15	pos	vt.
+3630395	143160	53	15	23	translation	agravar
+3630396	143160	53	25	37	translation	intensificar
+3630397	143160	53	39	56	translation	hacer más fuerte
+3630398	143160	53	58	114	example-src	Cuuve ó ávyéjtsoó wácyujpa amómé ibóhí̵í̵tuki.
+3630399	143160	53	114	198	example-tgt	 Por la tarde haré más fuerte el veneno para pescar para que los peces no revivan.
+3673267	143160	54	1	10	headorthographic	# á vy e j ts o #
+1381076	143161	51	0	7	bold	ávyeju
+1381077	143161	51	8	12	italic	abs.
+1381078	143161	51	23	47	italic	Naavéné avyéjú íñe
+1381079	143161	52	47	47	newline	""
+1381080	143161	52	48	48	tab	""
+1381081	143161	51	48	64	italic	ímítyunéhji̵.
+1381082	143161	52	89	89	hyphen	""
+1381083	143161	52	89	89	newline	""
+1381084	143161	52	89	89	tab	""
+1381085	143161	51	122	127	italic	Píí
+1381086	143161	52	127	127	hyphen	""
+1381087	143161	52	127	127	newline	""
+1381088	143161	52	127	127	tab	""
+1381089	143161	51	127	174	italic	vyéébé avyéjú máájtyumí̵ íévéhóówa
+1381090	143161	52	174	174	hyphen	""
+1381091	143161	52	174	174	newline	""
+1381092	143161	52	174	174	tab	""
+1381093	143161	51	174	177	italic	ri.
+3630400	143161	53	0	7	head	ávyeju
+3630401	143161	53	8	12	pos	abs.
+3630402	143161	53	15	21	translation	reino
+3630403	143161	53	113	120	translation	gloria
+3630404	143161	53	23	64	example-src	Naavéné avyéjú íñe ímítyunéhji̵.
+3630405	143161	53	64	111	example-tgt	 El reino de Satanás consiste en cosas malas. 
+3630406	143161	53	122	177	example-src	Píívyéébé avyéjú máájtyumí̵ íévéhóówari.
+3630407	143161	53	177	214	example-tgt	 La gloria de Dios se ve en el cielo.
+3673268	143161	54	0	7	headorthographic	# á vy e j u #
+1381094	143162	51	0	42	bold	ávyéjuúbe, ávyéjujtétsi, ávyéjujte
+1381095	143162	51	43	45	italic	s.
+1381096	143162	52	48	48	hyphen	""
+1381097	143162	52	48	48	newline	""
+1381098	143162	52	48	48	tab	""
+1381099	143162	52	90	90	newline	""
+1381100	143162	52	91	91	tab	""
+3630408	143162	53	0	12	head	ávyéjuúbe
+3630409	143162	53	14	29	head	ávyéjujtétsi
+3630410	143162	53	31	42	head	ávyéjujte
+3630411	143162	53	43	45	pos	s.
+3630412	143162	53	45	50	translation	jefe
+3630413	143162	53	52	58	translation	curaca
+3630414	143162	53	60	67	translation	cacique
+3630415	143162	53	69	76	translation	patrón
+3630416	143162	53	78	84	translation	señor
+3630417	143162	53	86	89	translation	rey
+3630418	143162	53	91	99	translation	soberano
+3630419	143162	53	101	111	translation	presidente
+3673269	143162	54	0	12	headorthographic	# á vy é j uú b e #
+3673270	143162	54	14	29	headorthographic	# á vy é j u j t é ts i #
+3673271	143162	54	31	42	headorthographic	# á vy é j u j t e #
+1381101	143163	51	0	17	bold	ávyéjújkimyéi
+1381102	143163	51	18	22	italic	abs.
+1381103	143163	52	42	42	hyphen	""
+1381104	143163	52	42	42	newline	""
+1381105	143163	52	42	42	tab	""
+3630420	143163	53	0	17	head	ávyéjújkimyéi
+3630421	143163	53	18	22	pos	abs.
+3630422	143163	53	22	34	translation	superación
+3630423	143163	53	36	52	translation	engrandecimiento
+3673272	143163	54	0	17	headorthographic	# á vy é j ú j k i my é i #
+1381129	143165	51	0	17	bold	ávyéjújtsaméi
+1381130	143165	51	18	22	italic	abs.
+3630424	143165	53	0	17	head	ávyéjújtsaméi
+3630425	143165	53	18	22	pos	abs.
+3673273	143165	54	0	17	headorthographic	# á vy é j ú j ts a m é i #
+1381131	143166	52	0	0	tab	""
+1381132	143166	52	0	0	tab	""
+1381133	143166	51	0	20	bold	[ávyéjújtsáme̱i]
+1381134	143166	51	21	24	italic	vr.
+1381135	143166	52	39	39	newline	""
+1381136	143166	52	40	40	tab	""
+3630426	143166	53	1	19	head	ávyéjújtsáme̱i
+3630427	143166	53	21	24	pos	vr.
+3630428	143166	53	24	34	translation	exaltarse
+3630429	143166	53	36	48	translation	ser exaltado
+3630430	143166	53	50	66	translation	ser engrandecido
+3673274	143166	54	1	19	headorthographic	# á vy é j ú j ts á m e̱ i #
+1381137	143167	51	0	12	bold	ávyejújtso
+1381138	143167	51	13	17	italic	abs.
+1381139	143167	52	46	46	newline	""
+1381140	143167	52	47	47	pagebreak	""
+1381141	143167	52	47	47	tab	""
+3630431	143167	53	0	12	head	ávyejújtso
+3630432	143167	53	13	17	pos	abs.
+3630433	143167	53	17	29	translation	exaltación
+3630434	143167	53	31	45	translation	glorificación
+3673275	143167	54	0	12	headorthographic	# á vy e j ú j ts o #
+1381142	143168	52	0	0	tab	""
+1381143	143168	52	0	0	tab	""
+1381144	143168	51	0	14	bold	[ávyéjujtso]
+1381145	143168	51	15	18	italic	vt.
+1381146	143168	52	36	36	hyphen	""
+1381147	143168	52	36	36	newline	""
+1381148	143168	52	36	36	tab	""
+1381149	143168	52	72	72	newline	""
+1381150	143168	52	73	73	tab	""
+1381151	143168	51	105	111	italic	Métsu
+1381152	143168	52	111	111	newline	""
+1381153	143168	52	112	112	tab	""
+1381154	143168	51	112	147	italic	méávyéjújtso méavyéjúúbeke.
+1381155	143168	52	153	153	newline	""
+1381156	143168	52	154	154	tab	""
+3630435	143168	53	1	13	head	ávyéjujtso
+3630436	143168	53	15	18	pos	vt.
+3630437	143168	53	18	26	translation	exaltar
+3630438	143168	53	28	39	translation	engrandecer
+3630439	143168	53	41	59	translation	tratar con respeto
+3630440	143168	53	61	76	translation	tratar como rey
+3630441	143168	53	78	103	translation	jefe o persona importante
+3630442	143168	53	105	147	example-src	Métsu méávyéjújtso méavyéjúúbeke.
+3630443	143168	53	147	179	example-tgt	 Vamos a exaltar a nuestro jefe.
+3673276	143168	54	1	13	headorthographic	# á vy é j u j ts o #
+1381157	143169	51	0	13	bold	ávyejúúlle
+1381158	143169	51	14	18	italic	abs.
+3630444	143169	53	0	13	head	ávyejúúlle
+3630445	143169	53	14	18	pos	abs.
+3630446	143169	53	18	26	translation	respeto
+3673277	143169	54	0	13	headorthographic	# á vy e j úú ll e #
+1381159	143170	52	0	0	tab	""
+1381160	143170	52	0	0	tab	""
+1381161	143170	51	0	13	bold	[avyéjuulle]
+1381162	143170	51	14	17	italic	vt.
+1381163	143170	52	37	37	hyphen	""
+1381164	143170	52	37	37	newline	""
+1381165	143170	52	37	37	tab	""
+1381166	143170	52	73	73	hyphen	""
+1381167	143170	52	73	73	newline	""
+1381168	143170	52	73	73	tab	""
+1381169	143170	51	78	114	italic	Múúne méavyéjuullé máamíajté
+1381170	143170	52	114	114	hyphen	""
+1381171	143170	52	114	114	newline	""
+1381172	143170	52	114	114	tab	""
+1381173	143170	51	114	117	italic	ke.
+1381174	143170	52	145	145	newline	""
+1381175	143170	52	146	146	tab	""
+3630447	143170	53	1	12	head	avyéjuulle
+3630448	143170	53	14	17	pos	vt.
+3630449	143170	53	17	26	translation	respetar
+3630450	143170	53	28	45	translation	tener respeto por
+3630451	143170	53	47	67	translation	tener en gran estima
+3630452	143170	53	69	76	translation	venerar
+3630453	143170	53	78	117	example-src	Múúne méavyéjuullé máamíajtéke.
+3630454	143170	53	117	154	example-tgt	 Debemos respetar a nuestros mayores.
+3673278	143170	54	1	12	headorthographic	# a vy é j uu ll e #
+1381176	143171	51	0	43	bold	ávyéjuúlle, ávyéjujtépi̵, ávyéjujte
+1381177	143171	51	44	46	italic	s.
+1381178	143171	52	46	46	newline	""
+1381179	143171	52	47	47	tab	""
+3630455	143171	53	0	13	head	ávyéjuúlle
+3630456	143171	53	15	30	head	ávyéjujtépi̵
+3630457	143171	53	32	43	head	ávyéjujte
+3630458	143171	53	44	46	pos	s.
+3630459	143171	53	46	52	translation	reina
+3630460	143171	53	54	61	translation	patrona
+3630461	143171	53	63	70	translation	señora
+3673279	143171	54	0	13	headorthographic	# á vy é j uú ll e #
+3673280	143171	54	15	30	headorthographic	# á vy é j u j t é p i ̵ #
+3673281	143171	54	32	43	headorthographic	# á vy é j u j t e #
+1381180	143172	51	0	20	bold	ávyejúúllejcátsi
+1381181	143172	51	21	25	italic	abs.
+1381182	143172	52	40	40	newline	""
+1381183	143172	52	41	41	tab	""
+3630462	143172	53	0	20	head	ávyejúúllejcátsi
+3630463	143172	53	21	25	pos	abs.
+3630464	143172	53	25	39	translation	respeto mutuo
+3673282	143172	54	0	20	headorthographic	# á vy e j úú ll e j c á ts i #
+1381184	143173	52	0	0	tab	""
+1381185	143173	52	0	0	tab	""
+1381186	143173	51	0	24	bold	[ávyéjúúlléjca̱tsi]
+1381187	143173	51	25	30	italic	vrec.
+1381188	143173	52	41	41	newline	""
+1381189	143173	52	42	42	tab	""
+1381190	143173	51	54	75	italic	Áátyáábama muhtsi
+1381191	143173	52	75	75	newline	""
+1381192	143173	52	76	76	tab	""
+1381193	143173	51	76	101	italic	meávyéjúúlléjcatsí.
+1381194	143173	52	116	116	newline	""
+1381195	143173	52	117	117	tab	""
+3630465	143173	53	1	23	head	ávyéjúúlléjca̱tsi
+3630466	143173	53	25	30	pos	vrec.
+3630467	143173	53	30	52	translation	respetarse mutuamente
+3630468	143173	53	54	101	example-src	Áátyáábama muhtsi meávyéjúúlléjcatsí.
+3630469	143173	53	101	147	example-tgt	 Mi esposa y yo nos respetamos el uno al otro.
+3673283	143173	54	1	23	headorthographic	# á vy é j úú ll é j c a̱ ts i #
+1381196	143174	51	0	17	bold	ávyejúúlleméi
+1381197	143174	51	18	22	italic	abs.
+1381198	143174	52	43	43	newline	""
+1381199	143174	52	44	44	tab	""
+1381200	143174	51	44	79	italic	Éje, aallécó ávyéjúúlleméi.
+1381201	143174	52	90	90	newline	""
+1381202	143174	52	91	91	tab	""
+3630470	143174	53	0	17	head	ávyejúúlleméi
+3630471	143174	53	18	22	pos	abs.
+3630472	143174	53	22	42	translation	lo que es respetado
+3630473	143174	53	44	79	example-src	Éje, aallécó ávyéjúúlleméi.
+3630474	143174	53	79	128	example-tgt	 Mira ahí, la jefa muy respetada. ║ efecto de...
+3673284	143174	54	0	17	headorthographic	# á vy e j úú ll e m é i #
+1381203	143175	52	0	0	tab	""
+1381204	143175	52	0	0	tab	""
+1381205	143175	51	0	20	bold	[ávyejúúlléme̱i]
+1381206	143175	51	21	24	italic	vr.
+1381207	143175	52	39	39	newline	""
+1381208	143175	52	40	40	tab	""
+1381209	143175	51	40	88	italic	Táñahbe ávyejúúllémeí í̵tsí̵í̵medívu.
+1381210	143175	52	88	88	newline	""
+1381211	143175	52	89	89	tab	""
+1381212	143175	52	123	123	hyphen	""
+1381213	143175	52	123	123	newline	""
+1381214	143175	52	123	123	tab	""
+3630475	143175	53	1	19	head	ávyejúúlléme̱i
+3630476	143175	53	21	24	pos	vr.
+3630477	143175	53	24	38	translation	ser respetado
+3630478	143175	53	40	88	example-src	Táñahbe ávyejúúllémeí í̵tsí̵í̵medívu.
+3630479	143175	53	88	127	example-tgt	 Mi hermano es respetado por sus hijos.
+3673285	143175	54	1	19	headorthographic	# á vy e j úú ll é m e̱ i #
+1381215	143176	51	0	12	bold	ávyejúúne
+1381216	143176	51	13	15	italic	s.
+1381217	143176	52	40	40	hyphen	""
+1381218	143176	52	40	40	newline	""
+1381219	143176	52	40	40	tab	""
+3630480	143176	53	0	12	head	ávyejúúne
+3630481	143176	53	13	15	pos	s.
+3630482	143176	53	15	28	translation	cosa valiosa
+3630483	143176	53	30	49	translation	cosa de mucho valor
+3673286	143176	54	0	12	headorthographic	# á vy e j úú n e #
+1381220	143177	51	0	12	bold	ávyejúúte
+1381221	143177	51	13	17	italic	abs.
+3630484	143177	53	0	12	head	ávyejúúte
+3630485	143177	53	13	17	pos	abs.
+3673287	143177	54	0	12	headorthographic	# á vy e j úú t e #
+1381222	143178	52	0	0	tab	""
+1381223	143178	52	0	0	tab	""
+1381224	143178	51	0	15	bold	[ávyéju̱u̱te]
+1381225	143178	51	16	19	italic	vi.
+1381226	143178	52	38	38	hyphen	""
+1381227	143178	52	38	38	newline	""
+1381228	143178	52	38	38	tab	""
+1381229	143178	51	66	75	italic	Táñahbe
+1381230	143178	52	75	75	newline	""
+1381231	143178	52	76	76	tab	""
+1381232	143178	51	76	125	italic	ícyooca ávyéjuuté tsííñé iiñújí̵ pañe
+1381233	143178	52	125	125	newline	""
+1381234	143178	52	126	126	tab	""
+1381235	143178	51	126	144	italic	iwákímyeíñeri.
+1381236	143178	52	164	164	newline	""
+1381237	143178	52	165	165	tab	""
+1381238	143178	52	200	200	hyphen	""
+1381239	143178	52	200	200	newline	""
+1381240	143178	52	200	200	tab	""
+3630486	143178	53	1	14	head	ávyéju̱u̱te
+3630487	143178	53	16	19	pos	vi.
+3630488	143178	53	19	43	translation	llegar a ser importante
+3630489	143178	53	45	64	translation	volverse importante
+3630490	143178	53	66	144	example-src	Táñahbe ícyooca ávyéjuuté tsííñé iiñújí̵ pañe iwákímyeíñeri.
+3630491	143178	53	144	222	example-tgt	 Mi hermano llegó a ser un personaje importante que trabaja en el extranjero.
+3673288	143178	54	1	14	headorthographic	# á vy é j u̱u̱ t e #
+1381241	143179	51	0	15	bold	ávyéjuutétso
+1381242	143179	51	16	20	italic	abs.
+3630492	143179	53	0	15	head	ávyéjuutétso
+3630493	143179	53	16	20	pos	abs.
+3673289	143179	54	0	15	headorthographic	# á vy é j uu t é ts o #
+1381243	143180	52	0	0	tab	""
+1381244	143180	52	0	0	tab	""
+1381245	143180	51	0	17	bold	[ávyéjuutétso]
+1381246	143180	51	18	21	italic	vt.
+1381247	143180	52	37	37	hyphen	""
+1381248	143180	52	37	37	newline	""
+1381249	143180	52	37	37	tab	""
+1381250	143180	51	47	81	italic	Ávyéjuube íllíkye ávyéjuuté
+1381251	143180	52	81	81	hyphen	""
+1381252	143180	52	81	81	newline	""
+1381253	143180	52	81	81	tab	""
+1381254	143180	51	81	123	italic	tsó íhyájkímudívú ityéhmétsóneri.
+1381255	143180	52	126	126	newline	""
+1381256	143180	52	127	127	pagebreak	""
+1381257	143180	52	127	127	tab	""
+1381258	143180	52	165	165	hyphen	""
+1381259	143180	52	165	165	newline	""
+1381260	143180	52	165	165	tab	""
+3630494	143180	53	1	16	head	ávyéjuutétso
+3630495	143180	53	18	21	pos	vt.
+3630496	143180	53	21	45	translation	ayudar a ser importante
+3630497	143180	53	47	123	example-src	Ávyéjuube íllíkye ávyéjuutétsó íhyájkímudívú ityéhmétsóneri.
+3630498	143180	53	123	201	example-tgt	 El curaca ayudó a ser importante a su hijo nombrándolo jefe de su personal.
+3673290	143180	54	1	16	headorthographic	# á vy é j uu t é ts o #
+1381261	143181	51	0	11	bold	ávyenéjcu
+1381262	143181	51	12	16	italic	abs.
+3630499	143181	53	0	11	head	ávyenéjcu
+3630500	143181	53	12	16	pos	abs.
+3673291	143181	54	0	11	headorthographic	# á vy e n é j c u #
+1381263	143182	52	0	0	tab	""
+1381264	143182	52	0	0	tab	""
+1381265	143182	51	0	13	bold	[ávyénejcu]
+1381266	143182	51	14	17	italic	vt.
+1381267	143182	52	37	37	newline	""
+1381268	143182	52	38	38	tab	""
+1381269	143182	51	46	82	italic	Óvíi ímíñeúvú ávyénéjcuube
+1381270	143182	52	82	82	newline	""
+1381271	143182	52	83	83	tab	""
+1381272	143182	51	83	116	italic	meí̵í̵nétso cuwájá pañévu.
+1381273	143182	52	124	124	newline	""
+1381274	143182	52	125	125	tab	""
+1381275	143182	52	160	160	newline	""
+1381276	143182	52	161	161	tab	""
+1381277	143182	52	199	199	hyphen	""
+1381278	143182	52	199	199	newline	""
+1381279	143182	52	199	199	tab	""
+1381280	143182	51	203	241	italic	Aadi eene étsii táhíjcyáábeke dá
+1381281	143182	52	241	241	hyphen	""
+1381282	143182	52	241	241	newline	""
+1381283	143182	52	241	241	tab	""
+1381284	143182	51	241	275	italic	vyenéjcú dibye iíllíjkívyeki.
+1381285	143182	52	284	284	hyphen	""
+1381286	143182	52	284	284	newline	""
+1381287	143182	52	284	284	tab	""
+1381288	143182	52	321	321	newline	""
+1381289	143182	52	322	322	tab	""
+3630501	143182	53	1	12	head	ávyénejcu
+3630502	143182	53	14	17	pos	vt.
+3630503	143182	53	17	44	translation	hacer algo con más fuerza
+3630504	143182	53	46	116	example-src	Óvíi ímíñeúvú ávyénéjcuube meí̵í̵nétso cuwájá pañévu.
+3630505	143182	53	116	203	example-tgt	 Dejemos que duerma más profundamente (lit. con más fuerza) para ponerlo en la cama. 
+3630506	143182	53	203	275	example-src	Aadi eene étsii táhíjcyáábeke dávyenéjcú dibye iíllíjkívyeki.
+3630507	143182	53	275	345	example-tgt	 A ese niño que llora pégale con más fuerza para que se arrepienta.
+3673292	143182	54	1	12	headorthographic	# á vy é n e j c u #
+1381290	143183	51	0	7	bold	ávyeta
+1381291	143183	51	8	12	italic	adv.
+1381292	143183	51	33	38	italic	Ávye
+1381293	143183	52	38	38	hyphen	""
+1381294	143183	52	38	38	newline	""
+1381295	143183	52	38	38	tab	""
+1381296	143183	51	38	55	italic	ta ímí diíbye.
+1381297	143183	51	73	79	italic	¡Ávye
+1381298	143183	52	79	79	hyphen	""
+1381299	143183	52	79	79	newline	""
+1381300	143183	52	79	79	tab	""
+1381301	143183	51	79	90	italic	ta diíbye!
+1381302	143183	52	117	117	newline	""
+1381303	143183	52	118	118	tab	""
+3630508	143183	53	0	7	head	ávyeta
+3630509	143183	53	8	12	pos	adv.
+3630510	143183	53	12	16	translation	muy
+3630511	143183	53	18	31	translation	completamente
+3630512	143183	53	33	55	example-src	Ávyeta ímí diíbye.
+3630513	143183	53	55	73	example-tgt	 El es muy bueno. 
+3630514	143183	53	73	90	example-src	¡Ávyeta diíbye!
+3630515	143183	53	90	123	example-tgt	 ¡Qué tal hombre (lit. muy él)!
+3673293	143183	54	0	7	headorthographic	# á vy e t a #
+1381304	143184	51	0	7	bold	avyéte
+1381305	143184	51	8	12	italic	abs.
+1381306	143184	52	34	34	hyphen	""
+1381307	143184	52	34	34	newline	""
+1381308	143184	52	34	34	tab	""
+3630516	143184	53	0	7	head	avyéte
+3630517	143184	53	8	12	pos	abs.
+3630518	143184	53	12	26	translation	empeoramiento
+3630519	143184	53	28	40	translation	agravamiento
+3673294	143184	54	0	7	headorthographic	# a vy é t e #
+1381309	143185	52	0	0	tab	""
+1381310	143185	52	0	0	tab	""
+1381311	143185	51	0	10	bold	[ávye̱te]
+1381312	143185	51	11	14	italic	vi.
+1381313	143185	52	35	35	newline	""
+1381314	143185	52	36	36	tab	""
+1381315	143185	51	50	69	italic	Táñahbe chémeebe
+1381316	143185	52	69	69	newline	""
+1381317	143185	52	70	70	tab	""
+1381318	143185	51	70	93	italic	ávyeté éhnííñevu.
+1381319	143185	52	107	107	newline	""
+1381320	143185	52	108	108	tab	""
+3630520	143185	53	1	9	head	ávye̱te
+3630521	143185	53	11	14	pos	vi.
+3630522	143185	53	14	23	translation	empeorar
+3630523	143185	53	25	34	translation	agravarse
+3630524	143185	53	36	48	translation	ponerse peor
+3630525	143185	53	50	93	example-src	Táñahbe chémeebe ávyeté éhnííñevu.
+3630526	143185	53	93	137	example-tgt	 Mi hermano se agrava más de su enfermedad.
+3673295	143185	54	1	9	headorthographic	# á vy e̱ t e #
+1381321	143186	51	0	11	bold	ávyetétso
+1381322	143186	51	12	16	italic	abs.
+3630527	143186	53	0	11	head	ávyetétso
+3630528	143186	53	12	16	pos	abs.
+3673296	143186	54	0	11	headorthographic	# á vy e t é ts o #
+1381333	143188	51	0	8	bold	avyétso
+1381334	143188	51	9	13	italic	abs.
+3630529	143188	53	0	8	head	avyétso
+3630530	143188	53	9	13	pos	abs.
+3673297	143188	54	0	8	headorthographic	# a vy é ts o #
+1381335	143189	52	0	0	tab	""
+1381336	143189	52	0	0	tab	""
+1381337	143189	51	0	10	bold	[ávyetso]
+1381338	143189	51	11	14	italic	vt.
+1381339	143189	52	36	36	newline	""
+1381340	143189	52	37	37	tab	""
+1381341	143189	51	37	71	italic	Tájtyúhapáájí̵ oke ávyetsó.
+1381342	143189	52	81	81	newline	""
+1381343	143189	52	82	82	tab	""
+3630531	143189	53	1	9	head	ávyetso
+3630532	143189	53	11	14	pos	vt.
+3630533	143189	53	14	22	translation	afligir
+3630534	143189	53	24	35	translation	hacer doler
+3630535	143189	53	37	71	example-src	Tájtyúhapáájí̵ oke ávyetsó.
+3630536	143189	53	71	96	example-tgt	 Mi zapato me hace doler.
+3673298	143189	54	1	9	headorthographic	# á vy e ts o #
+1381344	143190	51	0	7	bold	avyéve
+1381345	143190	51	8	12	italic	abs.
+1381346	143190	52	37	37	newline	""
+1381347	143190	52	38	38	tab	""
+3630537	143190	53	0	7	head	avyéve
+3630538	143190	53	8	12	pos	abs.
+3630539	143190	53	12	17	translation	pena
+3630540	143190	53	19	27	translation	dolencia
+3673299	143190	54	0	7	headorthographic	# a vy é v e #
+1381348	143191	52	0	0	tab	""
+1381349	143191	52	0	0	tab	""
+1381350	143191	51	0	9	bold	[avyéve]
+1381351	143191	51	10	13	italic	vi.
+1381352	143191	52	39	39	hyphen	""
+1381353	143191	52	39	39	newline	""
+1381354	143191	52	39	39	tab	""
+1381355	143191	51	70	80	italic	Íícyooca
+1381356	143191	52	80	80	newline	""
+1381357	143191	52	81	81	tab	""
+1381358	143191	51	81	119	italic	táñúúhéjuri ó avyévé mítyane.
+1381359	143191	52	127	127	newline	""
+1381360	143191	52	128	128	tab	""
+1381361	143191	52	161	161	newline	""
+1381362	143191	52	162	162	tab	""
+1381363	143191	52	200	200	newline	""
+1381364	143191	52	201	201	tab	""
+1381365	143191	51	219	227	bold	beebéve
+3630541	143191	53	1	8	head	avyéve
+3630542	143191	53	10	13	pos	vi.
+3630543	143191	53	16	26	translation	afligirse
+3630544	143191	53	28	34	translation	sufrir
+3630545	143191	53	36	47	translation	sentir pena
+3630546	143191	53	49	54	translation	doler
+3630547	143191	53	56	68	translation	sentir dolor
+3630548	143191	53	188	208	translation	sentir algo picante
+3630549	143191	53	70	119	example-src	Íícyooca táñúúhéjuri ó avyévé mítyane.
+3630550	143191	53	119	186	example-tgt	 En este momento estoy sufriendo mucho por una dolencia del oído. 
+3673300	143191	54	1	8	headorthographic	# a vy é v e #
+1381366	143192	51	0	12	bold	ávyevécunu
+1381367	143192	51	13	17	italic	abs.
+1381368	143192	52	37	37	newline	""
+1381369	143192	52	38	38	tab	""
+3630551	143192	53	0	12	head	ávyevécunu
+3630552	143192	53	13	17	pos	abs.
+3630553	143192	53	17	26	translation	angustia
+3630554	143192	53	28	36	translation	ansiedad
+3630555	143192	53	38	51	translation	preocupación
+3673301	143192	54	0	12	headorthographic	# á vy e v é c u n u #
+1381750	143233	51	0	13	bold	áyáálléwu
+1381751	143233	51	14	16	italic	s.
+3630776	143233	53	0	13	head	áyáálléwu
+3630777	143233	53	14	16	pos	s.
+3630778	143233	53	16	22	translation	chica
+3630779	143233	53	24	32	translation	muchacha
+3673359	143233	54	0	13	headorthographic	# á y áá ll é w u #
+1381752	143234	51	0	6	bold	ayánu
+1381753	143234	51	7	11	italic	abs.
+3630780	143234	53	0	6	head	ayánu
+3630781	143234	53	7	11	pos	abs.
+3673360	143234	54	0	6	headorthographic	# a y á n u #
+1381370	143193	52	0	0	tab	""
+1381371	143193	52	0	0	tab	""
+1381372	143193	51	0	15	bold	[ávyevécu̱nu]
+1381373	143193	51	16	19	italic	ve.
+1381374	143193	52	36	36	newline	""
+1381375	143193	52	37	37	tab	""
+1381376	143193	52	75	75	newline	""
+1381377	143193	52	76	76	tab	""
+1381378	143193	51	76	121	italic	Ávyeta ó ávyevécunú íhyajchííjyúubá
+1381379	143193	52	121	121	newline	""
+1381380	143193	52	122	122	tab	""
+1381381	143193	51	122	161	italic	ávyéjuube íílle ááhí̵véíñeri.
+1381382	143193	52	167	167	newline	""
+1381383	143193	52	168	168	tab	""
+1381384	143193	52	201	201	newline	""
+1381385	143193	52	202	202	tab	""
+3630556	143193	53	1	14	head	ávyevécu̱nu
+3630557	143193	53	16	19	pos	ve.
+3630558	143193	53	19	35	translation	sentir angustia
+3630559	143193	53	37	52	translation	sentir ansiedad
+3630560	143193	53	54	74	translation	sentir preocupación
+3630561	143193	53	76	161	example-src	Ávyeta ó ávyevécunú íhyajchííjyúubá ávyéjuube íílle ááhí̵véíñeri.
+3630562	143193	53	161	227	example-tgt	 Estoy muy preocupado porque creo que el jefe va a visitarnos hoy.
+3673302	143193	54	1	14	headorthographic	# á vy e v é c u̱ n u #
+1381386	143194	51	0	11	bold	ávyevétso
+1381387	143194	51	12	16	italic	abs.
+3630563	143194	53	0	11	head	ávyevétso
+3630564	143194	53	12	16	pos	abs.
+3673303	143194	54	0	11	headorthographic	# á vy e v é ts o #
+1381388	143195	52	0	0	tab	""
+1381389	143195	52	0	0	tab	""
+1381390	143195	51	0	13	bold	[ávyévetso]
+1381391	143195	51	14	17	italic	vt.
+1381392	143195	52	38	38	hyphen	""
+1381393	143195	52	38	38	newline	""
+1381394	143195	52	38	38	tab	""
+1381395	143195	52	77	77	newline	""
+1381396	143195	52	78	78	tab	""
+3630565	143195	53	1	12	head	ávyévetso
+3630566	143195	53	14	17	pos	vt.
+3630567	143195	53	20	28	translation	afligir
+3630568	143195	53	30	42	translation	hacer sufrir
+3630569	143195	53	44	55	translation	causar pena
+3630570	143195	53	59	85	translation	hacer sentir algo picante
+3673304	143195	54	1	12	headorthographic	# á vy é v e ts o #
+1381397	143196	51	0	18	bold	ávi̵j, aví̵ávi̵
+1381398	143196	51	19	24	italic	onom.
+1381399	143196	52	44	44	hyphen	""
+1381400	143196	52	44	44	newline	""
+1381401	143196	52	44	44	tab	""
+1381402	143196	51	77	83	italic	Daalli
+1381403	143196	52	83	83	newline	""
+1381404	143196	52	84	84	tab	""
+1381405	143196	51	84	104	italic	áákityé ‘ávi̵j’.
+1381406	143196	52	127	127	hyphen	""
+1381407	143196	52	127	127	newline	""
+1381408	143196	52	127	127	tab	""
+3630571	143196	53	0	6	head	ávi̵j
+3630572	143196	53	8	18	head	aví̵ávi̵
+3630573	143196	53	19	24	pos	onom.
+3630574	143196	53	24	75	translation	expresa el movimiento de las ramas de los árboles
+3630575	143196	53	77	104	example-src	Daalli áákityé ávi̵j.
+3630576	143196	53	104	140	example-tgt	 El pelejo cayó moviendo las ramas.
+3673305	143196	54	0	6	headorthographic	# á v i ̵ j #
+3673306	143196	54	8	18	headorthographic	# a v í̵ á v i ̵ #
+1381409	143197	51	0	14	bold	ávo, avóávo
+1381410	143197	51	15	20	italic	onom.
+1381411	143197	52	40	40	newline	""
+1381412	143197	52	41	41	tab	""
+1381413	143197	52	77	77	newline	""
+1381414	143197	52	78	78	tab	""
+1381415	143197	52	111	111	hyphen	""
+1381416	143197	52	111	111	newline	""
+1381417	143197	52	111	111	tab	""
+1381418	143197	52	148	148	newline	""
+1381419	143197	52	149	149	tab	""
+3630577	143197	53	0	4	head	ávo
+3630578	143197	53	6	14	head	avóávo
+3630579	143197	53	15	20	pos	onom.
+3630580	143197	53	23	91	translation	expresa deseo de abrigarse o taparse siempre con algo como una capa
+3630581	143197	53	93	116	translation	una gorra o un sombrero
+3630582	143197	53	120	153	translation	expresa deseo de cerrar los ojos
+3673307	143197	54	0	4	headorthographic	# á v o #
+3673308	143197	54	6	14	headorthographic	# a v ó á v o #
+1381420	143198	51	0	28	bold	ávohjácaméi, ávóhcaméi
+1381421	143198	51	29	33	italic	abs.
+1381422	143198	52	41	41	newline	""
+1381423	143198	52	42	42	tab	""
+3630583	143198	53	0	14	head	ávohjácaméi
+3630584	143198	53	16	28	head	ávóhcaméi
+3630585	143198	53	29	33	pos	abs.
+3673309	143198	54	0	14	headorthographic	# á v o h j á c a m é i #
+3673310	143198	54	16	28	headorthographic	# á v ó h c a m é i #
+1381424	143199	52	0	0	tab	""
+1381425	143199	52	0	0	tab	""
+1381426	143199	51	0	32	bold	[ávohjácáme̱i, ávóhcáme̱i]
+1381427	143199	51	33	36	italic	vr.
+1381428	143199	52	36	36	newline	""
+1381429	143199	52	37	37	tab	""
+1381430	143199	52	74	74	hyphen	""
+1381431	143199	52	74	74	newline	""
+1381432	143199	52	74	74	tab	""
+1381433	143199	51	93	112	italic	Tsodáhómú ávóh
+1381434	143199	52	112	112	hyphen	""
+1381435	143199	52	112	112	newline	""
+1381436	143199	52	112	112	tab	""
+1381437	143199	51	112	142	italic	cámeí íwatájcojí̵í̵nevu.
+1381438	143199	52	155	155	newline	""
+1381439	143199	52	156	156	tab	""
+3630586	143199	53	1	16	head	ávohjácáme̱i
+3630587	143199	53	18	31	head	ávóhcáme̱i
+3630588	143199	53	33	36	pos	vr.
+3630589	143199	53	39	58	translation	ponerse boca abajo
+3630590	143199	53	62	70	translation	taparse
+3630591	143199	53	72	91	translation	ponerse algo encima
+3630592	143199	53	93	142	example-src	Tsodáhómú ávóhcámeí íwatájcojí̵í̵nevu.
+3630593	143199	53	142	179	example-tgt	 Los soldados se pusieron los cascos.
+3673311	143199	54	1	16	headorthographic	# á v o h j á c á m e̱ i #
+3673312	143199	54	18	31	headorthographic	# á v ó h c á m e̱ i #
+1381440	143200	51	0	19	bold	ávohjáco, avóhco
+1381441	143200	51	20	24	italic	abs.
+1381442	143200	52	41	41	hyphen	""
+1381443	143200	52	41	41	newline	""
+1381444	143200	52	41	41	tab	""
+3630594	143200	53	0	10	head	ávohjáco
+3630595	143200	53	12	19	head	avóhco
+3630596	143200	53	20	24	pos	abs.
+3630597	143200	53	27	34	translation	volteo
+3630598	143200	53	38	49	translation	tapamiento
+3630599	143200	53	51	59	translation	tapadura
+3673313	143200	54	0	10	headorthographic	# á v o h j á c o #
+3673314	143200	54	12	19	headorthographic	# a v ó h c o #

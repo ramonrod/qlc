@@ -1,0 +1,42 @@
+id	startpage	startletters	endpage	src_language_bookname	tgt_language_bookname	src_language_id	tgt_language_id	book_id	component_id
+445	1		1	Aisi	English	411	330	398	45
+203	69	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	105	Castellano	Cashibo-Cacataibo	329	405	39	43
+185	25	[u'-', u'a', u'b', u'c', u'd', u'e', u'g', u'h', u'i', u'j', u'k', u'l', u'm', u'n', u'o', u'p', u'r', u't', u'u', u'v', u'w', u'y']	339	Bora	Castellano	332	329	26	41
+192	85	[u'-', u'a', u'b', u'c', u'e', u'i', u'j', u'k', u'm', u'n', u'p', u'r', u's', u't', u'u', u'w', u'y']	344	Achuar-Shiwiar	Castellano	338	329	33	42
+193	347	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'k', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	517	Castellano	Achuar-Shiwiar	329	338	33	42
+186	1	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u't', u'u', u'v', u'z']	126	Huitoto	Español	333	329	27	41
+204	115	[u'(', u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v']	132	Portuguese	Kaxarari	331	406	40	43
+187	3	[u'a', u'b', u'c', u'd', u'e', u'g', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u't', u'u', u'v']	74	Huitoto Muinane	Castellano	333	329	28	41
+447	1		1	Kulsab	English	511	330	400	45
+210	17	[u'c', u'h', u'i', u'j', u'l', u'm', u'n', u'p', u'q', u'r', u's', u't', u'v', u'x', u'y', u'z']	108	Amahuaca	Castellano	410	329	44	43
+194	1	[u'a', u'b', u'c', u'd', u'e', u'i', u'j', u'k', u'm', u'n', u'p', u's', u't', u'u', u'w', u'y']	90	Aguaruna	Castellano	339	329	34	42
+195	107	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	199	Castellano	Aguaruna	329	339	34	42
+211	113	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	135	Castellano	Amahuaca	329	410	44	43
+205	85	[u'-', u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'y', u'\u2013', u'\u2039']	432	Shipibo	Castellano	407	329	41	43
+206	439	[u'-', u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'k', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	537	Castellano	Shipibo	329	407	41	43
+196	15	[u'a', u'c', u'e', u'i', u'j', u'k', u'm', u'n', u'p', u'r', u's', u't', u'u', u'w', u'y']	125	Humabisa	Castellano	340	329	35	42
+197	129	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'k', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	221	Castellano	Huambisa	329	340	35	42
+189	67	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'i', u'j', u'k', u'l', u'm', u'n', u'o', u'p', u'r', u's', u't', u'u', u'v', u'x']	161	Ocaina	Castellano	337	329	30	41
+198	112	[u'.', u'?', u'a', u'c', u'e', u'i', u'j', u'k', u'm', u'n', u'p', u'r', u's', u't', u'u', u'w', u'y', u'\u21e8']	495	Shuar	Castellano	341	329	36	42
+207	205	[u'a', u'b', u'c', u'd', u'e', u'i', u'm', u'n', u'o', u'p', u'q', u's', u't', u'u']	245	Mayoruna	Spanish	408	329	42	43
+212	30	[u'a', u'c', u'i', u'j', u'k', u'm', u'n', u'p', u'r', u's', u't', u'u']	57	Záparo	Castellano	404	329	45	44
+199	19	[u'a', u'b', u'c', u'd', u'e', u'f', u'i', u'j', u'k', u'm', u'n', u'p', u's', u't', u'u', u'w', u'y']	150	Aguaruna	Castellano	339	329	37	42
+200	159	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'k', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z', u'\xa1', u'\xbf']	292	Castellano	Aguaruna	329	339	37	42
+449	1		1	Mum	English	415	330	402	45
+201	329	[u'a', u'e', u'h', u'i', u'k', u'm', u'n', u'p', u'r', u's', u't', u'u', u'v', u'w', u'x', u'y']	369	Katukina	Português	341	331	38	43
+208	13	[u'-', u'a', u'b', u'c', u'd', u'e', u'i', u'j', u'k', u'l', u'm', u'n', u'p', u's', u't', u'u', u'v', u'x', u'y', u'\u2013']	422	Cashinahua	Castellano	409	329	43	43
+209	425	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y', u'z']	548	Castellano	Cashinahua	329	409	43	43
+202	19	"[u""'"", u'a', u'b', u'c', u'e', u'i', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'x']"	65	Cashibo-Cacataibo	Castellano	405	329	39	43
+451	1		1	Sirva	English	417	330	404	45
+446	1		1	Apali̵	English	418	330	399	45
+448	1		1	Manat	English	414	330	401	45
+450	1		1	Nend	English	416	330	403	45
+452	9	[u'-', u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v']	120	Muinane	Español	336	329	405	41
+436	797	[u' ', u'a', u'b', u'd', u'e', u'f', u'g', u'i', u'j', u'k', u'm', u'n', u'o', u'r', u't', u'u', u'v', u'y', u'z', u'{']	912	Uitoto	Español	335	329	366	41
+457	3	[u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'h', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v', u'y']	145	Español	Tuyuca	329	396	411	46
+456	4		125	Español	Siriano	329	386	410	46
+467	19	[u'(', u'-', u'a', u'b', u'c', u'd', u'e', u'f', u'g', u'i', u'j', u'l', u'm', u'n', u'o', u'p', u'q', u'r', u's', u't', u'u', u'v']	262	Huitoto Murui	Castellano	335	329	444	41
+474	11		97	Carapana	Español	355	329	451	46
+478	242		266	Yawanawá	Português	513	331	455	43
+482	7		28	Castellano	Huariapano	329	516	460	43
+481	7		97	Tucano	Castellano	389	329	459	46
