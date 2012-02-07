@@ -195,11 +195,8 @@ class WordlistStoreWithNgrams:
         print (self.languages)
 
 
-
-
-
 if __name__=="__main__":
-    from qlc.CorpusReader import CorpusReaderWordlist
+    from qlc.corpusreader import CorpusReaderWordlist
     from qlc.orthography import OrthographyParser
 
     cr = CorpusReaderWordlist("data/csv")

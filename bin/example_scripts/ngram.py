@@ -23,7 +23,7 @@ Authors:
 #-----------------------------------------------------------------------------
 import sys, os, itertools, collections
 
-from qlc.CorpusReader import CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderWordlist
 from qlc.orthography import OrthographyParser
 
 import qlc.ngram

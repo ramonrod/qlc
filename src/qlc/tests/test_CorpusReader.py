@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #-----------------------------------------------------------------------------
-# Copyright (c) 2011, Quantitative Language Comparison Team
+# Copyright (c) 2011, 2012, Quantitative Language Comparison Team
 #
 # Distributed under the terms of the Modified BSD License.
 #
@@ -10,7 +10,7 @@
 import os, types
 import numpy.testing
 
-from qlc.CorpusReader import CorpusReaderDict, CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderDict, CorpusReaderWordlist
 
 class testCorpusReaderDict(numpy.testing.TestCase):
     

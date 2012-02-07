@@ -282,13 +282,15 @@ class WikiExtractor:
         bad_left_wikilink_pattern = self.__wikilink_pattern[1]
         for match in bad_left_wikilink_pattern.finditer(wiki_document.text):
             wikilink = match.group()
-            document_title, link_text = self.__handle_wikilink(wikilink[1:-2])
-            wiki_document.text = wiki_document.text.replace(wikilink, self.__get_anchor_tag(document_title, link_text))
+            #document_title, link_text = self.__handle_wikilink(wikilink[1:-2])
+            #wiki_document.text = wiki_document.text.replace(wikilink, self.__get_anchor_tag(document_title, link_text))
+            wiki_document.text = wiki_document.text.replace(wikilink, self.__handle_wikilink(wikilink[1:-2])[1])
         bad_right_wikilink_pattern = self.__wikilink_pattern[2]
         for match in bad_right_wikilink_pattern.finditer(wiki_document.text):
             wikilink = match.group()
-            document_title, link_text = self.__handle_wikilink(wikilink[2:-1])
-            wiki_document.text = wiki_document.text.replace(wikilink, self.__get_anchor_tag(document_title, link_text))
+            #document_title, link_text = self.__handle_wikilink(wikilink[2:-1])
+            #wiki_document.text = wiki_document.text.replace(wikilink, self.__get_anchor_tag(document_title, link_text))
+            wiki_document.text = wiki_document.text.replace(wikilink, self.__handle_wikilink(wikilink[2:-1])[1])
         wiki_document.text = wiki_document.text.replace('[[', '').replace(']]', '')
 
         # Elimina i link HTTP
@@ -416,7 +418,7 @@ class WikiExtractor:
     def __handle_unicode(self, entity):
         numeric_code = int(entity[2:-1])
         if numeric_code >= 0x10000: return ''
-        return unichr(numeric_code)
+        return chr(numeric_code)
 
 #------------------------------------------------------------------------------
 
@@ -454,7 +456,7 @@ class OutputSplitter:
         if self.__compress:
             return bz2.BZ2File('%s.bz2' % file_name, 'w')
         else:
-            return open(file_name, 'w')
+            return open(file_name, 'w', encoding="utf-8")
 
     def __close_cur_file(self):
         self.__out_file.close()
@@ -471,8 +473,9 @@ class OutputSplitter:
 
 def process_data(input_file, wiki_extractor, output_splitter):
     page = []
-    for line in input_file:
+    for line in open(input_file, "r", encoding="utf-8"):
         line = line.strip()
+        #print(type(line))
         if line == '<page>':
             page = []
         elif line == '</page>':
@@ -492,7 +495,7 @@ def process_page(page, wiki_extractor, output_splitter):
     wiki_document = wiki_extractor.extract(wiki_document)
     if not wiki_document: return
 
-    output_splitter.write(wiki_document.__str__().encode('utf-8'))
+    output_splitter.write(wiki_document.__str__())
 
 #------------------------------------------------------------------------------
 
@@ -599,7 +602,8 @@ def main():
 
     wiki_extractor = WikiExtractor()
     output_splitter = OutputSplitter(compress, file_size, output_dir)
-    process_data(fileinput.input(args), wiki_extractor, output_splitter)
+
+    process_data(args[0], wiki_extractor, output_splitter)
 
     output_splitter.close()
 

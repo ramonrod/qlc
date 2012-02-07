@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from qlc.CorpusReader import CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderWordlist
 import qlc.ngram
 import qlc.orthography
 

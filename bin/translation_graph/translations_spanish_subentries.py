@@ -3,13 +3,13 @@
 import sys, codecs, collections
 from operator import itemgetter
 
-from qlc.CorpusReader import CorpusReaderDict
+from qlc.corpusreader import CorpusReaderDict
 
 
 def main(argv):
 
     if len(argv) < 3:
-        print "call: translations_spanish_1.py data_path bibtex_key"
+        print("call: translations_spanish_1.py data_path bibtex_key")
         sys.exit(1)
 
     cr = CorpusReaderDict(argv[1])
@@ -17,7 +17,7 @@ def main(argv):
     dictdata_ids = []    
     dictdata_ids = cr.dictdata_ids_for_bibtex_key(argv[2])
     if len(dictdata_ids) == 0:
-        print "did not find any dictionary data for the bibtex_key."
+        print("did not find any dictionary data for the bibtex_key.")
         sys.exit(1)
 
     
@@ -33,7 +33,7 @@ def main(argv):
                     translations[t] += 1
 
         for w in sorted(translations.iteritems(), key=itemgetter(1), reverse=True):
-            output.write(u"{0}\t{1}\n".format(w[0], w[1]))
+            output.write("{0}\t{1}\n".format(w[0], w[1]))
     
 if __name__ == "__main__":
     main(sys.argv)

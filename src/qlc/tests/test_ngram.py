@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #-----------------------------------------------------------------------------
-# Copyright (c) 2011, Quantitative Language Comparison Team
+# Copyright (c) 2011, 2012, Quantitative Language Comparison Team
 #
 # Distributed under the terms of the Modified BSD License.
 #
@@ -30,6 +30,3 @@ class testNgram(numpy.testing.TestCase):
         resulting_matrix = \
             words_ngrams_matrix_for_graphemes_list(test_list_words)
         assert(len(resulting_matrix[0]) == len(test_list_words))
-        
-if __name__ == '__main__':
-      NumpyTest().run()

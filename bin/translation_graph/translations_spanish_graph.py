@@ -12,7 +12,7 @@ that are represented by the same string.
 
 import sys, codecs, collections, unicodedata, re
 
-from qlc.CorpusReader import CorpusReaderDict
+from qlc.corpusreader import CorpusReaderDict
 from networkx import Graph
 from qlc.translationgraph import write
 
