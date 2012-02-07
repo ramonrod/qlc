@@ -137,6 +137,9 @@ class OrthographyParser(object):
 
         """
         (success, graphemes) = self.parse_string_to_graphemes_string(string)
+        if not success:
+            return (False, graphemes)
+
 
         # flip the graphemes into phonemes
         # this is so ghetto and fragile -- depends on the precise encoding of the orthography profile
