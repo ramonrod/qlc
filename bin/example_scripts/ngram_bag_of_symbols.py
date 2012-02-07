@@ -27,7 +27,7 @@ import numpy
 import scipy.misc
 
 import qlc
-from qlc.CorpusReader import CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderWordlist
 from qlc.orthography import OrthographyParser
 from qlc.datatypes import WordlistStoreWithNgrams
 

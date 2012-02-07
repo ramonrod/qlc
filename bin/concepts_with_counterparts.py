@@ -8,12 +8,11 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 #-----------------------------------------------------------------------------
 
-import sys, os, glob
+import sys
 import codecs
 import collections
 
-from zipfile import ZipFile
-from qlc.CorpusReader import CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderWordlist
 
 def main(argv):
 

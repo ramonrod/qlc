@@ -4,7 +4,7 @@ import sys, codecs, collections, unicodedata
 import regex as re
 from operator import itemgetter
 
-from qlc.CorpusReader import CorpusReaderDict
+from qlc.corpusreader import CorpusReaderDict
 
 # snowball stemmer: http://snowball.tartarus.org/download.php
 import Stemmer

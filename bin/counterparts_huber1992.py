@@ -12,7 +12,7 @@ import sys, os, glob
 import codecs
 
 from zipfile import ZipFile
-from qlc.CorpusReader import CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderWordlist
 
 families = {
     'embera Darién': 'CHOCO',
