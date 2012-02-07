@@ -23,7 +23,7 @@ Authors:
 #-----------------------------------------------------------------------------
 import sys, os, itertools, collections
 
-from qlc.CorpusReader import CorpusReaderWordlist
+from qlc.corpusreader import CorpusReaderWordlist
 from qlc.orthography import OrthographyParser
 
 import qlc.ngram
@@ -35,7 +35,7 @@ def main(argv):
         print("call: counterparts_huber1992.py data_path")
         exit(1)
 
-    cr = CorpusReaderWordlist(argv[1])
+    cr = CorpusReaderWordlist(os.path.join(argv[1], "csv"))
     o = OrthographyParser(os.path.join(argv[1], "orthography_profiles", "huber1992.txt"))
     
     ngrams_by_language_count = list()
@@ -46,9 +46,9 @@ def main(argv):
         #print wordlistdata_id
         language_bookname = cr.get_language_bookname_for_wordlistdata_id(wordlistdata_id)
         language_code = cr.get_language_code_for_wordlistdata_id(wordlistdata_id)
-                
+
         counterpart_graphemes = (o.parse_string_to_graphemes(counterpart) \
-            for counterpart in cr.counterparts_for_wordlistdata_id(wordlistdata_id))
+               for counterpart in cr.counterparts_for_wordlistdata_id(wordlistdata_id))
 
         matrix = qlc.ngram.words_ngrams_matrix_for_graphemes_list(counterpart_graphemes, 2)
         
