@@ -16,7 +16,7 @@ class testCorpusReaderDict(numpy.testing.TestCase):
     
     @classmethod 
     def setupAll(cls):
-        data_path = "data"
+        data_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "data", "testcorpus")
         if not os.path.exists(data_path):
             raise(IOError("The data path {0} could not be found.".format(data_path)))
         cls.cr = CorpusReaderDict(data_path)
@@ -59,7 +59,7 @@ class testCorpusReaderWordlist(numpy.testing.TestCase):
     
     @classmethod 
     def setupAll(cls):
-        data_path = "data"
+        data_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "data", "testcorpus")
         if not os.path.exists(data_path):
             raise(IOError("The data path {0} could not be found.".format(data_path)))
         cls.cr = CorpusReaderWordlist(data_path)
