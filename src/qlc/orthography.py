@@ -125,6 +125,33 @@ class OrthographyParser(object):
 
         return (success, tuple(graphemes.split(" ")))
 
+    def parse_string_to_ipa_phonemes(self, string):
+        """
+        Accepts a string and returns a IPA parsed tuple of phonemes.
+
+        Args:
+        - string (obligatory): the string to be parsed
+
+        Returns:    
+        - the parsed string as a tuple of phonemes
+
+        """
+        (success, graphemes) = self.parse_string_to_graphemes_string(string)
+
+        # flip the graphemes into phonemes
+        # this is so ghetto and fragile -- depends on the precise encoding of the orthography profile
+        
+        graphemes = graphemes.split(" ")
+        ipa = []
+        for i in range (0, len(graphemes)):
+            if graphemes[i] == "#":
+                ipa.append(graphemes[i])
+                continue
+            grapheme = self.graphemeToPhoneme[graphemes[i]]
+            if grapheme != "" and grapheme != " ":
+                ipa.append(grapheme)
+
+        return (success, tuple(ipa))
 
     def parse_string_to_ipa_string(self, string):
         """
@@ -288,4 +315,5 @@ if __name__=="__main__":
         print("parse_string_to_ipa_string: ", o.parse_string_to_ipa_string(word))
         print("parse_string_to_graphemes: ", o.parse_string_to_graphemes(word))
         print()
+
 
