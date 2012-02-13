@@ -28,7 +28,7 @@ number of files of similar size in a given directory. Each file contains
 several documents in Tanl document format.
 
 Usage:
-  WikiExtractor.py [options]
+  WikiExtractor.py [options] (e.g. python3 bin/wikiextractor.py data/eswiki-20120128-pages-articles.xml -o data/eswiki -b 6000M)
 
 Options:
   -c, --compress        : compress output files using bzip2 algorithm
