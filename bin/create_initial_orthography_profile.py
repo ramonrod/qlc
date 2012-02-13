@@ -9,7 +9,7 @@ resource
 
 import sys, collections
 import qlc.utils
-from qlc.CorpusReader import CorpusReaderDict
+from qlc.corpusreader import CorpusReaderDict
 from datetime import datetime
 
 

@@ -1,0 +1,136 @@
+id	entry_id	annotationtype_id	start	end	value	string
+1	1	53	0	9	counterpart	íinanee
+2	2	53	0	8	counterpart	póʔtaʃ
+43	32	53	0	6	counterpart	iɯ́ɸe
+3	3	53	0	9	counterpart	kongi̵ra
+4	4	53	0	10	counterpart	kʰĩrã́me
+5	5	53	0	12	counterpart	jẽ́bẽ́ro
+6	6	53	0	8	counterpart	pébrat
+44	33	53	0	8	counterpart	nɔ̃h kæd
+7	7	53	0	12	counterpart	jãʔbãdõ
+8	8	53	0	9	counterpart	meukʰĩir
+9	8	52	9	9	newline	""
+10	8	52	10	64	footnote	Acento no se ha indicado (stress has not been marked).
+69	49	53	0	10	counterpart	dẽ́diru
+70	49	53	12	20	counterpart	dẽ́ru
+11	9	53	0	6	counterpart	kálʲu
+45	34	53	0	6	counterpart	iɯ́pe
+12	10	53	0	6	counterpart	lengua
+13	11	53	0	7	counterpart	kobi̵nə
+14	12	53	0	10	counterpart	peébato
+46	35	53	0	10	counterpart	kʰĩrãmé
+15	13	53	0	9	counterpart	jẽbẽro
+16	14	53	0	11	counterpart	jẽbẽ́rõ
+17	15	53	0	8	counterpart	ʤemeɲo
+47	36	53	0	15	counterpart	pee:bári̵to
+18	17	53	0	12	counterpart	jẽ́bẽrõ
+71	50	53	0	11	counterpart	koríʔgəni̵
+19	18	53	0	10	counterpart	kʰĩrã́me
+20	18	52	11	11	newline	""
+21	18	52	12	24	footnote	+ kʰẽrã́me
+22	18	53	14	24	counterpart	kʰẽrã́me
+48	37	53	0	9	counterpart	wallená
+49	37	52	10	10	newline	""
+50	37	52	11	27	footnote	Véase (See) 234
+24	20	53	25	35	counterpart	ueninéne
+25	20	53	37	45	counterpart	uecnená
+26	20	52	15	15	newline	""
+27	20	52	16	45	footnote	Giacone: ue-ninéne; uecnená
+28	21	53	0	8	counterpart	néxeba
+29	22	53	0	8	counterpart	wanène
+51	38	53	0	12	counterpart	peéborto
+30	23	53	0	6	counterpart	ni̵ik²
+31	24	53	0	13	counterpart	rẽrõkaʔka
+81	60	53	0	6	counterpart	dĩ̵k³
+32	25	53	0	10	counterpart	eʔhéepé
+52	39	53	0	13	counterpart	jẽbẽrõ
+33	26	53	0	11	counterpart	jẽʔbẽdõ
+34	27	53	0	6	counterpart	nili̵
+35	27	52	7	7	newline	""
+36	27	52	8	41	footnote	Datos tentativos (tentative data)
+72	51	53	0	9	counterpart	jankwixia
+37	28	53	0	6	counterpart	nikaka
+53	40	53	0	14	counterpart	ní̵í̵xi̵kʷa
+54	40	52	15	15	newline	""
+55	40	52	16	35	footnote	+ mé-ʔ ní̵xi̵-kʷa
+56	40	53	18	35	counterpart	méʔ ní̵xi̵kʷa
+38	29	53	0	5	counterpart	kùwa
+39	30	53	0	14	counterpart	jeméɸikitiali
+40	30	52	15	15	newline	""
+41	30	52	16	45	footnote	Giacone: ue-ninéne; uecnená
+42	31	53	0	5	counterpart	thune
+57	41	53	0	7	counterpart	iiniko
+73	52	53	0	6	counterpart	tongue
+58	42	53	0	5	counterpart	nili̵
+59	43	53	0	4	counterpart	ihka
+89	68	53	0	3	counterpart	dok
+60	44	53	0	10	counterpart	kʰẽrẽ́me
+74	53	53	0	8	counterpart	noenene
+61	45	53	0	6	counterpart	kuáaʔ
+62	46	53	0	6	counterpart	nuneni
+63	46	52	7	7	newline	""
+64	46	52	8	35	footnote	= ‘mi-lengua’ (‘my-tongue’)
+82	61	53	0	12	counterpart	dẽʔdíru
+65	47	53	0	5	counterpart	iɯɸe
+66	48	53	0	14	counterpart	peh kaʧiéʔt
+67	48	52	14	14	newline	""
+68	48	52	15	123	footnote	Por falta de un análisis adecuado, no se incluyen las vocales alargadas, que posiblemente son fonemáticas.
+75	54	53	0	11	counterpart	jẽbẽrõ
+76	55	53	0	10	counterpart	kʰĩrã́me
+83	62	53	0	12	counterpart	jẽbẽ́rõ
+77	56	53	0	10	counterpart	hebẽ́do
+78	57	53	0	10	counterpart	kʰĩrã́me
+79	58	53	0	13	counterpart	hĩɲṍṍʔɸɯ
+90	69	53	0	13	counterpart	ní̵í̵hi̵kʷa
+91	69	53	15	30	counterpart	í̵ʔní̵hi̵kʷat
+80	59	53	0	10	counterpart	jẽbẽrõ
+84	63	53	0	11	counterpart	huáŋgəldə
+85	64	53	0	12	counterpart	jẽʔbẽ́rõ
+96	74	53	0	10	counterpart	nambunúka
+86	65	53	0	9	counterpart	biʧtáxa
+92	70	53	0	12	counterpart	dẽbẽ tojo
+87	66	53	0	11	counterpart	zẽmẽjõ
+88	67	53	0	5	counterpart	anene
+93	71	53	0	9	counterpart	semẽjo
+97	75	53	0	6	counterpart	itʰái
+98	75	52	6	6	newline	""
+99	75	52	6	72	footnote	Todas palabras con vocal inicial empiezan con la oclusiva glotal.
+94	72	53	0	6	counterpart	núma
+102	78	53	0	9	counterpart	di̵sero
+95	73	53	0	6	counterpart	póʔta
+100	76	53	0	9	counterpart	i̵héro
+101	77	53	0	10	counterpart	pekíboat
+103	79	53	0	1	counterpart	i
+104	79	52	1	1	newline	""
+105	79	52	1	67	footnote	Todas palabras con vocal inicial empiezan con la oclusiva glotal.
+789356	19	53	0	6	counterpart	wajée
+789357	19	53	7	18	counterpart	wajee
+789358	19	53	7	18	counterpart	waajee
+106	80	53	0	5	counterpart	sími
+107	81	53	0	4	counterpart	boca
+108	83	53	0	12	counterpart	pekoibóto
+109	84	53	0	7	counterpart	i̵hero
+110	85	53	0	5	counterpart	risé
+111	86	53	0	9	counterpart	ʤi̵ʔopo
+112	87	53	0	6	counterpart	núma
+113	88	53	0	9	counterpart	í̵sero
+114	89	53	0	5	counterpart	itʰé
+115	89	52	5	5	newline	""
+116	89	52	5	71	footnote	Todas palabras con vocal inicial empiezan con la oclusiva glotal.
+168	118	53	0	4	counterpart	ɸue
+117	90	53	0	10	counterpart	wáani̵ki̵
+118	90	52	11	11	newline	""
+119	90	52	12	25	footnote	(wa-aani̵ki̵)
+120	91	53	21	28	counterpart	uanuma
+121	91	52	11	11	newline	""
+122	91	52	12	28	footnote	Giacone: ua-numa
+123	92	53	0	7	counterpart	íixi̵
+124	93	53	0	8	counterpart	wanùma
+169	119	53	0	9	counterpart	peh káʧa
+125	94	53	0	12	counterpart	paan²at¹ it¹
+126	95	53	0	13	counterpart	rihokopea
+192	137	53	0	8	counterpart	jiʔobo
+127	96	53	0	4	counterpart	nó
+170	120	53	0	8	counterpart	disíro
+171	120	53	10	18	counterpart	isíro
+128	97	53	0	9	counterpart	di̵sero

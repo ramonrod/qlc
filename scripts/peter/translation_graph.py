@@ -5,7 +5,7 @@ import collections
 import re
 import copy
 
-from qlc.CorpusReader import CorpusReaderDict
+from qlc.corpusreader import CorpusReaderDict
 from qlc.translationgraph import read, write
 import qlc.utils
 
@@ -18,7 +18,7 @@ cr = CorpusReaderDict("c:/data/qlc")
 dictdata_ids = cr.dictdata_ids_for_component("Witotoan")
 re_quotes = re.compile('"')
 
-print dictdata_ids
+print(dictdata_ids)
 
 graphs = list()
 for dictdata_id in dictdata_ids:
@@ -42,14 +42,14 @@ for dictdata_id in dictdata_ids:
         if src_language_iso == 'spa':
             (head, translation) = (translation, head)
 
-        head_with_source = re_quotes.sub('', u"{0}|{1}".format(head, bibtex_key))
+        head_with_source = re_quotes.sub('', "{0}|{1}".format(head, bibtex_key))
         translation = re_quotes.sub('', translation)
         gr.add_node(head_with_source, attr_dict={ "lang": language_iso, "source": bibtex_key })
         gr.add_node(translation, attr_dict={ "lang": "spa" })
         gr.add_edge(head_with_source, translation)
     graphs.append(gr)
 
-print networkx.algorithms.components.number_connected_components(graphs[0])
+print(networkx.algorithms.components.number_connected_components(graphs[0]))
 
 combined_graph = copy.deepcopy(graphs[0])
 for gr in graphs[1:]:
@@ -58,7 +58,7 @@ for gr in graphs[1:]:
     for n1, n2 in gr.edges_iter():
         combined_graph.add_edge(n1, n2, gr.edge[n1][n2])
 
-print networkx.algorithms.components.number_connected_components(combined_graph)
+print(networkx.algorithms.components.number_connected_components(combined_graph))
 
 combined_graph_stemmed = copy.deepcopy(combined_graph)
 
@@ -76,7 +76,7 @@ for node in combined_graph.nodes():
             combined_graph_stemmed.add_node(stem, is_stem=True)
             combined_graph_stemmed.add_edge(stem, node)
 
-print networkx.algorithms.components.number_connected_components(combined_graph_stemmed)
+print(networkx.algorithms.components.number_connected_components(combined_graph_stemmed))
 
 OUT = codecs.open("translation_graph_stemmed.dot", "w", "utf-8")
 OUT.write(write(combined_graph_stemmed))

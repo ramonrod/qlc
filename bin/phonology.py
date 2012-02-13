@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-import sys, os, glob
+import sys
 import codecs
 
-from zipfile import ZipFile
-from qlc.CorpusReader import CorpusReaderDict
+from qlc.corpusreader import CorpusReaderDict
 
 def main(argv):
 
     if len(argv) < 2:
-        print "call: phonology.py data_path [bibtex_key]"
+        print("call: phonology.py data_path [bibtex_key]")
         exit(1)
 
     cr = CorpusReaderDict(argv[1])
