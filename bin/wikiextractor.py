@@ -270,13 +270,13 @@ class WikiExtractor:
 
         # Gestisce i wikilink (ben formattati; due livelli di annidamento)
         good_wikilink_pattern = self.__wikilink_pattern[0]
-        #for match in good_wikilink_pattern.finditer(wiki_document.text):
-        #    wikilink = match.group()
-        #    document_title, link_text = self.__handle_wikilink(wikilink[2:-2])
-        #    wiki_document.text = wiki_document.text.replace(wikilink, self.__get_anchor_tag(document_title, link_text))
         for match in good_wikilink_pattern.finditer(wiki_document.text):
             wikilink = match.group()
-            wiki_document.text = wiki_document.text.replace(wikilink, self.__handle_wikilink(wikilink[2:-2])[1])
+            document_title, link_text = self.__handle_wikilink(wikilink[2:-2])
+            wiki_document.text = wiki_document.text.replace(wikilink, self.__get_anchor_tag(document_title, link_text))
+        #for match in good_wikilink_pattern.finditer(wiki_document.text):
+        #    wikilink = match.group()
+        #    wiki_document.text = wiki_document.text.replace(wikilink, self.__handle_wikilink(wikilink[2:-2])[1])
 
         # Gestisce i wikilink (mal formattati)
         bad_left_wikilink_pattern = self.__wikilink_pattern[1]
@@ -416,7 +416,7 @@ class WikiExtractor:
     def __handle_unicode(self, entity):
         numeric_code = int(entity[2:-1])
         if numeric_code >= 0x10000: return ''
-        return unichr(numeric_code)
+        return chr(numeric_code)
 
 #------------------------------------------------------------------------------
 
@@ -492,7 +492,7 @@ def process_page(page, wiki_extractor, output_splitter):
     wiki_document = wiki_extractor.extract(wiki_document)
     if not wiki_document: return
 
-    output_splitter.write(wiki_document.__str__().encode('utf-8'))
+    output_splitter.write(wiki_document.__str__())
 
 #------------------------------------------------------------------------------
 
