@@ -23,7 +23,6 @@ from qlc.corpusreader import CorpusReaderWordlist
 import numpy
 numpy.set_printoptions(threshold=numpy.nan) # set so everything will print
 
-import scipy.sparse as sps
 from scipy.sparse import csr_matrix, lil_matrix
 
 
@@ -139,6 +138,11 @@ class WordlistStoreWithNgrams:
                 non_unique_ngrams.add(non_unique_ngram)
                 self._word_ngrams[counterpart][ngram] += 1
                 self._language_word_ngrams[parsed_word+"_"+language][non_unique_ngram] += 1
+
+                # if not word in self._words_ngrams[parsed_word+"_"+language]:
+                # not going to work because the word is there already for each ngram
+                # wajee_7536 ['#w_7536', 'wa_7536', 'aj_7536', 'je_7536', 'ee_7536', 'e#_7536', '#w_7536', 'wa_7536', 'aj_7536', 'je_7536', 'ee_7536', 'e#_7536']
+
                 self._words_ngrams[parsed_word+"_"+language].append(non_unique_ngram)
 
                 if not ngram in self._language_counts[language][concept]:
@@ -355,9 +359,12 @@ class WordlistStoreWithNgrams:
         self._get_words_ngrams(True)
 
     def _get_words_ngrams(self, index):
-        for k in self._words_ngrams.items():
-            result = k[0]
-            for gram in k[1]:
+        for word in self.non_unique_parsed_words:
+            if not word in self._words_ngrams:
+                print("warning: non_unique_parsed words does not match _words.ngrams")
+                sys.exit(1)
+            result = word
+            for gram in self._words_ngrams[word]:
                 if index:
                     gram = str(self.non_unique_ngrams.index(gram))
                 result += "\t"+gram
@@ -514,6 +521,14 @@ class WordlistStoreWithNgrams:
                 composed_ngram += ngram
             print(str(count)+"\t"+composed_ngram)
 
+    def get_wordlistid_languagename(self, source): 
+        wordlist_ids = []
+        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key(source):
+            wordlist_ids.append(wordlistdata_id)
+        wordlist_ids.sort()
+        for wordlist_id in wordlist_ids:
+            print(wordlist_id+"\t"+cr.get_language_bookname_for_wordlistdata_id(wordlist_id))
+
 
 if __name__=="__main__":
     from qlc.corpusreader import CorpusReaderWordlist
@@ -529,9 +544,14 @@ if __name__=="__main__":
 
     # create generator of corpus reader data
     wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
-        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('huber1992')
+        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('zgraggen1980')
         for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
     )
+
+    for wordlistdata_id, concept, counterpart in wordlist_iterator:
+        print(wordlistdata_id, concept, counterpart)
+
+    sys.exit(1)
 
     # initialize matrix class
     w = WordlistStoreWithNgrams(wordlist_iterator, o, 2) # pass ortho parser and ngram length
@@ -566,6 +586,7 @@ if __name__=="__main__":
     # w.make_header(w.non_unique_parsed_words)
     # w.make_header(w.non_unique_ngrams)
     # w.make_header(w.languages)
+    # w.get_wordlistid_languagename("huber1992")
 
     # make GP matrix
     # w.get_gp_matrix()
@@ -576,5 +597,11 @@ if __name__=="__main__":
     # w.get_words_ngrams_strings()    
     # w.get_words_ngrams_indices()
     # w.get_ngrams_indices()
+
+    # anene_7522 #a_7522 an_7522 ne_7522 en_7522 ne_7522 e#_7522
+    # w.get_words_ngrams_strings()
+
     
     # TODO -- write method to look up two words for Needleman-Wunsch comparison
+
+    
