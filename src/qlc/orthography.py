@@ -6,8 +6,30 @@ Orthography Profile class for parsing strings into Quantitative Language Compari
 
 import sys
 import unicodedata
+import regex
+import os
 
 class DuplicateExceptation(Exception): pass
+
+class GraphemeParser(object):
+    def __init__(self):
+        self.grapheme_pattern = regex.compile("\X", regex.UNICODE)
+
+    def parse_string_to_graphemes_string(self, string):
+        string = string.replace(" ", "#") # add boundaries between words
+        string = unicodedata.normalize("NFD", string)
+        result = "#"
+        graphemes = self.grapheme_pattern.findall(string)
+        for grapheme in graphemes:
+            result += " "+grapheme
+        result += " #"
+        # sys.stderr.write(result+"\n")
+        return (True, result)
+
+    def parse_string_to_graphemes(self, string):
+        (success, graphemes) = self.parse_string_to_graphemes_string(string)
+        return (success, tuple(graphemes.split(" ")))
+
 
 class OrthographyParser(object):
     """
@@ -36,17 +58,24 @@ class OrthographyParser(object):
         - nothing
 
         """
+
+        try:
+            open(orthography_profile)
+        except IOError as e:
+            print("\nWARNING: There is no file at the path you've specified.\n\n")
+
         # read in orthography profile and create a tree structure
         self.root = createTree(orthography_profile)
 
         # lookup table
-        self.graphemeToPhoneme = {}
+        self.grapheme_to_phoneme = {}
 
         # create look up table of grapheme to IPA from orthography profile
         # TODO: move this into a function when we start adding more than just 
         # 2 columns to the orthography profiles
 
         file = open(orthography_profile, "r", encoding="utf-8")
+
         line_count = 0
         for line in file:
             line_count += 1
@@ -61,8 +90,8 @@ class OrthographyParser(object):
             grapheme = tokens[0].strip()
             phoneme = tokens[1].strip()
             
-            if not grapheme in self.graphemeToPhoneme:
-                self.graphemeToPhoneme[grapheme] = phoneme
+            if not grapheme in self.grapheme_to_phoneme:
+                self.grapheme_to_phoneme[grapheme] = phoneme
             else:
                 raise DuplicateException("You have a duplicate in your orthography profile at: {0}".format(line_count))
         file.close()
@@ -150,7 +179,7 @@ class OrthographyParser(object):
             if graphemes[i] == "#":
                 ipa.append(graphemes[i])
                 continue
-            grapheme = self.graphemeToPhoneme[graphemes[i]]
+            grapheme = self.grapheme_to_phoneme[graphemes[i]]
             if grapheme != "" and grapheme != " ":
                 ipa.append(grapheme)
 
@@ -175,7 +204,7 @@ class OrthographyParser(object):
 
         # flip the graphemes into phonemes
         # TODO: probably don't need a loop for *every string* -- refactor
-        for k, v in self.graphemeToPhoneme.items():
+        for k, v in self.grapheme_to_phoneme.items():
             ipa = ipa.replace(k, v)
 
         return (True, ipa)
@@ -312,11 +341,14 @@ def printTree(root, path):
 
 if __name__=="__main__":
     o = OrthographyParser("data/orthography_profiles/thiesen1998.txt")
+    g = GraphemeParser()
     test_words = ["aa", "aabuu", "uuabaa auubaa"]
+    print()
     for word in test_words:
-        print("parse_string_to_graphemes_string: ", o.parse_string_to_graphemes_string(word))
-        print("parse_string_to_ipa_string: ", o.parse_string_to_ipa_string(word))
-        print("parse_string_to_graphemes: ", o.parse_string_to_graphemes(word))
+        print("original word:", word)
+        print("parse_string_to_graphemes_string:", o.parse_string_to_graphemes_string(word))
+        print("parse_string_to_ipa_string:", o.parse_string_to_ipa_string(word))
+        print("parse_string_to_graphemes:", o.parse_string_to_graphemes(word))
+        print("parse_graphemes:", g.parse_graphemes(word))
         print()
-
 
