@@ -21,9 +21,10 @@ import qlc.ngram
 from qlc.corpusreader import CorpusReaderWordlist
 
 import numpy
+from numpy import array
 numpy.set_printoptions(threshold=numpy.nan) # set so everything will print
 
-from scipy.sparse import csr_matrix, lil_matrix
+from scipy.sparse import csr_matrix, lil_matrix, coo_matrix
 
 
 class WordlistStoreWithNgrams:
@@ -50,9 +51,10 @@ class WordlistStoreWithNgrams:
     """
 
     def __init__(self, language_concept_counterpart_iterator, orthography_parser, ngram_length):
-        unparsables = open("unparsables.txt", "w") # write to disk the forms that can't be parsed
+        # write to disk the forms that can't be parsed
+        unparsables = open("unparsables.txt", "w")
 
-        # data structures
+        ### data structures
 
         # data stored: { wordlist_id: {concept: {ngram_tuples} } }
         self._words = collections.defaultdict(lambda : collections.defaultdict(set))
@@ -84,7 +86,7 @@ class WordlistStoreWithNgrams:
         # data stored: {concept: {counterpart: count} }
         self._concept_specific_counterparts = collections.defaultdict(lambda : collections.defaultdict(int))
 
-        # data containers
+        ### data containers
         languages = set()
         concepts = set()
         words = set()
@@ -103,8 +105,8 @@ class WordlistStoreWithNgrams:
         for language, concept, counterpart in language_concept_counterpart_iterator:
 
             # First do orthography parsing.
-            # parsed_counterpart_tuple = orthography_parser.parse_string_to_graphemes(counterpart) # graphemes
-            parsed_counterpart_tuple = orthography_parser.parse_string_to_ipa_phonemes(counterpart) # phonemes
+            parsed_counterpart_tuple = orthography_parser.parse_string_to_graphemes(counterpart) # (Unicode | ortho profile) graphemes
+            # parsed_counterpart_tuple = orthography_parser.parse_string_to_ipa_phonemes(counterpart) # phonemes
 
             # If string is unparsable, write to file.
             if parsed_counterpart_tuple[0] == False:
@@ -198,16 +200,6 @@ class WordlistStoreWithNgrams:
         self.unique_ngrams.sort()
 
         
-
-        """
-        for language, concept in self._language_counts.items():
-            if language == "7509":
-                for concept, ngrams in self._language_counts[language].items():
-                    print (language, concept, ngrams)
-
-        sys.exit()
-        """
-
     def get_length_longest_set_word(self):
         """
         Return the length of the longest set of combined word (by Unicode characters)
@@ -290,7 +282,7 @@ class WordlistStoreWithNgrams:
                     WG[i][j] = 1
         return WG
 
-    # words/counterparts (rows) x graphemes (cols) x index (= if counterpart appears in that language)
+    # words/counterparts (rows) x graphemes (cols) x index (= if counterpart appears in that language
     def non_unique_words_graphemes_counts_matrix(self):
         # WG = numpy.empty( (len(self.non_unique_parsed_words),len(self.non_unique_ngrams)), dtype=int )
         WG = lil_matrix( (len(self.non_unique_parsed_words),len(self.non_unique_ngrams)), dtype=int)
@@ -299,10 +291,30 @@ class WordlistStoreWithNgrams:
                 # WG[i][j] = 0
                 # check to see if the word has the ngram
                 ngrams = self._language_word_ngrams[self.non_unique_parsed_words[i]][self.non_unique_ngrams[j]]
-
                 if ngrams != 0:
                     WG[i,j] = 1
         return WG
+
+
+    def non_unique_words_graphemes_counts_matrix2(self):
+        # WG = numpy.empty( (len(self.non_unique_parsed_words),len(self.non_unique_ngrams)), dtype=int )
+        row = []
+        col = []
+        data = []
+        for i in range(0, len(self.non_unique_parsed_words)):
+            for j in range(0, len(self.non_unique_ngrams)):
+                ngrams = self._language_word_ngrams[self.non_unique_parsed_words[i]][self.non_unique_ngrams[j]]
+                if ngrams != 0:
+                    row.append(i)
+                    col.append(j)
+                    data.append(1)
+        row = array(row)
+        col = array(col)
+        data = array(data)
+        WG = coo_matrix((data,(row,col)), shape=(len(self.non_unique_parsed_words),len(self.non_unique_ngrams)), dtype=int)
+        return WG
+
+
 
     # words/counterparts (rows) x languages (cols) x index (= if counterpart appears in that language)
     def non_unique_words_languages_counts_matrix(self):
@@ -328,10 +340,6 @@ class WordlistStoreWithNgrams:
         return WM
 
     def get_gp_matrix(self):
-        """
-
-        """
-
         WP = numpy.empty( (len(self.non_unique_ngrams),len(self.unique_ngrams)), dtype=int )
         for i in range(0, len(self.non_unique_ngrams)):
             for j in range(0, len(self.unique_ngrams)):
@@ -370,7 +378,6 @@ class WordlistStoreWithNgrams:
                 result += "\t"+gram
             print(result)
 
-
     def concepts_languages_words_matrix(self):
         # create numpy array with data type str to hold meanings x languages in a matrix
         max_word_length = self.get_length_longest_set_word()
@@ -393,9 +400,6 @@ class WordlistStoreWithNgrams:
             for col in range(0, len(CL[0])):
                 print(CL[row][col]+"\t", end="")
             print()
-
-
-
 
     def print_concepts_languages_ngrams(self):
         """
@@ -426,7 +430,6 @@ class WordlistStoreWithNgrams:
                 words = self._words[language][concept]
                 print("\t"+",".join(words), end="")
             print()
-
 
     def print_ngrams_concepts_ngramcounts(self, language):
         # print header
@@ -468,7 +471,6 @@ class WordlistStoreWithNgrams:
                 print("\t"+",".join(words), end="")
             print()
 
-
     def print_languages_concepts_ngrams(self):
         """
         Print 2D matrix of languages (rows) by concepts (cols) by ngrams (in cells).
@@ -485,7 +487,6 @@ class WordlistStoreWithNgrams:
                 ngrams = self._ngrams[language][concept]
                 print("\t"+" ".join(ngrams), end="")
             print()
-
 
     # maybe move the wordlist in ngrams function here from matrix.py
     def print_wordlist_in_ngrams(self):
@@ -512,6 +513,14 @@ class WordlistStoreWithNgrams:
             count += 1
             print(str(count)+"\t"+item)
 
+    def write_header(self, list, source, ext):
+        file = open(source+"/"+source+ext, "w")
+        count = 0
+        for item in list:
+            count += 1
+            file.write(str(count)+"\t"+item)
+        file.close()
+
     def make_ngram_header(self):
         count = 0
         for i in range(0, len(w.unique_ngrams)):
@@ -521,85 +530,120 @@ class WordlistStoreWithNgrams:
                 composed_ngram += ngram
             print(str(count)+"\t"+composed_ngram)
 
-    def get_wordlistid_languagename(self, source): 
+    def write_wordlistid_languagename(self, source): 
+        file = open(source+"/"+source+"_wordlistids_lgnames_header.txt", "w")
         wordlist_ids = []
         for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key(source):
             wordlist_ids.append(wordlistdata_id)
         wordlist_ids.sort()
         for wordlist_id in wordlist_ids:
-            print(wordlist_id+"\t"+cr.get_language_bookname_for_wordlistdata_id(wordlist_id))
+            file.write(wordlist_id+"\t"+cr.get_language_bookname_for_wordlistdata_id(wordlist_id)+"\n")
+        file.close()
 
 
 if __name__=="__main__":
+    import sys
     from qlc.corpusreader import CorpusReaderWordlist
-    from qlc.orthography import OrthographyParser
+    from qlc.orthography import OrthographyParser, GraphemeParser
     from scipy.io import mmread, mmwrite # write sparse matrices
 
+    if len(sys.argv) != 2:
+        print("call: python matrix.py source\n")
+        print("python matrix.py huber1992\n")
+
+    source = sys.argv[1] # dictionary/wordlist source key
+    output_dir = "zgraggen1980/"
+
     # get data from corpus reader
-    cr = CorpusReaderWordlist("data/csv")      # real data
-    # cr = CorpusReaderWordlist("data/testcorpus") # test data
+    # cr = CorpusReaderWordlist("data/csv")      # real data
+    cr = CorpusReaderWordlist("data/testcorpus") # test data
     
-    # initialize orthography parser
-    o = OrthographyParser(qlc.get_data("orthography_profiles/huber1992.txt"))
+    # initialize orthography parser for source
+
+    # o = OrthographyParser(qlc.get_data("orthography_profiles/"+source+".txt"))
+    o = GraphemeParser()
 
     # create generator of corpus reader data
     wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
-        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key('zgraggen1980')
+        for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key(source)
         for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
     )
 
+    # print all the things!
+    """
     for wordlistdata_id, concept, counterpart in wordlist_iterator:
-        print(wordlistdata_id, concept, counterpart)
-
+        print(wordlistdata_id+"\t"+concept+"\t"+counterpart)
     sys.exit(1)
+    """
+
 
     # initialize matrix class
     w = WordlistStoreWithNgrams(wordlist_iterator, o, 2) # pass ortho parser and ngram length
 
-    # Create unique word matrix
-    # WL = w.words_languages_counts_matrix()
-    # WM = w.words_concepts_counts_matrix()
-    # WG = w.words_graphemes_counts_matrix()
-
-    # Create parsed and language-specific word matrices
-    # WL = w.non_unique_words_languages_counts_matrix()
-    # WM = w.non_unique_words_concepts_counts_matrix()
-    # WG = w.non_unique_words_graphemes_counts_matrix()
-    # WP = w.get_gp_matrix()
-
+    # Create parsed and language-specific word matrices and 
     # convert to sparse matrix (csr format best for matrix multiplication)
+
+    # WL = w.non_unique_words_languages_counts_matrix()
     # WL_sparse = csr_matrix(WL)
+    # mmwrite(output_dir+source+"_WL.mtx", WL_sparse)
+
+    # WM = w.non_unique_words_concepts_counts_matrix()
     # WM_sparse = csr_matrix(WM)
+    # mmwrite(output_dir+source+"_WM2.mtx", WM_sparse)
+
+    # WG = w.non_unique_words_graphemes_counts_matrix()
+    WG = w.non_unique_words_graphemes_counts_matrix2()
     # WG_sparse = csr_matrix(WG)
+    mmwrite("WG.mtx", WG)
+
+    # mmwrite(output_dir+source+"_WG.mtx", WG)
+
+    # WP = w.get_gp_matrix()
     # WP_sparse = csr_matrix(WP) 
+    # mmwrite(output_dir+source+"_WP.mtx", WP_sparse)
 
-    # write sparse matrices to disk
-    # mmwrite('3_sparse_matrices/huber1992_WL.mtx', WL_sparse)
-    # mmwrite('3_sparse_matrices/huber1992_WM.mtx', WM_sparse)
-    # mmwrite('3_sparse_matrices/2_huber1992_WG.mtx', WG_sparse)
-    # mmwrite('3_sparse_matrices/huber1992_WP.mtx', WP_sparse)
-
-    # write headers
-    # w.make_header(w.parsed_words)
-    # w.make_header(w.concepts)
-    # w.make_ngram_header()
-    # w.make_header(w.non_unique_parsed_words)
-    # w.make_header(w.non_unique_ngrams)
-    # w.make_header(w.languages)
-    # w.get_wordlistid_languagename("huber1992")
-
-    # make GP matrix
-    # w.get_gp_matrix()
-    # print(w.get_gp_matrix())
-    # w.make_ngram_header()
-
+    # write headers (non-unique)
+    # w.write_wordlistid_languagename(source)
+    # w.write_header(w.non_unique_parsed_words, source, "_words_header.txt")
+    # w.write_header(w.concepts, source, "_meanings_header.txt")
+    # w.write_header(w.non_unique_ngrams, source, "_ngrams_header.txt")
+    
     # print the word and ngrams/ngrams-indices
     # w.get_words_ngrams_strings()    
     # w.get_words_ngrams_indices()
     # w.get_ngrams_indices()
+    # w.make_ngram_header() # make phoneme header
+
+
+    # w.make_header(w.non_unique_parsed_words)
+    # w.make_header(w.concepts)
+    # w.make_header(w.non_unique_ngrams)
+
 
     # anene_7522 #a_7522 an_7522 ne_7522 en_7522 ne_7522 e#_7522
     # w.get_words_ngrams_strings()
+
+
+
+
+    ### depreciated
+
+    # Create ***unique*** word matrix (currently depreciated)
+    # WL = w.words_languages_counts_matrix()
+    # WM = w.words_concepts_counts_matrix()
+    # WG = w.words_graphemes_counts_matrix()
+
+    # write headers (unique -- depreciated)
+    # w.make_header(w.parsed_words)
+    # w.make_ngram_header()
+    # w.make_header(w.languages)
+
+
+
+
+
+
+
 
     
     # TODO -- write method to look up two words for Needleman-Wunsch comparison
