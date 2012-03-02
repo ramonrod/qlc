@@ -555,13 +555,13 @@ if __name__=="__main__":
     output_dir = "zgraggen1980/"
 
     # get data from corpus reader
-    # cr = CorpusReaderWordlist("data/csv")      # real data
-    cr = CorpusReaderWordlist("data/testcorpus") # test data
+    cr = CorpusReaderWordlist("data/csv")      # real data
+    # cr = CorpusReaderWordlist("data/testcorpus") # test data
     
     # initialize orthography parser for source
 
-    # o = OrthographyParser(qlc.get_data("orthography_profiles/"+source+".txt"))
-    o = GraphemeParser()
+    o = OrthographyParser(qlc.get_data("orthography_profiles/"+source+".txt"))
+    # o = GraphemeParser()
 
     # create generator of corpus reader data
     wordlist_iterator = ( (wordlistdata_id, concept, counterpart)
@@ -570,11 +570,11 @@ if __name__=="__main__":
     )
 
     # print all the things!
-    """
-    for wordlistdata_id, concept, counterpart in wordlist_iterator:
-        print(wordlistdata_id+"\t"+concept+"\t"+counterpart)
-    sys.exit(1)
-    """
+
+    # for wordlistdata_id, concept, counterpart in wordlist_iterator:
+    #    print(wordlistdata_id+"\t"+concept+"\t"+counterpart)
+    # sys.exit(1)
+
 
 
     # initialize matrix class
@@ -589,13 +589,11 @@ if __name__=="__main__":
 
     # WM = w.non_unique_words_concepts_counts_matrix()
     # WM_sparse = csr_matrix(WM)
-    # mmwrite(output_dir+source+"_WM2.mtx", WM_sparse)
+    # mmwrite(output_dir+source+"_WM.mtx", WM_sparse)
 
     # WG = w.non_unique_words_graphemes_counts_matrix()
-    WG = w.non_unique_words_graphemes_counts_matrix2()
+    # WG = w.non_unique_words_graphemes_counts_matrix2()
     # WG_sparse = csr_matrix(WG)
-    mmwrite("WG.mtx", WG)
-
     # mmwrite(output_dir+source+"_WG.mtx", WG)
 
     # WP = w.get_gp_matrix()
@@ -637,13 +635,6 @@ if __name__=="__main__":
     # w.make_header(w.parsed_words)
     # w.make_ngram_header()
     # w.make_header(w.languages)
-
-
-
-
-
-
-
 
     
     # TODO -- write method to look up two words for Needleman-Wunsch comparison
