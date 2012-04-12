@@ -613,8 +613,10 @@ class WordlistStoreWithNgrams:
             file.write(str(count)+"\t"+unigram_item+tokens[1]+tokens[2]+"\t"+item+"\n")
         file.close()
 
+    # makes phoneme_header ??
     def make_ngram_header(self, source):
-        file = open(source+"/"+source+"_ngram_header.txt", "w")        
+        # file = open(source+"/"+source+"_ngram_header.txt", "w")        
+        file = open(source+"/"+source+"_phonemes_header.txt", "w")        
         count = 0
         for i in range(0, len(w.unique_ngrams)):
             count += 1
@@ -656,7 +658,7 @@ if __name__=="__main__":
     output_dir = source+"/"
 
     # get data from corpus reader
-    cr = CorpusReaderWordlist("data/csv")      # real data
+    cr = CorpusReaderWordlist("data/csv")          # real data
     # cr = CorpusReaderWordlist("data/testcorpus") # test data
     
     # initialize orthography parser for source
@@ -676,49 +678,55 @@ if __name__=="__main__":
         sys.exit(1)
         """
 
-
     # initialize matrix class
     w = WordlistStoreWithNgrams(wordlist_iterator, o, "graphemes", 2) # pass ortho parser and ngram length
 
     # Create parsed and language-specific word matrices and 
     # convert to sparse matrix (csr format best for matrix multiplication)
+    """
+    WL = w.non_unique_words_languages_counts_matrix()
+    WL_sparse = csr_matrix(WL)
+    mmwrite(output_dir+source+"_WL.mtx", WL_sparse)
 
-    # WL = w.non_unique_words_languages_counts_matrix()
-    # WL_sparse = csr_matrix(WL)
-    # mmwrite(output_dir+source+"_WL.mtx", WL_sparse)
+    WM = w.non_unique_words_concepts_counts_matrix()
+    WM_sparse = csr_matrix(WM)
+    mmwrite(output_dir+source+"_WM.mtx", WM_sparse)
 
-    # WM = w.non_unique_words_concepts_counts_matrix()
-    # WM_sparse = csr_matrix(WM)
-    # mmwrite(output_dir+source+"_WM.mtx", WM_sparse)
-
-    # WG = w.non_unique_words_graphemes_counts_matrix()
+    WG = w.non_unique_words_graphemes_counts_matrix()
     # print(WG)
-    # too memory intensive
+    mmwrite(output_dir+source+"_WG.mtx", WG)
+
+    # old -- too memory intensive
     # WG = w.non_unique_words_graphemes_counts_matrix2()
     # WG_sparse = csr_matrix(WG)
     # mmwrite(output_dir+source+"_WG.mtx", WG)
 
-    # WP = w.get_gp_matrix()
-    # WP_sparse = csr_matrix(WP) 
-    # mmwrite(output_dir+source+"_WP.mtx", WP_sparse)
+    GP = w.get_gp_matrix()
+    GP_sparse = csr_matrix(WP) 
+    mmwrite(output_dir+source+"_GP.mtx", GP_sparse)
+    """
 
+    """
     # write headers (non-unique) :: can run all at once
-    # w.write_wordlistid_languagename(source) # write wordlistid \t language name
-    # w.write_header(w.non_unique_parsed_words, source, "_words_header.txt")
-    # w.write_header(w.concepts, source, "_meanings_header.txt")
-    # w.write_header(w.non_unique_ngrams, source, "_ngrams_header.txt")
-    # w.write_header_unigrams(w.non_unique_ngrams, source, "_ngrams_header.txt")
+    w.write_wordlistid_languagename(source) # write wordlistid \t language name
+    w.write_header(w.non_unique_parsed_words, source, "_words_header.txt")
+    w.write_header(w.concepts, source, "_meanings_header.txt")
+    w.write_header(w.non_unique_ngrams, source, "_ngrams_header.txt")
+    w.write_header_unigrams(w.non_unique_ngrams, source, "_unigrams_header.txt")
 
     ####
     # print the word and ngrams/ngrams-indices
     w.write_words_ngrams_strings(source)    
+    w.write_words_ngrams_indices(source)
+    w.write_ngrams_indices(source)
+    """
 
-    # w.write_words_ngrams_indices(source)
-    # w.write_ngrams_indices(source)
-    # w.make_ngram_header(source) # make phoneme header
 
+    # makes phoneme header, i.e. all unique phonemes independent of language
+    # w.make_ngram_header(source)
+
+    # here
     # w.write_split_ngram_header(source)
-
     # w.make_header(w.non_unique_parsed_words)
     # w.make_header(w.concepts)
     # w.make_header(w.non_unique_ngrams)
