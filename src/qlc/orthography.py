@@ -87,6 +87,7 @@ class OrthographyParser(object):
 
             line = unicodedata.normalize("NFD", line)
             tokens = line.split(",") # split the orthography profile into columns
+
             grapheme = tokens[0].strip()
             phoneme = tokens[1].strip()
             
@@ -131,7 +132,7 @@ class OrthographyParser(object):
                 success = False
                 # parse = "# <no valid parse> #"
                 # parse = word
-                parse = " <no valid parse> "
+                parse = " <no-valid-parse> "
 
             parses.append(parse)
 
