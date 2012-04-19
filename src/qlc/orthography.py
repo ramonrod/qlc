@@ -30,6 +30,43 @@ class GraphemeParser(object):
         (success, graphemes) = self.parse_string_to_graphemes_string(string)
         return (success, tuple(graphemes.split(" ")))
 
+class OrthographyRulesParser(object):
+    def __init__(self, orthography_profile_rules):
+        try:
+            open(orthography_profile_rules)
+        except IOError as e:
+            print("\nWARNING: There is no file at the path you've specified.\n\n")
+
+        self.rules = []
+        self.replacements = []
+
+        rules_file = open(orthography_profile_rules, "r", encoding="utf-8")
+        # loop through the orthography fules and compile them
+        for line in rules_file:
+            line = line.strip()
+            # skip any comments
+            if line.startswith("#") or line == "":
+                continue
+            line = unicodedata.normalize("NFD", line)
+            rule, replacement = line.split(",")
+            rule = rule.strip() # just in case there's trailing whitespace
+            replacement = replacement.strip() # because there's probably trailing whitespace!
+            self.rules.append(regex.compile(rule))
+            self.replacements.append(replacement)
+        rules_file.close()
+
+        # check that num rules == num replacements
+        if len(self.rules) != len(self.replacements):
+            print("there is a problem with your orthographic rules file: number of inputs does not match number of outputs")
+            sys.exit(1)
+
+    def parse_string(self, string):
+        result = string
+        for i in range(0, len(self.rules)):
+            match = self.rules[i].search(result)
+            if not match == None:
+                result = regex.sub(self.rules[i], self.replacements[i], result)
+        return result
 
 class OrthographyParser(object):
     """
