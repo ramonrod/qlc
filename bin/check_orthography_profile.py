@@ -3,6 +3,7 @@
 import sys
 import regex 
 import qlc.orthography
+import unicodedata
 
 """
 Script to check if the orthography profile has errors in it.
@@ -20,16 +21,13 @@ def main(argv):
         print()
         print("call: python check_orthography_profile.py /path/to/orthography_profile /path/to/heads_file")
         print()
-        print("e.g.:")
-        print("python check_orthography_profile.py data/orthography_profiles/huber1992.txt data/concepts_with_counterparts/concepts_with_counterparts_huber1992.txt")
-        print()
         exit(1)
 
 
     grapheme_pattern = regex.compile("\X", regex.UNICODE) # Unicode grapheme regular expression pattern
     orthography_hash = {} # hash of graphemes in orthography profile
     headword_unicode_graphemes_hash = {} # hash of Unicode graphemes from head words
-    head_words = []
+    head_words = [] # list of words from input file; typically headwords
 
     # load orthography hash
     orthography_profile = open(sys.argv[1], "r")
@@ -37,6 +35,7 @@ def main(argv):
         line = line.strip()
         if line.startswith("#") or line == "":
             continue
+        line = unicodedata.normalize("NFD", line)
         tokens = line.split(",")
         grapheme = tokens[0]
     
@@ -53,17 +52,15 @@ def main(argv):
     heads_file = open(sys.argv[2], "r")
     line_count = 1
     for line in heads_file:
+        line = line.strip()
         if line.__contains__("COUNTERPART"): # skip possible header
             continue
         line_count += 1
-        line = line.strip()
+        line = unicodedata.normalize("NFD", line)
         tokens = line.split("\t")
         head = tokens[0]
-#        print(line_count, head)
         head_words.append(head)
     heads_file.close()
-
-#    sys.exit(1)
 
     # load hash of unique graphemes from the dictionary heads file and get a list of headwords
     for head_word in head_words:
@@ -149,6 +146,7 @@ def main(argv):
                 comparison_hash[g] = 1
                 incorrect_forms.append((ln, g, head, orthography_parse, parsed_graphemes))
 
+    print()
     print("# Checking headword graphemes against orthography profile contents:")
     if len(comparison_hash) > 1:
         for k, v in comparison_hash.items():
@@ -173,6 +171,27 @@ def main(argv):
     print("Words that did not parse:")
     for invalid_parse in invalid_parses:
         print(invalid_parse)
+    print()
+
+
+    
+    # print headwords and their parses
+    orthography_profile_location = sys.argv[1]
+    o = qlc.orthography.OrthographyParser(orthography_profile_location)
+    ln = 0
+    print()
+    print("print headwords and their parses (if parsable; if not print just the original word/phrase/etc.):")
+    print()
+    print("line #"+"\t"+"original"+"\t"+"parsed form (if it parses)")
+    for head in head_words:
+        ln += 1
+        orthography_parse_tuple = o.parse_string_to_graphemes_string(head)
+        if orthography_parse_tuple[0] == True:
+            orthography_parse = orthography_parse_tuple[1]
+            parsed_graphemes = orthography_parse.split()
+            print(str(ln)+"\t"+head+"\t"+orthography_parse)
+        else:
+            print(str(ln)+"\t"+head+"\t"+"")
 
 if __name__=="__main__":
     main(sys.argv)
