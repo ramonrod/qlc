@@ -92,6 +92,13 @@ def formatted_string_from_ngrams(ngrams_tuple):
         ngrams_list.append("".join(list(ngram)))
     return " ".join(ngrams_list)
 
+def split_formatted_string_from_ngrams(ngrams_tuple):
+    """ Convert a tuple of tuples to a list of strings, split on unigrams, and return joined string. """
+    ngrams_list = []
+    for ngram in ngrams_tuple:
+        ngrams_list.append("_".join(list(ngram)))
+    return " ".join(ngrams_list)
+
 def words_ngrams_list_for_graphemes_list(graphemes_list, n=1):
     ngrams_list = []
     for graphemes in graphemes_list:
