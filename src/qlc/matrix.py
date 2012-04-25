@@ -102,7 +102,6 @@ class WordlistStoreWithNgrams:
         non_unique_concepts = set()
         non_unique_parsed_words = set()
         non_unique_words = set()
-        non_unique_parsed_words = set() 
         non_unique_ngrams = set()
         # don't need
         non_unique_ngrams_split = set()
@@ -117,6 +116,7 @@ class WordlistStoreWithNgrams:
             else:
                 sys.exit('\ninvalid gram type: specify "phonemes" or "graphemes"\n')
 
+            # move this to orthography parser
             # If string is unparsable, write to file.
             if parsed_counterpart_tuple[0] == False:
                 invalid_parse_string = qlc.ngram.formatted_string_from_ngrams(parsed_counterpart_tuple[1])
@@ -129,9 +129,11 @@ class WordlistStoreWithNgrams:
 
             # Format that tuple of tuples into a space-delimed string.
             ngrams_string = qlc.ngram.formatted_string_from_ngrams(ngram_tuples)
+            print(ngrams_string)
 
             # Format tuple into unigrams split on "_" into a space-delimited string.
             split_ngrams_string = qlc.ngram.split_formatted_string_from_ngrams(ngram_tuples)
+            # print(split_ngrams_string)
 
             # check to make sure ngrams string ("#a ab b#") 
             # and split ngrams string ("#_a a_b b_#") are the same
@@ -147,10 +149,13 @@ class WordlistStoreWithNgrams:
 
             # Get the parsed version of counterparts.
             parsed_word = qlc.ngram.formatted_string_from_ngrams(parsed_counterpart)
+            print("og: ", parsed_word)
             parsed_word = parsed_word.replace(" ", "")
             parsed_word = parsed_word.lstrip("#")
             parsed_word = parsed_word.rstrip("#")
             parsed_word = parsed_word.replace("#", " ")
+            print("pg: ", parsed_word)
+            print()
 
             """
             # Get set of language-specific ngrams.
@@ -176,6 +181,7 @@ class WordlistStoreWithNgrams:
                 non_unique_ngrams.add(non_unique_ngram)
 
                 self._word_ngrams[counterpart][ngram] += 1
+                
                 self._language_word_ngrams[parsed_word+"_"+language][non_unique_ngram] += 1
 
                 # if not word in self._words_ngrams[parsed_word+"_"+language]:
@@ -664,6 +670,7 @@ class WordlistStoreWithNgrams:
             parsed_counterpart_tuple = self.orthography_parser.parse_string_to_graphemes(gram)
             print(gram, parsed_counterpart_tuple)
 
+
 if __name__=="__main__":
     import sys
     from qlc.corpusreader import CorpusReaderWordlist
@@ -678,8 +685,8 @@ if __name__=="__main__":
     output_dir = source+"/"
 
     # get data from corpus reader
-    cr = CorpusReaderWordlist("data/csv")          # real data
-    # cr = CorpusReaderWordlist("data/testcorpus") # test data
+    # cr = CorpusReaderWordlist("data/csv")          # real data
+    cr = CorpusReaderWordlist("data/testcorpus") # test data
 
     # initialize orthography parser for source
     o = OrthographyParser(qlc.get_data("orthography_profiles/"+source+".txt"))
@@ -690,22 +697,39 @@ if __name__=="__main__":
         for wordlistdata_id in cr.wordlistdata_ids_for_bibtex_key(source)
         for concept, counterpart in cr.concepts_with_counterparts_for_wordlistdata_id(wordlistdata_id)
     )
-              
+
     """
-    # print all the things!
+    # write all the incoming data to a file
+    file = open(source+"/"+source+"_data.txt", "w")
+    file.write("# wordlistdata_id"+"\t"+"language bookname"+"\t"+"concept"+"\t"+"counterpart"+"\n")
     for wordlistdata_id, concept, counterpart in wordlist_iterator:
-        # print(wordlistdata_id+"\t"+cr.get_language_bookname_for_wordlistdata_id(wordlistdata_id)+"\t"+concept+"\t"+counterpart)
-        print(wordlistdata_id)
-
+        result = wordlistdata_id+"\t"+cr.get_language_bookname_for_wordlistdata_id(wordlistdata_id)+"\t"+concept+"\t"+counterpart+"\n"
+        file.write(result)
+    file.close()
     """
 
+
+
+              
     # initialize matrix class
     w = WordlistStoreWithNgrams(wordlist_iterator, o, "graphemes", 2) # pass ortho parser and ngram length
 
+    sys.exit(1)
+
+    for item in w.non_unique_parsed_words:
+        print(item)
+
+    """
+    for k, v in w._language_word_ngrams.items():
+        print(k, v)
+    print(type(w._language_word_ngrams))
+    """
+
+
+
     # Create parsed and language-specific word matrices and 
     # convert to sparse matrix (csr format best for matrix multiplication)
-
-
+    """
     WL = w.non_unique_words_languages_counts_matrix()
     WL_sparse = csr_matrix(WL)
     mmwrite(output_dir+source+"_WL.mtx", WL_sparse)
@@ -725,6 +749,7 @@ if __name__=="__main__":
     # WG = w.non_unique_words_graphemes_counts_matrix2()
     # WG_sparse = csr_matrix(WG)
     # mmwrite(output_dir+source+"_WG.mtx", WG)
+    """
 
     # write headers (non-unique) :: can run all at once
     w.write_wordlistid_languagename(source, cr) # write wordlistid \t language name
@@ -741,6 +766,12 @@ if __name__=="__main__":
     # print the word and ngrams/ngrams-indices
     w.write_words_ngrams_strings(source)    
     w.write_words_ngrams_indices(source)
+
+
+
+
+
+
 
 
     # TODO -- write method to look up two words for Needleman-Wunsch comparison
