@@ -129,7 +129,7 @@ class WordlistStoreWithNgrams:
 
             # Format that tuple of tuples into a space-delimed string.
             ngrams_string = qlc.ngram.formatted_string_from_ngrams(ngram_tuples)
-            print(ngrams_string)
+            # print(ngrams_string)
 
             # Format tuple into unigrams split on "_" into a space-delimited string.
             split_ngrams_string = qlc.ngram.split_formatted_string_from_ngrams(ngram_tuples)
@@ -149,13 +149,11 @@ class WordlistStoreWithNgrams:
 
             # Get the parsed version of counterparts.
             parsed_word = qlc.ngram.formatted_string_from_ngrams(parsed_counterpart)
-            print("og: ", parsed_word)
             parsed_word = parsed_word.replace(" ", "")
             parsed_word = parsed_word.lstrip("#")
             parsed_word = parsed_word.rstrip("#")
             parsed_word = parsed_word.replace("#", " ")
-            print("pg: ", parsed_word)
-            print()
+
 
             """
             # Get set of language-specific ngrams.
@@ -685,8 +683,8 @@ if __name__=="__main__":
     output_dir = source+"/"
 
     # get data from corpus reader
-    # cr = CorpusReaderWordlist("data/csv")          # real data
-    cr = CorpusReaderWordlist("data/testcorpus") # test data
+    cr = CorpusReaderWordlist("data/csv")          # real data
+    # cr = CorpusReaderWordlist("data/testcorpus") # test data
 
     # initialize orthography parser for source
     o = OrthographyParser(qlc.get_data("orthography_profiles/"+source+".txt"))
@@ -714,6 +712,10 @@ if __name__=="__main__":
     # initialize matrix class
     w = WordlistStoreWithNgrams(wordlist_iterator, o, "graphemes", 2) # pass ortho parser and ngram length
 
+
+    for item in w.unique_ngrams:
+        print(item)
+#    print(w.languages)
     sys.exit(1)
 
     for item in w.non_unique_parsed_words:
