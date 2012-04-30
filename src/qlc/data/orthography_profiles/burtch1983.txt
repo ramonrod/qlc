@@ -1,0 +1,37 @@
+#burtch1983 orthography profile
+a, a,
+à, a,
+á, a,
+b, b,
+c, k,
+ch, tʃ,
+d, d,
+e, ɛ,
+è, ɛ,
+f, ɸ,
+g, g,
+i, i,
+ì, i
+i̵, ɯ,
+ɨ, ɯ, typo, should be the same as above
+ì̵, ɯ,
+j, h, 
+ll, dʑ,
+m, m
+n, n,
+ñ, nʲ,
+o, o
+ó, o,
+ò, o,
+p, p, 
+qu, k, before i and e otherwise c
+r, ɾ,
+s, s, 
+t, t,
+u, u
+v, β
+z, θ, occurs only once
+-, 
+A, a,
+D, d,
+T, t,
