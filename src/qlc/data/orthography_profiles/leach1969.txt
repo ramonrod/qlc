@@ -52,10 +52,3 @@ v, β,
 x, x
 y, ʑ, not clear which sound it is, it never occurs word initially
 z, z, only in Spanish loan words
-<<<<<<< HEAD
-=======
-
-#KNOWN ORTHOGRAPHY PARSING PROBLEMS
-#VnV will be parsed as Vn V, although it should be V n V
-
->>>>>>> f538566291abf9578a5198da12db8657b49e7454
