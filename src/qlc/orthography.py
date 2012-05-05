@@ -137,7 +137,6 @@ class OrthographyParser(object):
         # uncomment this line if you want to see the orthography profile tree structure
         # printTree(self.root, "")
 
-
     def parse_string_to_graphemes_string_DEPRECATED(self, string):
         string = string.replace(" ", "#") # add boundaries between words
         string = unicodedata.normalize("NFD", string)
@@ -246,6 +245,42 @@ class OrthographyParser(object):
             ipa = ipa.replace(k, v)
 
         return (True, ipa)
+
+    def parse_formatted_string_to_ipa_string(self, string):
+        """
+        Returns the parsed and formated string given the graphemes encoded in the 
+        orthography profile and the IPA row. Uses a global scrope lookup hash for
+        the time being.
+
+        Needs to be investigated. Assumes that all graphemes are present
+        in the orthography profile.
+
+        Args:
+        - formatted string (obligatory): the string to be parsed and formatted
+
+        Returns:    
+        - the parsed and formatted string
+        """
+        string = string.strip()
+        # flip the graphemes into phonemes
+        # TODO: probably don't need a loop for *every string* -- refactor
+        # TODO: this method assumes exceptions have already been caught by
+        #  orthographic and orthographic rule parsings
+        result = ""
+        print("s: ", string)
+        for char in string.split():
+            if char == " " or "#":
+                result += char
+                continue
+            if not char in self.grapheme_to_phoneme:
+                print("you are missing the grapheme in your orthography profile!")
+                sys.exit(1)
+            if not self.grapheme_to_phoneme.__contains__(char):
+                print("you are missing the grapheme in your orthography profile!!!")
+                sys.exit(1)
+            result += self.grapheme_to_phoneme[char]
+        print("result: ", result)
+        return result
     
 
 # ---------- Tree node --------
