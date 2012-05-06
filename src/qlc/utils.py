@@ -4,7 +4,8 @@
 # http://pypi.python.org/pypi/regex/
 
 import regex
-import codecs, unicodedata
+import codecs
+import unicodedata
 
 def stopwords_from_file(stopwords_filepath = "data/stopwords/spa.txt"):
     stopwords = codecs.open(stopwords_filepath, "r", "utf-8")
@@ -42,3 +43,7 @@ def stem_phrase(phrase, stemmer, split_multiwords=False):
         return [stemmer.stem(phrase)]
     else:
         return([])
+
+def parse_graphemes(string):
+    grapheme_pattern = regex.compile("\X", regex.UNICODE)
+    return regex.split(grapheme_pattern, string)
