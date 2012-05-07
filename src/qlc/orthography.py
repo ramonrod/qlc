@@ -267,10 +267,9 @@ class OrthographyParser(object):
         # TODO: this method assumes exceptions have already been caught by
         #  orthographic and orthographic rule parsings
         result = ""
-        print("s: ", string)
         for char in string.split():
-            if char == " " or "#":
-                result += char
+            if char == "#":
+                result += " "+char
                 continue
             if not char in self.grapheme_to_phoneme:
                 print("you are missing the grapheme in your orthography profile!")
@@ -278,8 +277,7 @@ class OrthographyParser(object):
             if not self.grapheme_to_phoneme.__contains__(char):
                 print("you are missing the grapheme in your orthography profile!!!")
                 sys.exit(1)
-            result += self.grapheme_to_phoneme[char]
-        print("result: ", result)
+            result += " "+self.grapheme_to_phoneme[char]
         return result
     
 
