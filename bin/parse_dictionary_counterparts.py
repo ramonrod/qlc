@@ -62,7 +62,6 @@ for wordlistdata_id, head, translation in wordlist_iterator:
 
     if rules_file_flag:
         rule_parsed_grapheme_parse = rules.parse_string(grapheme_parse)
-        print("rpgp: ", rule_parsed_grapheme_parse)
         phoneme_parse = o.parse_formatted_string_to_ipa_string(rule_parsed_grapheme_parse)
         print(wordlistdata_id+"\t"+translation+"\t"+head+"\t"+grapheme_parse+"\t"+rule_parsed_grapheme_parse+"\t"+phoneme_parse)
 
