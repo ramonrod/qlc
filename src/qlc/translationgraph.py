@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Two functions to read/write Translation Graphs. TGs are based in python-graph's
+
+
+"""Two functions to read/write Translation Graphs. TGs are based in python-graph's
 graph classes. Currently, the main reason to have our own functions is that we
 need to alter the dot-file input and output. The original one uses pyparsing
 which consumes a *lot* of memory even for files around 8 MB. Our graphs are
 very simple so dot-files can easily be written and parsed without a real
-parser. RE must be enough.
-"""
+parser. RE must be enough."""
 
 import sys
 import codecs
@@ -19,6 +19,7 @@ py3k = sys.version_info >= (3, 0)
 class WrongDotFormatException(Exception): pass
 
 def read(string):
+    
     """
     Read a graph from a string in Dot language and return it. Nodes and
     edges specified in the input will be added to the current graph.
@@ -29,6 +30,7 @@ def read(string):
     Returns:
         - networkx.Graph object
     """
+    
     lines = string.split("\n")
     first_line = lines.pop(0)
     if not re.match("graph \w+ {$", first_line):
@@ -70,6 +72,7 @@ def read(string):
     
 
 def write(gr):
+    
     """
     Return a string specifying the given graph in Dot language.
     
@@ -79,6 +82,7 @@ def write(gr):
     Returns:
         - string: input graph in dot language
     """
+    
     if not isinstance(gr, Graph):
         raise TypeError("G is not a graph")
     
